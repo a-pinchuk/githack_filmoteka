@@ -1,0 +1,21 @@
+.container {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+
+    @include media-min(mobile){
+        width: 480px;
+    }
+
+    @include media-min(tablet){
+        width: 768px;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    @include media-min(desktop){
+        width: 1280px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
