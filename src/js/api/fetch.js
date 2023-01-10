@@ -5,7 +5,7 @@ export async function fetchTrendedFilms() {
   const searchParams = new URLSearchParams({
     api_key: API_KEY,
   });
-  return axios.get(`${TREND_URL}${searchParams}`);
+  return axios.get(`${TREND_URL}?${searchParams}`);
 }
 
 export async function fetchSearchedFilms(content, page) {
@@ -14,7 +14,7 @@ export async function fetchSearchedFilms(content, page) {
     query: content,
     page: page,
   });
-  return axios.get(`${SEARCH_URL}${searchParams}`);
+  return axios.get(`${SEARCH_URL}?${searchParams}`);
 }
 
 export async function fetchFilmById(id) {
