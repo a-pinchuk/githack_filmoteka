@@ -1,0 +1,69 @@
+@import '../base/colors';
+.footer {
+  background-color: getColor(footer-background);
+  padding-top: 29px;
+  padding-bottom: 29px;
+  @include media-min(tablet) {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+.footer__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  @include media-min(tablet) {
+    flex-direction: row;
+    gap: 6px;
+  }
+}
+.footer__link {
+  text-decoration: underline 1px;
+}
+.footer__copyright,
+.footer__link {
+  display: inline;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+
+  color: getColor(footer-text-color);
+  transition: color 300ms ease-in-out;
+  @include media-min(tablet) {
+    font-size: 16px;
+    line-height: 1.875;
+  }
+}
+.footer__link:hover,
+.footer__link:focus {
+  color: getColor(secondary-text-color);
+}
+.copyright__text {
+  padding: 0px 5px;
+  border-left: 1px solid getColor(footer-text-color);
+  border-right: 1px solid getColor(footer-text-color);
+  @include media-min(tablet) {
+    padding: 0px 6px;
+  }
+}
+
+.heart {
+  display: inline-block;
+  color: getColor(secondary-text-color);
+  transition-property: color, transform;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+  padding: 0px 5px;
+
+  // transition: color 2000ms ease-in-out;
+  // transition: transform 2000ms ease-in-out;
+  &:hover,
+  &:focus {
+    transform: scale(1.5);
+    color: getColor('red');
+  }
+}
