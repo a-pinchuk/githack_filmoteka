@@ -5,6 +5,7 @@ const ref = {
   gallery: document.querySelector('.gallery'),
   hideButton: document.querySelector('.load__more'),
   loader: document.getElementById('loading'),
+  photoCard: document.querySelector('.photo-card'),
 };
 
 export { ref };
