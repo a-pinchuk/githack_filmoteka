@@ -1,0 +1,69 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  opacity: 0.25;
+  transition: opacity 250ms var(--transition-timing-function),
+    visibility 250ms var(--transition-timing-function);
+}
+
+.backdrop.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  & .modal-window {
+    transform: translate(-50%, -50%) scale(0);
+  }
+}
+
+.modal-window {
+  padding: 20px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+
+  width: 280px;
+  min-height: 100%;
+  @include media-min(tablet) {
+    width: 704px;
+    min-height: 552px;
+  }
+  @include media-min(desktop) {
+    width: 528px;
+    min-height: 581px;
+  }
+
+  background-color: white;
+  transition: transform 250ms var(--transition-timing-function);
+
+  &-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+
+    cursor: pointer;
+  }
+}
+
+// .icon-close {
+//   width: 18px;
+//   height: 18px;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   fill: #000000;
+//   transform: translate(-50%, -50%);
+//   transition: fill 250ms var(--transition-timing-function);
+//   .modal-window-close:hover &,
+//   .modal-window-close:focus & {
+//     fill: red;
+//   }
+// }
+
