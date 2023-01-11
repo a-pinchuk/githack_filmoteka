@@ -57,7 +57,7 @@ function createMarkUp(data) {
 		
 		const size = 'w500';
 		let baseImafge = `https://image.tmdb.org/t/p/${size}${poster_path}`;
-		const normalizeDate = new Date(release_date).getFullYear();
+		const normalizeDate = release_date.split('-')[0];
 		return `
       <li class="photo__card">
           <a href="${baseImafge}">
@@ -67,7 +67,7 @@ function createMarkUp(data) {
             <h2 class="film__title">${title}</h2>
             <div class="movie__details">
             <p class="movie__genre">${filmGenre}</p>
-            <p class="movie__year">2022>${normalizeDate !== new Date(release_date).getFullYear() ? "unknown date" : normalizeDate}</p>
+            <p class="movie__year">2022>${normalizeDate !== release_date.split('-')[0] ? "unknown date" : normalizeDate}</p>
           </div>
           </div>
       </li>
@@ -91,7 +91,7 @@ function getGeners(allGenres, idGenres) {
     }
      });
   if (newArray.length > 3) {
-    newArray = newArray.slice(0, 2).join(', ')
+    newArray = newArray.slice(0, 2).join(',  ')
   }
   
   return newArray;
@@ -100,21 +100,3 @@ function getGeners(allGenres, idGenres) {
  
  
 	
-	
-
-// function compareGenresId(allGenres, filmGenre) {
-//   let arrayOfGenres = [];
-
-//   allGenres.forEach(el => {
-//     if (filmGenre.includes(el.id)) {
-//       arrayOfGenres.push(el.name);
-//     }
-//   });
-
-//   if (arrayOfGenres.length > 3) {
-//     arrayOfGenres = arrayOfGenres.splice(0, 3).join(', ') + ', Other';
-//     return arrayOfGenres;
-//   }
-
-//   return arrayOfGenres.join(', ');
-// }
