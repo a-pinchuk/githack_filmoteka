@@ -1,5 +1,3 @@
-import { all } from 'axios';
-
 export function renderPopularFilms(ref, data, genres) {
   const markup = data
     .map(el => {
@@ -29,15 +27,18 @@ export function renderPopularFilms(ref, data, genres) {
 }
 
 function compareGenresId(allGenres, filmGenre) {
-  let ArrayOfGenres = [];
+  let arrayOfGenres = [];
+
   allGenres.forEach(el => {
     if (filmGenre.includes(el.id)) {
-      ArrayOfGenres.push(el.name);
+      arrayOfGenres.push(el.name);
     }
   });
 
-  if (ArrayOfGenres.length > 3) {
-    ArrayOfGenres = ArrayOfGenres.splice(0, 3) + ', Other';
+  if (arrayOfGenres.length > 3) {
+    arrayOfGenres = arrayOfGenres.splice(0, 3).join(', ') + ', Other';
+    return arrayOfGenres;
   }
-  return ArrayOfGenres;
+
+  return arrayOfGenres.join(', ');
 }
