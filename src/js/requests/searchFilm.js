@@ -2,7 +2,7 @@
 import { fetchSearchedFilms } from "../api/fetch";
 import { ref } from "../references/ref";
  
-let IMG__URL = `https://image.tmdb.org/t/p/w500/`;
+// let IMG__URL = `https://image.tmdb.org/t/p/w500/`;
 
 let page = 1;
 
@@ -22,7 +22,7 @@ async function renderSearchFilms() {
     const promis = await fetchSearchedFilms(content, page);
     const data = promis.data.results;
         console.log(data);
-        makeMarkUpSearchFilm(data);
+      //   makeMarkUpSearchFilm();
         
     } catch (error) {
         console.log(error)
@@ -31,43 +31,21 @@ async function renderSearchFilms() {
 }
 
 
-function makeMarkUpSearchFilm(cardValue) {
-    const cardEle = cardValue.map(item => {
-        const { title, poster_path, genre_ids } = item;
-
-        
-    })
-    console.log(cardEle);
-
-    
-}
 
 
-// function makeMarkUpSearchFilm(cardValue) {
-//     const cardEle = cardValue.map(item => ({
-        
-//         title: item.title,
-//         backImgPost: defaultImage(item.poster_path),
-//         filmId: item.IdleDeadline,
-//         ganerId: item.genre_ids,
-        
-
-//     }))
-//     console.log(cardEle);
+// function defaultImage(poster) {
+//     if (IMG__URL) {
+//         return  IMG__URL = `https://image.tmdb.org/t/p/w500/${poster}`;
+//     } else {
+//         return 'https://assets-in.bmscdn.com/iedb/movies/images/website/poster/large/enn-nenjai-thottaye-et00021963-24-03-2017-18-55-43.jpg';
+//     }
 // }
 
-function defaultImage(poster) {
-    if (IMG__URL) {
-        return  IMG__URL = `https://image.tmdb.org/t/p/w500/${poster}`;
-    } else {
-        return 'https://assets-in.bmscdn.com/iedb/movies/images/website/poster/large/enn-nenjai-thottaye-et00021963-24-03-2017-18-55-43.jpg';
-    }
-}
-
-function createMarkUp(title, posterh, genre) {
-    const listElemeny =
-     `
-      <ul class="gallery__list">
+function createMarkUp(data) {
+	const markUp = data.map(item => {
+		
+		return `
+		     <ul class="gallery__list">
     <li class="gallery__link"><a href="" class="gallery__link">
       <img src="" alt="">
       <div class="gallery__box">
@@ -83,9 +61,7 @@ function createMarkUp(title, posterh, genre) {
     </a></li>
    </ul>
     `;
-    ref.gallery.insertAdjacentHTML('beforeend', listElemeny);
+	}).join('');
+	ref.gallery.insertAdjacentHTML('beforeend', markUp);
 }
-createMarkUp();
-function check(callback) {
-    console.log(callback);
-}
+
