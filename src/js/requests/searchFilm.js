@@ -33,13 +33,9 @@ async function renderSearchFilms() {
 
 function makeMarkUpSearchFilm(cardValue) {
     const cardEle = cardValue.map(item => {
-        const info = {
-        title: item.title,
-        backImgPost: defaultImage(item.poster_path),
-        filmId: item.IdleDeadline,
-        ganerId: item.genre_ids,
-        }
-        check(info.backImgPost)
+        const { title, poster_path, IdleDeadline, genre_ids } = item;
+        
+        
     })
     console.log(cardEle);
 
