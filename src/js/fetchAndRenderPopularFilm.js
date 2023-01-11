@@ -2,7 +2,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { fetchTrendedFilms } from './api/fetch';
 // import { fetchSearchedFilms } from './api/fetch';
 // import { fetchFilmById } from './api/fetch';
-// import { fetchFilmGenres } from './api/fetch';
+import { fetchFilmGenres } from './api/fetch';
 import { renderPopularFilms } from './render/renderPopularFilm';
 // import { renderFilms } from './render/renderHTML';
 import { ref } from './references/ref';
@@ -18,8 +18,11 @@ fetchAndRenderPopularFilm();
 async function fetchAndRenderPopularFilm(e) {
   try {
     const image = await fetchTrendedFilms();
+    const genres = await fetchFilmGenres();
     const data = image.data.results;
-    renderPopularFilms(ref, data);
+    const genresID = genres.data.genres;
+
+    renderPopularFilms(ref, data, genresID);
   } catch (error) {
     console.log(error);
   }

@@ -1,16 +1,22 @@
-export function renderPopularFilms(ref, data) {
+import { all } from 'axios';
+
+export function renderPopularFilms(ref, data, genres) {
   const markup = data
     .map(el => {
+      const genreId = el.genre_ids;
+      const movieGenres = compareGenresId(genres, genreId);
       return `
       <li class="photo__card">
           <a href="https://image.tmdb.org/t/p/w500/${el.poster_path}">
-            <img src="https://image.tmdb.org/t/p/w500/${el.poster_path}" alt="" "loading="lazy" class="movie__image"/>
+            <img src="https://image.tmdb.org/t/p/w500/${
+              el.poster_path
+            }" alt="" "loading="lazy" class="movie__image"/>
           </a>
           <div class="movie__info">
             <h2 class="film__title">${el.title}</h2>
             <div class="movie__details">
-            <p class="movie__genre">cartoon</p>
-            <p class="movie__year">2022</p>
+            <p class="movie__genre">${movieGenres}</p>
+            <p class="movie__year">${el.release_date.slice(0, 4)}</p>
           </div>
           </div>
       </li>
@@ -20,4 +26,18 @@ export function renderPopularFilms(ref, data) {
     .join('');
 
   ref.galleryList.insertAdjacentHTML('beforeend', markup);
+}
+
+function compareGenresId(allGenres, filmGenre) {
+  let ArrayOfGenres = [];
+  allGenres.forEach(el => {
+    if (filmGenre.includes(el.id)) {
+      ArrayOfGenres.push(el.name);
+    }
+  });
+
+  if (ArrayOfGenres.length > 3) {
+    ArrayOfGenres = ArrayOfGenres.splice(0, 3) + ', Other';
+  }
+  return ArrayOfGenres;
 }
