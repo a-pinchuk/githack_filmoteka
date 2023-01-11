@@ -1,14 +1,21 @@
 // NORMALIZE
-@import '~node_modules/modern-normalize/modern-normalize.css';
+@import "~node_modules/modern-normalize/modern-normalize.css";
 
 // UTILS
-@import './utils/mixin';
-@import './utils/variables';
+@import "./utils/mixin";
+@import "./utils/variables";
+@import "./utils/backdrop";
+@import "./utils/visually-hidden";
 
 // BASE
-@import './base/colors';
-@import './base/container';
-@import './base/globalStyles';
+@import "./base/colors";
+@import "./base/container";
+@import "./base/globalStyles";
 
 // COMPONENTS
-@import './components/footer.scss';
+@import "./components/modal-login";
+@import "./components/modal-singup";
+
+//LAYOUT
+@import "./layout/header";
+@import "./layout/footer.scss";
