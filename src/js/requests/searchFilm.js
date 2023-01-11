@@ -39,7 +39,7 @@ function makeMarkUpSearchFilm(cardValue) {
         filmId: item.IdleDeadline,
         ganerId: item.genre_ids,
         }
-        check(info.title)
+        check(info.backImgPost)
     })
     console.log(cardEle);
 
