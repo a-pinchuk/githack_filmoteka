@@ -7,3 +7,7 @@ import './js/references/ref';
 import './js/authentication/authentication';
 
 // Переключатель темы
+
+import Darkmode from 'drkmd-js';
+
+new Darkmode().attach();

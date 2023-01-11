@@ -1,11 +1,11 @@
 body {
-    font-family: $roboto;
-    font-style: normal;
-    color: getColor('primary-text-color');
-    background-color: getColor('white');
-    letter-spacing: 0.03em;
-    font-size: 14px;
-    margin: 0;
+  font-family: $roboto;
+  font-style: normal;
+  color: getColor('primary-text-color');
+  background-color: getColor('white');
+  letter-spacing: 0.03em;
+  font-size: 14px;
+  margin: 0;
 }
 
 h1,
@@ -16,27 +16,37 @@ h5,
 h6,
 p,
 ul {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 ul {
-    list-style: none;
-    font-style: normal;
+  list-style: none;
+  font-style: normal;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 img {
-    margin-top: 0;
-    margin-bottom: 0;
-    display: block;
+  margin-top: 0;
+  margin-bottom: 0;
+  display: block;
 }
 
-button{
-    font-size: 100%;
-    border: 0;
-    padding: 0;
+button {
+  font-size: 100%;
+  border: 0;
+  padding: 0;
+}
+
+/* Styles for light theme */
+.theme-light {
+  background: #fff;
+}
+
+/* Styles for dark theme */
+.theme-dark {
+  background: #000;
 }
