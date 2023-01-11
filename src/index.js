@@ -6,5 +6,6 @@ import './js/api/fetch';
 import './js/requests/searchFilm';
 import './js/references/ref';
 import './js/authentication/authentication';
+import './js/main';
 
 // Переключатель темы
