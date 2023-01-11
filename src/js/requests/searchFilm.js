@@ -1,18 +1,23 @@
 
+import allGeners from '../../json/genres.json';
 import { fetchSearchedFilms } from "../api/fetch";
 import { ref } from "../references/ref";
- 
-// let IMG__URL = `https://image.tmdb.org/t/p/w500/`;
+
 
 let page = 1;
+console.log(allGeners);
+
 
 
 
 ref.form.addEventListener('submit', clickOnSubmit);
 function clickOnSubmit(e) {
-    e.preventDefault();
-    content = ref.input.name.value;
-    renderSearchFilms();
+	e.preventDefault();
+	
+	content = ref.input.name.value;
+	ref.input.value = '';
+	renderSearchFilms();
+	
     
     
 }
@@ -20,9 +25,9 @@ function clickOnSubmit(e) {
 async function renderSearchFilms() {
     try {
     const promis = await fetchSearchedFilms(content, page);
-    const data = promis.data.results;
-        console.log(data);
-      //   makeMarkUpSearchFilm();
+		 const data = promis.data.results;
+		 clearGallery();
+		 createMarkUp(data);
         
     } catch (error) {
         console.log(error)
@@ -33,35 +38,51 @@ async function renderSearchFilms() {
 
 
 
-// function defaultImage(poster) {
-//     if (IMG__URL) {
-//         return  IMG__URL = `https://image.tmdb.org/t/p/w500/${poster}`;
-//     } else {
-//         return 'https://assets-in.bmscdn.com/iedb/movies/images/website/poster/large/enn-nenjai-thottaye-et00021963-24-03-2017-18-55-43.jpg';
-//     }
-// }
 
 function createMarkUp(data) {
 	const markUp = data.map(item => {
+		const { title, poster_path, release_date, genre_ids } = item;
+		const v = getGeners(allGeners, genre_ids)
 		
+		
+		
+		const size = 'w500';
+		let baseImafge = `https://image.tmdb.org/t/p/${size}${poster_path}`;
+		const defaultPicture = 'https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg'
+		const normalizeDate = release_date.split('-')[0];
 		return `
-		     <ul class="gallery__list">
-    <li class="gallery__link"><a href="" class="gallery__link">
-      <img src="" alt="">
-      <div class="gallery__box">
-        <h2 class="gallery__title">
-          <div class="gallery__info">
-                <p class="gallery__ganer">
-                <p class="gallery__year"></p>
+      <li class="photo__card">
+          <a href="${baseImafge}">
+            <img src="${baseImafge !== `https://image.tmdb.org/t/p/${size}${poster_path}` ? defaultPicture : baseImafge}" alt="" "loading="lazy" class="movie__image"/>
+          </a>
+          <div class="movie__info">
+            <h2 class="film__title">${title}</h2>
+            <div class="movie__details">
+            <p class="movie__genre">${genre_ids}</p>
+            <p class="movie__year">2022>${normalizeDate !== release_date.split('-')[0] ? "unknown date" : normalizeDate}</p>
           </div>
-     
-          </p>
-        </h2>
-      </div>
-    </a></li>
-   </ul>
-    `;
+          </div>
+      </li>
+    </ul>
+  </div>`;
+
 	}).join('');
 	ref.gallery.insertAdjacentHTML('beforeend', markUp);
 }
+
+function clearGallery() {
+	ref.gallery.innerHTML = '';
+}
+
+
+function getGeners(allGenres, idGenres) {
+	return allGenres.filter(item => {
+		console.log(item);
+		for(let ele of idGenres) {
+			if (item.id === ele) {
+				return item.id;
+			}
+		}
+			})
+	}
 

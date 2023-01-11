@@ -1,29 +1,29 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { fetchTrendedFilms } from './api/fetch';
-// import { fetchSearchedFilms } from './api/fetch';
-// import { fetchFilmById } from './api/fetch';
-// import { fetchFilmGenres } from './api/fetch';
-import { renderPopularFilms } from './render/renderPopularFilm';
-// import { renderFilms } from './render/renderHTML';
-import { ref } from './references/ref';
-// import { options, pagination } from './pagination';
-// import { PAGES } from './api/api-vars';
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
+// import { fetchTrendedFilms } from './api/fetch';
+// // import { fetchSearchedFilms } from './api/fetch';
+// // import { fetchFilmById } from './api/fetch';
+// // import { fetchFilmGenres } from './api/fetch';
+// import { renderPopularFilms } from './render/renderPopularFilm';
+// // import { renderFilms } from './render/renderHTML';
+// import { ref } from './references/ref';
+// // import { options, pagination } from './pagination';
+// // import { PAGES } from './api/api-vars';
 
-// let textContent = '';
+// // let textContent = '';
 
-// ref.form.addEventListener('submit', fetchAndRenderFilms);
+// // ref.form.addEventListener('submit', fetchAndRenderFilms);
 
-fetchAndRenderPopularFilm();
+// fetchAndRenderPopularFilm();
 
-async function fetchAndRenderPopularFilm(e) {
-  try {
-    const image = await fetchTrendedFilms();
-    const data = image.data.results;
-    renderPopularFilms(ref, data);
-  } catch (error) {
-    console.log(error);
-  }
-}
+// async function fetchAndRenderPopularFilm(e) {
+//   try {
+//     const image = await fetchTrendedFilms();
+//     const data = image.data.results;
+//     renderPopularFilms(ref, data);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 // async function fetchAndRenderFilmById(id) {
 //   try {
 //     const image = await fetchFilmById(id);
