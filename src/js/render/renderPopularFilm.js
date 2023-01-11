@@ -36,7 +36,7 @@ function compareGenresId(allGenres, filmGenre) {
   });
 
   if (arrayOfGenres.length > 3) {
-    arrayOfGenres = arrayOfGenres.splice(0, 3).join(', ') + ', Other';
+    arrayOfGenres = arrayOfGenres.splice(0, 2).join(', ') + ', Other';
     return arrayOfGenres;
   }
 

@@ -14,6 +14,7 @@ import { ref } from './references/ref';
 // ref.form.addEventListener('submit', fetchAndRenderFilms);
 
 fetchAndRenderPopularFilm();
+fetchFilmById(76600);
 
 async function fetchAndRenderPopularFilm(e) {
   try {
