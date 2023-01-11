@@ -2,20 +2,28 @@
 import allGeners from '../../json/genres.json';
 import { fetchSearchedFilms } from "../api/fetch";
 import { ref } from "../references/ref";
+import { Notify } from 'notiflix';
 
 
 let page = 1;
-console.log(allGeners);
+
+
 
 
 
 
 ref.form.addEventListener('submit', clickOnSubmit);
+
+
 function clickOnSubmit(e) {
-	e.preventDefault();
-	
-	content = ref.input.name.value;
-	ref.input.value = '';
+  e.preventDefault();
+  
+  if (ref.input.value === '') {
+    return Notify.warning('Searching starts after providing data to search.');
+  } else {
+    content = ref.input.value.trim()
+  }
+  ref.input.value = '';
 	renderSearchFilms();
 	
     
@@ -40,16 +48,16 @@ async function renderSearchFilms() {
 
 
 function createMarkUp(data) {
-	const markUp = data.map(item => {
-		const { title, poster_path, release_date, genre_ids } = item;
-		const v = getGeners(allGeners, genre_ids)
-		console.log(v);
+  const markUp = data.map(item => {
+    const defaultPicture = 'https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg'
+		const { title, poster_path = {defaultPicture}, release_date, genre_ids } = item;
+		const filmGenre = getGeners(allGeners, genre_ids)
+		console.log(filmGenre);
 		
 		
 		const size = 'w500';
 		let baseImafge = `https://image.tmdb.org/t/p/${size}${poster_path}`;
-		const defaultPicture = 'https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg'
-		const normalizeDate = release_date.split('-')[0];
+		const normalizeDate = new Date(release_date).getFullYear();
 		return `
       <li class="photo__card">
           <a href="${baseImafge}">
@@ -58,8 +66,8 @@ function createMarkUp(data) {
           <div class="movie__info">
             <h2 class="film__title">${title}</h2>
             <div class="movie__details">
-            <p class="movie__genre">${genre_ids}</p>
-            <p class="movie__year">2022>${normalizeDate !== release_date.split('-')[0] ? "unknown date" : normalizeDate}</p>
+            <p class="movie__genre">${filmGenre}</p>
+            <p class="movie__year">2022>${normalizeDate !== new Date(release_date).getFullYear() ? "unknown date" : normalizeDate}</p>
           </div>
           </div>
       </li>
@@ -75,9 +83,38 @@ function clearGallery() {
 }
 
 
-// function getGeners(allGenres, idGenres) {
-// 	return allGenres.forEach(item => {
-// 		fo
-// 	})
-// 	}
+function getGeners(allGenres, idGenres) {
+  let newArray = [];
+     allGenres.map(el => {
+    if (idGenres.includes(el.id)) {
+      newArray.push(el.name);
+    }
+     });
+  if (newArray.length > 3) {
+    newArray = newArray.slice(0, 2).join(', ')
+  }
+  
+  return newArray;
+}
+  
+ 
+ 
+	
+	
 
+// function compareGenresId(allGenres, filmGenre) {
+//   let arrayOfGenres = [];
+
+//   allGenres.forEach(el => {
+//     if (filmGenre.includes(el.id)) {
+//       arrayOfGenres.push(el.name);
+//     }
+//   });
+
+//   if (arrayOfGenres.length > 3) {
+//     arrayOfGenres = arrayOfGenres.splice(0, 3).join(', ') + ', Other';
+//     return arrayOfGenres;
+//   }
+
+//   return arrayOfGenres.join(', ');
+// }
