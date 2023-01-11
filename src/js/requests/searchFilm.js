@@ -33,8 +33,8 @@ async function renderSearchFilms() {
 
 function makeMarkUpSearchFilm(cardValue) {
     const cardEle = cardValue.map(item => {
-        const { title, poster_path, IdleDeadline, genre_ids } = item;
-        
+        const { title, poster_path, genre_ids } = item;
+
         
     })
     console.log(cardEle);
@@ -64,7 +64,7 @@ function defaultImage(poster) {
     }
 }
 
-function createMarkUp() {
+function createMarkUp(title, posterh, genre) {
     const listElemeny =
      `
       <ul class="gallery__list">
