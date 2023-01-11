@@ -19,8 +19,6 @@ async function fetchAndRenderPopularFilm(e) {
   try {
     const image = await fetchTrendedFilms();
     const data = image.data.results;
-    console.log('🚀 ~ image in fetchAndRenderPopularFilm', data);
-
     renderPopularFilms(ref, data);
   } catch (error) {
     console.log(error);
