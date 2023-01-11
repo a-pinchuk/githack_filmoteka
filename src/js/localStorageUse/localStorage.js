@@ -1,4 +1,4 @@
-export const load = key => {
+export const get = key => {
     try {
       const serializedState = localStorage.getItem(key);
       return serializedState === null ? [] : JSON.parse(serializedState);
@@ -7,25 +7,33 @@ export const load = key => {
     }
   };
   
-  export const save = (key, value) => {
+  export const set = (key, value) => {
     try {
-      const serializedState = JSON.stringify(value);
-      localStorage.setItem(key, serializedState);
+      const locStorage = get(key);
+      const currentFilm = JSON.parse(value);
+      const includesFilm = locStorage.find(film => film.id === currentFilm.id);
+      if (locStorage.length === 0 || !includesFilm) {
+        locStorage.push(currentFilm);
+      }
+  
+      localStorage.setItem(key, JSON.stringify(locStorage));
     } catch (error) {
-      console.error('Set items error: ', error.message);
+      console.log('Set state error: ', error);
     }
   };
   
   export const removeLocal = (key, id) => {
     try {
-      const locStorage = load(key);
+      const locStorage = get(key);
       const restFilms = [...locStorage].filter(film => film.id != id);
       localStorage.setItem(key, JSON.stringify(restFilms));
-    } catch (error) {
+    }
+    catch (error) {
       console.error('Get state error: ', error.message);
     }
-  };
+  }
   
-  export const clearLocal = () => {
+  
+  export const clear = () => {
     localStorage.clear();
   };
