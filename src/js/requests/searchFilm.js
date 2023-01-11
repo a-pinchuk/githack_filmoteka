@@ -43,7 +43,7 @@ function createMarkUp(data) {
 	const markUp = data.map(item => {
 		const { title, poster_path, release_date, genre_ids } = item;
 		const v = getGeners(allGeners, genre_ids)
-		
+		console.log(v);
 		
 		
 		const size = 'w500';
@@ -75,14 +75,9 @@ function clearGallery() {
 }
 
 
-function getGeners(allGenres, idGenres) {
-	return allGenres.filter(item => {
-		console.log(item);
-		for(let ele of idGenres) {
-			if (item.id === ele) {
-				return item.id;
-			}
-		}
-			})
-	}
+// function getGeners(allGenres, idGenres) {
+// 	return allGenres.forEach(item => {
+// 		fo
+// 	})
+// 	}
 
