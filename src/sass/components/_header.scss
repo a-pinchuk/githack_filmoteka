@@ -149,16 +149,16 @@
   text-transform: uppercase;
 
   color: #ffffff;
+}
 
-  &--current::after {
-    content: '';
-    position: absolute;
-    display: block;
-    bottom: -3px;
-    width: 100%;
-    height: 3px;
-    background-color: #ff001b;
-  }
+.mob-navigation__link--current::after {
+  content: '';
+  position: absolute;
+  display: block;
+  bottom: -3px;
+  width: 100%;
+  height: 3px;
+  background-color: #ff001b;
 }
 
 .icon-main {
