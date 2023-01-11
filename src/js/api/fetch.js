@@ -31,3 +31,10 @@ export async function fetchFilmGenres() {
   });
   return axios.get(`${GENRE_URL}?${searchParams}`);
 }
+
+export async function fetchFilmTrailer(id) {
+  const searchParams = new URLSearchParams({
+    api_key: API_KEY,
+  });
+  return axios.get(`${ID_URL}/${id}/videos?${searchParams}`);
+}

@@ -3,6 +3,7 @@ import { fetchTrendedFilms } from './api/fetch';
 // import { fetchSearchedFilms } from './api/fetch';
 // import { fetchFilmById } from './api/fetch';
 import { fetchFilmGenres } from './api/fetch';
+import { fetchFilmTrailer } from './api/fetch';
 import { renderPopularFilms } from './render/renderPopularFilm';
 // import { renderFilms } from './render/renderHTML';
 import { ref } from './references/ref';
@@ -14,31 +15,32 @@ import { ref } from './references/ref';
 // ref.form.addEventListener('submit', fetchAndRenderFilms);
 
 fetchAndRenderPopularFilm();
-fetchFilmById(76600);
 
 async function fetchAndRenderPopularFilm(e) {
   try {
     const image = await fetchTrendedFilms();
     const genres = await fetchFilmGenres();
     const data = image.data.results;
+    console.log('🚀 ~ data', data);
     const genresID = genres.data.genres;
+    console.log('🚀 ~ genresID', genresID);
 
     renderPopularFilms(ref, data, genresID);
   } catch (error) {
     console.log(error);
   }
 }
-// async function fetchAndRenderFilmById(id) {
-//   try {
-//     const image = await fetchFilmById(id);
-//     const data = image.data;
-//     console.log('🚀 ~ data in fetchAndRenderFilmById', data);
+async function fetchAndRenderTrailerFilm(id) {
+  try {
+    const image = await fetchFilmTrailer(id);
+    const data = image.data;
+    console.log('🚀 ~ data in fetchAndRenderTrailerFilm', data);
 
-//     // renderPopularFilms(ref, data);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
+    // renderPopularFilms(ref, data);
+  } catch (error) {
+    console.log(error);
+  }
+}
 // fetchAndRenderFilmById(89125);
 // fetchFilmByGenres();
 
