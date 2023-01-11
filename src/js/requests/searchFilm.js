@@ -2,6 +2,8 @@
 import { fetchSearchedFilms } from "../api/fetch";
 import { ref } from "../references/ref";
 
+const defaultPic = 'https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png'
+
 let page = 1;
 
 
@@ -31,7 +33,7 @@ async function renderSearchFilms() {
 function makeMarkUpSearchFilm(cardValue) {
     const cardEle = cardValue.map(item => ({
         title: item.title,
-        backImgPost: item.poster_path,
+        backImgPost: defaultImage(item.poster_path),
         filmId: item.IdleDeadline,
         ganerId: item.genre_ids,
         
@@ -40,3 +42,10 @@ function makeMarkUpSearchFilm(cardValue) {
     console.log(cardEle);
 }
 
+function defaultImage(poster) {
+    if (poster) {
+        return `https://image.tmdb.org/t/p/w500/${poster}`;
+    } else {
+        return defaultPic;
+    }
+}
