@@ -5,8 +5,7 @@
   width: 100%;
   height: calc(100% + 38px);
   background-color: #5f5f5f;
-  transition: opacity 250ms linear,
-    visibility 250ms linear;
+  transition: opacity 250ms linear, visibility 250ms linear;
 }
 
 .backdrop.is-hidden {
@@ -119,8 +118,6 @@
   }
 }
 
-
-
 .modal-info {
   width: 100%;
   @include media-min(desktop) {
@@ -207,8 +204,16 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.67;
-
+  height: 260px;
+  overflow-y: scroll;
   color: getColor('primary-text-color');
+
+  @include media-min(tablet) {
+    height: 236px;
+  }
+  @include media-min(desktop) {
+    height: 160px;
+  }
 }
 
 .btn-modal-wrap {
@@ -243,9 +248,10 @@
     border-radius: 5px;
     color: #ffffff;
     transition: background-color 250ms linear, color 250ms linear;
-    &:hover, &:focus {
-      background-color: getColor("white");
-      color: #ff6b01
+    &:hover,
+    &:focus {
+      background-color: getColor('white');
+      color: #ff6b01;
     }
   }
   &-queue {
@@ -257,9 +263,10 @@
     background-color: getColor('white');
     border-radius: 5px;
     transition: border-color 250ms linear, color 250ms linear;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: #ff6b01;
-      border-color: #ff6b01
+      border-color: #ff6b01;
     }
   }
 }
