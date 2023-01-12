@@ -8,6 +8,8 @@ import './js/authentication/authentication';
 
 // Переключатель темы
 
-import Darkmode from 'drkmd-js';
+import './js/switcher';
 
-new Darkmode().attach();
+// import Darkmode from 'drkmd-js';
+
+// new Darkmode().attach();
