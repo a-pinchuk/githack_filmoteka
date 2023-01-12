@@ -187,6 +187,5 @@ onAuthStateChanged(auth, user => {
     signUpBtn.style.display = 'block';
     loginBtn.style.display = 'block';
     logoutBtn.style.display = 'none';
-    console.log('off');
   }
 });

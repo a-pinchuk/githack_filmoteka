@@ -1,5 +1,4 @@
 import allGeners from '../../json/genres.json';
-console.log(allGeners);
 
 export function createMarkUp(ref, data) {
   const markUp = data

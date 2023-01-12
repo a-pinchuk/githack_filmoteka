@@ -1,6 +1,6 @@
 const ref = {
   form: document.querySelector('.search-form'),
-  input: document.querySelector('search-form__input'),
+  input: document.querySelector('.search-form__input'),
   button: document.querySelector('button'),
   gallery: document.querySelector('.gallery'),
   hideButton: document.querySelector('.load__more'),

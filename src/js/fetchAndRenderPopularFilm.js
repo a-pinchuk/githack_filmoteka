@@ -21,9 +21,7 @@ async function fetchAndRenderPopularFilm(e) {
     const image = await fetchTrendedFilms();
     const genres = await fetchFilmGenres();
     const data = image.data.results;
-    console.log('🚀 ~ data', data);
     const genresID = genres.data.genres;
-    console.log('🚀 ~ genresID', genresID);
 
     renderPopularFilms(ref, data, genresID);
   } catch (error) {
@@ -34,7 +32,6 @@ async function fetchAndRenderTrailerFilm(id) {
   try {
     const image = await fetchFilmTrailer(id);
     const data = image.data;
-    console.log('🚀 ~ data in fetchAndRenderTrailerFilm', data);
 
     // renderPopularFilms(ref, data);
   } catch (error) {
