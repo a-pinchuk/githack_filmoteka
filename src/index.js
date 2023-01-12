@@ -7,5 +7,7 @@ import './js/requests/searchFilm';
 import './js/references/ref';
 import './js/authentication/authentication';
 import './js/fetchAndRenderPopularFilm';
+import './js/pagination';
+
 
 // Переключатель темы
