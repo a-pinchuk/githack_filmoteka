@@ -17,6 +17,3 @@ import './js/render/renderSearchFilms';
 
 import './js/switcher';
 import './js/authentication/authentication';
-// import Darkmode from 'drkmd-js';
-
-// new Darkmode().attach();
