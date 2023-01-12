@@ -5,7 +5,7 @@ export function createMarkUp(ref, data) {
     .map(item => {
       const defaultPicture = 'https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg';
       // const defaultPicture = defImg;
-      const { title, poster_path, release_date, genre_ids } = item;
+      const { title, poster_path, release_date, genre_ids, id} = item;
 		 const filmGenre = getGeners(allGeners, genre_ids);
 		 console.log(release_date);
       let link = `https://image.tmdb.org/t/p/w500null`;
