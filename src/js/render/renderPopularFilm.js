@@ -4,7 +4,7 @@ export function renderPopularFilms(ref, data, genres) {
       const genreId = el.genre_ids;
       const movieGenres = compareGenresId(genres, genreId);
       return `
-      <li class="photo__card" data-modal-open>
+      <li class="photo__card" data-modal-open id="${el.id}">
             <img src="https://image.tmdb.org/t/p/w500/${
               el.poster_path
             }" alt="" "loading="lazy" class="movie__image"/>
