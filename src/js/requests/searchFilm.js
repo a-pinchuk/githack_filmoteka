@@ -100,3 +100,6 @@ function getGeners(allGenres, idGenres) {
  
  
 	
+	
+
+
