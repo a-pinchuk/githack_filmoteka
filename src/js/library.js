@@ -20,6 +20,15 @@ const dyk = [800815];
 const qyk = [653851];
 localStorage.setItem(LOCALSTORAGE_QUEUE, JSON.stringify(qyk));
 
+function load (key) {
+	try {
+	  const serializedState = localStorage.getItem(key);
+	  return serializedState === null ? undefined : JSON.parse(serializedState);
+	} catch (error) {
+	  console.error("Get state error: ", error.message);
+	}
+ };
+
 document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
 ref.libraryWatchedBtn.addEventListener('click', onClickWatchedBtn);
 ref.libraryQueueBtn.addEventListener('click', onClickQueueBtn);
@@ -39,17 +48,6 @@ function onClickQueueBtn(e) {
 	const arrayQueue = load (LOCALSTORAGE_QUEUE);
 	fetchAndRenderFilm(arrayQueue);
 }
-
-function load (key) {
-	try {
-	  const serializedState = localStorage.getItem(key);
-	  return serializedState === null ? undefined : JSON.parse(serializedState);
-	} catch (error) {
-	  console.error("Get state error: ", error.message);
-	}
- };
-
-// ------------------
 // const ids = [550, 299536, 383498];
 // console.log(ids.map(id => console.log(id)));
 async function fetchAndRenderFilm(ids) {
