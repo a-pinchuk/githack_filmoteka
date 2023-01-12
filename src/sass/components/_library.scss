@@ -1,3 +1,8 @@
+@import '../base/colors';
+a {
+	display: block;
+	flex-grow: 1;
+}
 .header-library {
   margin-right: auto;
   margin-left: auto;
@@ -178,3 +183,47 @@
   border-radius: 2px;
   opacity: 1;
 }
+.movie-list {
+	display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  @include media-min(tablet) {
+    gap: 32px;
+  }
+  @include media-min(desktop) {
+    gap: 16px;
+  }
+}
+.library__container {
+	padding-top: 20px;
+	padding-bottom: 40px;
+	@include media-min(tablet) {
+	  padding-left: 32px;
+	  padding-right: 32px;
+	  padding-top: 60px;
+	  padding-bottom: 60px;
+	}
+ }
+ .photo__card {
+	display: flex;
+	flex-direction: column;
+ }
+ .movie__image {
+	height: 100%;
+ }
+ .movie__vote-average {
+	width: 36px;
+	height: 16px;
+	font-weight: 500;
+   font-size: 12px;
+   line-height: 1.17;
+	display: flex;
+   align-items: center;
+	justify-content: center;
+	background-color: getColor("secondary-text-color");
+	color: getColor("white");
+	@include media-min(desktop) {
+		width: 40px;
+	   height: 20px;
+	}
+ }
