@@ -6,5 +6,6 @@ import './js/api/fetch';
 import './js/references/ref';
 import './js/authentication/authentication';
 import './js/fetchAndRenderPopularFilm';
+import './js/scroll-to-top';
 
 // Переключатель темы
