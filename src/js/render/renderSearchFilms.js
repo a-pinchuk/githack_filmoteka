@@ -10,9 +10,10 @@ export function createMarkUp(ref, data) {
 		 console.log(release_date);
       let link = `https://image.tmdb.org/t/p/w500null`;
       let baseImafge = `https://image.tmdb.org/t/p/w500${poster_path}`;
-      const normalizeDate = release_date.slice(0, 4);
+		 const normalizeDate = release_date.slice(0, 4);
+		 console.log(item.id)
       return `
-      <li class="photo__card">
+      <li class="photo__card data-modal-open id="${item.id}">
           <a href="${poster_path}">
             <img src="${baseImafge !== link ? baseImafge : defaultPicture}" alt="" "loading="lazy" class="movie__image"/>
           </a>
