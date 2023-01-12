@@ -1,9 +1,9 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { fetchTrendedFilms } from './api/fetch';
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
+// import { fetchTrendedFilms } from './api/fetch';
 // import { fetchSearchedFilms } from './api/fetch';
  import { fetchFilmById } from './api/fetch';
-// import { fetchFilmGenres } from './api/fetch';
-import { renderPopularFilms } from './render/renderPopularFilm';
+import { fetchFilmGenres } from './api/fetch';
+// import { renderPopularFilms } from './render/renderPopularFilm';
 import { renderFilmsByIdForLibrary } from './render/renderFilmByIdForLibrary';
 // import { renderFilms } from './render/renderHTML';
 import { ref } from './references/ref';
@@ -11,33 +11,30 @@ import { ref } from './references/ref';
 // import { PAGES } from './api/api-vars';
 
 // let textContent = '';
+const  LOCALSTORAGE_WATCHED =  "watched";
+const  LOCALSTORAGE_QUEUE =  "queue";
 
-// ref.form.addEventListener('submit', fetchAndRenderFilms);
+const dyk = [466282, 455980, 730210];
+	  localStorage.setItem(LOCALSTORAGE_WATCHED, JSON.stringify(dyk));
 
-// fetchAndRenderPopularFilm();
+const qyk = [421792, 429300, 353081];
+localStorage.setItem(LOCALSTORAGE_QUEUE, JSON.stringify(qyk));
 
-// async function fetchAndRenderPopularFilm(e) {
-//   try {
-//     const image = await fetchTrendedFilms();
-//     const data = image.data.results;
-//     renderPopularFilms(ref, data);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-const dyk = [550, 299536, 383498];
-const save = (key, value) => {
-	try {
-	  const serializedState = JSON.stringify(value);
-	  localStorage.setItem(key, serializedState);
-	} catch (error) {
-	  console.error("Set state error: ", error.message);
-	}
- };
- save ("ty", dyk);
- console.log(save);
- 
- const load = key => {
+ref.libraryWatchedBtn.addEventListener('click', onClickWatchedBtn);
+ref.libraryQueueBtn.addEventListener('click', onClickQueueBtn);
+
+function onClickWatchedBtn(e) {
+	ref.libraryList.innerHTML = "";
+ const arrayWatched = load (LOCALSTORAGE_WATCHED);
+ fetchAndRenderFilm(arrayWatched);
+ }
+function onClickQueueBtn(e) {
+	ref.libraryList.innerHTML = "";
+	const arrayQueue = load (LOCALSTORAGE_QUEUE);
+	fetchAndRenderFilm(arrayQueue);
+}
+
+const load = key => {
 	try {
 	  const serializedState = localStorage.getItem(key);
 	  return serializedState === null ? undefined : JSON.parse(serializedState);
@@ -45,22 +42,22 @@ const save = (key, value) => {
 	  console.error("Get state error: ", error.message);
 	}
  };
+
 // ------------------
-const ids = [550, 299536, 383498];
+// const ids = [550, 299536, 383498];
 // console.log(ids.map(id => console.log(id)));
-async function fetchAndRenderFilm(e) {
+async function fetchAndRenderFilm(ids) {
 	try {
 	 const arrayOfPromises = ids.map(async (id) => await fetchFilmById(id));
 	 const data = await Promise.all(arrayOfPromises);
-	  console.log(data);
-	//   const data = users.map(user => user.data.results);
+	//   console.log(data);
 	  renderFilmsByIdForLibrary(ref, data);
 	} catch (error) {
 	  console.log(error);
 	}
  }
 
- fetchAndRenderFilm();
+
 
 // ---------------------
 // async function fetchAndRenderFilmById(id) {
