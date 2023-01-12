@@ -8,5 +8,7 @@ import './js/authentication/authentication';
 import './js/fetchAndRenderPopularFilm';
 import './js/library';
 import './js/modal';
+import './js/requests/searchFilms';
+import './js/render/renderSearchFilms';
 
 // Переключатель темы

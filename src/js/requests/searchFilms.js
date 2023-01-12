@@ -49,7 +49,7 @@ function clearGallery() {
 
 
 
-  
+console.log('ok');
  
  
 	
