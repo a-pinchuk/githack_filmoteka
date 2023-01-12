@@ -14,7 +14,7 @@ export async function fetchSearchedFilms(content, page) {
     query: content,
     page: page,
   });
-  return axios.get(`${SEARCH_URL}${searchParams}`);
+  return axios.get(`${SEARCH_URL}?${searchParams}`);
 }
 
 export async function fetchFilmById(id) {
