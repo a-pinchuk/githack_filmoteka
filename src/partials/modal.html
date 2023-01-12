@@ -1,0 +1,75 @@
+<button data-modal-open class="modal-btn">Открыть модалку</button>
+<!-- Модальне вікно -->
+<div class="backdrop container is-hidden" data-modal>
+  <div class="modal-window">
+    <button type="button" class="modal-window-close" data-modal-close>
+      <svg class="icon-close">
+        <use href="./img/icons.svg#icon-close"></use>
+      </svg>
+    </button>
+    <div class="modal-wrap">
+      <div class="modal-img-wrap">
+        <!-- <img src="./img/img-mob.png" alt="Name film" class="modal-image" /> -->
+        <picture class="modal-image">
+          <source
+            srcset="./img/img-desk-1x.png 1x, ./img/img-desk-2x.png 2x"
+            media="(min-width:1280px)"
+          />
+          <source
+            srcset="./img/img-tab-1x.png 1x, ./img/img-tab-2x.png 2x"
+            media="(min-width:768px)"
+          />
+          <source
+            srcset="./img/img-mob.png 1x, ./img/img-mob-2x.png 2x"
+            media="(max-width:767px)"
+          />
+          <img src="./img/img-mob.png" alt="Name film" />
+        </picture>
+      </div>
+      <div class="modal-info">
+        <h2 class="modal-info-name">A FISTFUL OF LEAD</h2>
+        <ul class="modal-info-list">
+          <li class="modal-info-item">
+            Vote / Votes
+            <span class="modal-info-value"
+              ><span class="modal-info-value-vote">7.3</span>/<span
+                class="modal-info-value-votes"
+                >1260</span
+              ></span
+            >
+          </li>
+          <li class="modal-info-item">
+            Popularity <span class="modal-info-value">100.2</span>
+          </li>
+          <li class="modal-info-item">
+            Original Title
+            <span class="modal-info-value">A FISTFUL OF LEAD</span>
+          </li>
+          <li class="modal-info-item">
+            Genre <span class="modal-info-value">Western</span>
+          </li>
+        </ul>
+        <p class="modal-info-pre-about">About</p>
+        <p class="modal-info-about">
+          Four of the West’s most infamous outlaws assemble to steal a huge
+          stash of gold from the most corrupt settlement of the gold rush towns.
+          But not all goes to plan one is killed and the other three escapes
+          with bags of gold hide out in the abandoned gold mine where they
+          happen across another gang of three – who themselves were planning to
+          hit the very same bank! As tensions rise, things go from bad to worse
+          as they realise the bags of gold are filled with lead... they’ve been
+          double crossed – but by who and how?
+        </p>
+        <div class="btn-modal-wrap">
+          <button type="button" class="modal-btn modal-btn-watched">
+            Add to watched
+          </button>
+          <button type="button" class="modal-btn modal-btn-queue">
+            Add to queue
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <script src="./js/modal.js" type="module"></script> -->
