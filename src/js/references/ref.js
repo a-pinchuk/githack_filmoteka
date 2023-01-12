@@ -8,7 +8,7 @@ const ref = {
     '.students-modal-close-button'
   ),
   studentsModal: document.querySelector('.students-modal'),
-  backdropRef: document.querySelector('.backdrop'),
+  backdropRef: document.querySelector('.backdrop-students-modal'),
   libraryWatchedBtn: document.querySelector('#library-watched'),
   libraryQueueBtn: document.querySelector('#library-queue'),
   libraryList: document.querySelector('.movie-list'),
