@@ -256,11 +256,14 @@ button {
 }
 
 .students-modal {
+  max-height: 90%;
+  max-width: 90%;
+  overflow-y: scroll;
   display: flex;
   justify-content: center;
   width: 280px;
   height: auto;
-  padding: 48px 20px;
+  padding: 35px 20px;
   background-color: white;
   top: 50%;
   left: 50%;
@@ -343,6 +346,7 @@ button {
 }
 
 .swiper-slide {
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -352,13 +356,8 @@ button {
 @media screen and (min-width: 768px) {
   .swiper-slide {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     gap: 50px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .swiper-slide {
-    gap: 16px;
   }
 }
 

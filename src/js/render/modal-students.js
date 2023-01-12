@@ -1,14 +1,20 @@
 import {ref} from '../references/ref'
-import Swiper, { Navigation } from 'swiper';
+import Swiper, { EffectCoverflow, Navigation } from 'swiper';
 
   // import styles bundle
 import 'swiper/swiper-bundle.css';
 
 new Swiper('.swiper', {
-    modules: [Navigation],
-
+    modules: [Navigation, EffectCoverflow],
+    effect: 'coverflow',
+    coverflowEffect: {
+        rotate: 30,
+        slideShadows: false,
+    },
     spaceBetween: 100,
     loop: true,
+    speed: 500,
+
 
     navigation: {
         nextEl: '.swiper-button-next',
