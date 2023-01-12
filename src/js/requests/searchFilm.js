@@ -93,11 +93,11 @@ function getGeners(allGenres, idGenres) {
     }
      });
   if (newArray.length > 3) {
-	  newArray = newArray.slice(0, 2).join(', ') + `other`; 
+	  newArray = newArray.slice(0, 2) + `other`; 
 	  return newArray;
   }
   
-  return newArray;
+  return newArray.join(', ');
 }
   
  
