@@ -6,36 +6,38 @@ import { Notify } from 'notiflix';
 
 
 let page = 1;
+let searchQuery = '';
 
 
 
 
 
+ref.form.addEventListener('submit', onCLickSubmit);
 
-ref.form.addEventListener('submit', renderSearchFilms);
-
-
-
-async function renderSearchFilms(e) {
+function onCLickSubmit(e) {
 	e.preventDefault();
-	searchQuery = ref.input.value.trim();
-	// let totalResults = 0;
 	
-  if (searchQuery === '') {
+	searchQuery = ref.input.value.trim();
+	  if (searchQuery === '') {
     return Notify.warning('Searching starts after providing data to search.');
 	}; 
+	ref.input.value = '';
+	renderSearchFilms()
 
+}
+
+async function renderSearchFilms() {
+	// let totalResults = 0;
     try {
     	const promis = await fetchSearchedFilms(searchQuery, page);
-		 let data = promis.data.results;
+		 const data = promis.data.results;
 		 if (data.length === 0) {
-			 return Notify.warning('no match');
+			 return Notify.warning('no matches found');
 		 }
-		 ref.input.value = '';
+		 
 		 clearGallery();
 		 createMarkUp(data);
 		renderSearchFilms();
-        
     } catch (error) {
         console.log(error)
 	 }
@@ -51,25 +53,22 @@ async function renderSearchFilms(e) {
 
 function createMarkUp(data) {
   const markUp = data.map(item => {
-    const defaultPicture = 'https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg'
-		const { title, poster_path = {defaultPicture}, release_date, genre_ids } = item;
-		const filmGenre = getGeners(allGeners, genre_ids)
-		console.log(filmGenre);
-		
-		
-		const size = 'w500';
-		let baseImafge = `https://image.tmdb.org/t/p/${size}${poster_path}`;
-		const normalizeDate = release_date.split('-')[0];
+    	const defaultPicture = 'https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg'
+		const { title, poster_path, release_date, genre_ids } = item;
+	  const filmGenre = getGeners(allGeners, genre_ids)
+	  let link = `https://image.tmdb.org/t/p/w500null`;
+		let baseImafge = `https://image.tmdb.org/t/p/w500${poster_path}`;
+		const normalizeDate = release_date.slice(0, 4);
 		return `
       <li class="photo__card">
           <a href="${baseImafge}">
-            <img src="${baseImafge !== `https://image.tmdb.org/t/p/${size}${poster_path}` ? defaultPicture : baseImafge}" alt="" "loading="lazy" class="movie__image"/>
+            <img src="${baseImafge !== link ? baseImafge : defaultPicture}" alt="" "loading="lazy" class="movie__image"/>
           </a>
           <div class="movie__info">
             <h2 class="film__title">${title}</h2>
             <div class="movie__details">
             <p class="movie__genre">${filmGenre}</p>
-            <p class="movie__year">2022>${normalizeDate !== release_date.split('-')[0] ? "unknown date" : normalizeDate}</p>
+            <p class="movie__year">2022>${normalizeDate}</p>
           </div>
           </div>
       </li>
@@ -87,17 +86,16 @@ function clearGallery() {
 
 function getGeners(allGenres, idGenres) {
   let newArray = [];
-     allGenres.map(el => {
+     allGenres.filter(el => {
     if (idGenres.includes(el.id)) {
       newArray.push(el.name);
     }
      });
-  if (newArray.length > 3) {
-	  newArray = newArray.slice(0, 2) + `other`; 
+  if (newArray.length > 2) {
+	  newArray = newArray.slice(0, 2).join(', '); 
 	  return newArray;
   }
-  
-  return newArray.join(', ');
+  return newArray.join(', ') + ' other';
 }
   
  
