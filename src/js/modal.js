@@ -5,10 +5,10 @@ import { fetchFilmById, fetchTrendedFilms } from './api/fetch';
 import { ref } from './references/ref';
 
 // ref.openModalBtn.addEventListener('click', openModal);
-ref.galleryList.addEventListener('click', openModal);
-ref.closeModalBtn.addEventListener('click', closeModal);
-ref.modal.addEventListener('keydown', closeModal);
-ref.modal.addEventListener('click', closeModalbyClick);
+// ref.galleryList.addEventListener('click', openModal);
+// ref.closeModalBtn.addEventListener('click', closeModal);
+// ref.modal.addEventListener('keydown', closeModal);
+// ref.modal.addEventListener('click', closeModalbyClick);
 
 async function openModal(item) {
   document.addEventListener('keydown', closeModal);
