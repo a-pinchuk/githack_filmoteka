@@ -5,6 +5,7 @@ import { ref } from "../references/ref";
 import { Notify } from 'notiflix';
 import { PAGE } from '../api/api-vars';
 // import { defImg } from '../../images/default-movie.jpg';
+import { renderPopularFilms } from "../render/renderPopularFilm";
 
 let searchQuery = '';
 
@@ -17,7 +18,9 @@ function onCLickSubmit(e) {
     return Notify.warning('Searching starts after providing data to search.');
   } if (searchQuery.length > 0) {
     ref.input.value = '';
-	  renderSearchFilms()
+    renderSearchFilms();
+  } else {
+    renderPopularFilms();
   }
 	
 
