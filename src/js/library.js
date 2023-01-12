@@ -20,9 +20,15 @@ const dyk = [466282, 455980, 730210];
 const qyk = [421792, 429300, 353081];
 localStorage.setItem(LOCALSTORAGE_QUEUE, JSON.stringify(qyk));
 
+document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
 ref.libraryWatchedBtn.addEventListener('click', onClickWatchedBtn);
 ref.libraryQueueBtn.addEventListener('click', onClickQueueBtn);
 
+function onDOMContentLoaded(e) {
+	console.log(ref.libraryWatchedBtn.style);
+	const arrayWatched = load (LOCALSTORAGE_WATCHED);
+	fetchAndRenderFilm(arrayWatched);	
+}
 function onClickWatchedBtn(e) {
 	ref.libraryList.innerHTML = "";
  const arrayWatched = load (LOCALSTORAGE_WATCHED);

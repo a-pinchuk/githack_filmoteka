@@ -1,4 +1,8 @@
 @import '../base/colors';
+a {
+	display: block;
+	flex-grow: 1;
+}
 .header-library {
   margin-right: auto;
   margin-left: auto;
@@ -199,6 +203,13 @@
 	  padding-top: 60px;
 	  padding-bottom: 60px;
 	}
+ }
+ .photo__card {
+	display: flex;
+	flex-direction: column;
+ }
+ .movie__image {
+	height: 100%;
  }
  .movie__vote-average {
 	width: 36px;
