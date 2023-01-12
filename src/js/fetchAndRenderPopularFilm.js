@@ -1,24 +1,18 @@
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { fetchTrendedFilms } from './api/fetch';
-<<<<<<< HEAD:src/js/fetchAndRenderPopularFilm.js
 // import { fetchSearchedFilms } from './api/fetch';
 // import { fetchFilmById } from './api/fetch';
 import { fetchFilmGenres } from './api/fetch';
 import { fetchFilmTrailer } from './api/fetch';
-=======
-// // import { fetchSearchedFilms } from './api/fetch';
-// // import { fetchFilmById } from './api/fetch';
-// // import { fetchFilmGenres } from './api/fetch';
->>>>>>> enterSearch:src/js/main.js
 import { renderPopularFilms } from './render/renderPopularFilm';
-// // import { renderFilms } from './render/renderHTML';
+// import { renderFilms } from './render/renderHTML';
 import { ref } from './references/ref';
-// // import { options, pagination } from './pagination';
-// // import { PAGES } from './api/api-vars';
+// import { options, pagination } from './pagination';
+// import { PAGES } from './api/api-vars';
 
-// // let textContent = '';
+// let textContent = '';
 
-// // ref.form.addEventListener('submit', fetchAndRenderFilms);
+// ref.form.addEventListener('submit', fetchAndRenderFilms);
 
 fetchAndRenderPopularFilm();
 
