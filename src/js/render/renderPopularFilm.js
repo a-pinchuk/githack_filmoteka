@@ -4,12 +4,10 @@ export function renderPopularFilms(ref, data, genres) {
       const genreId = el.genre_ids;
       const movieGenres = compareGenresId(genres, genreId);
       return `
-      <li class="photo__card">
-          <a href="https://image.tmdb.org/t/p/w500/${el.poster_path}">
+      <li class="photo__card" data-modal-open>
             <img src="https://image.tmdb.org/t/p/w500/${
               el.poster_path
             }" alt="" "loading="lazy" class="movie__image"/>
-          </a>
           <div class="movie__info">
             <h2 class="film__title">${el.title}</h2>
             <div class="movie__details">
@@ -17,9 +15,7 @@ export function renderPopularFilms(ref, data, genres) {
             <p class="movie__year">${el.release_date.slice(0, 4)}</p>
           </div>
           </div>
-      </li>
-    </ul>
-  </div>`;
+      </li>`;
     })
     .join('');
 

@@ -4,10 +4,9 @@
   top: 0;
   width: 100%;
   height: calc(100% + 38px);
-  background-color: #5f5f5f;
+  background-color: #5F5F5F;
   transition: opacity 250ms linear, visibility 250ms linear;
 }
-
 .backdrop.is-hidden {
   visibility: hidden;
   opacity: 0;
@@ -16,18 +15,15 @@
     transform: translate(-50%, -50%) scale(0);
   }
 }
-
 .modal-window {
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 48px;
   padding-bottom: 40px;
-
   position: absolute;
   top: 20px;
   left: 50%;
   transform: translateX(-50%) scale(1);
-
   width: calc(100% - 40px);
   min-height: 100%;
   @include media-min(mobile) {
@@ -48,10 +44,8 @@
     width: 806px;
     min-height: 558px;
   }
-
   background-color: white;
   transition: transform 250ms linear;
-
   &-close {
     position: absolute;
     top: 8px;
@@ -59,11 +53,9 @@
     width: 30px;
     height: 30px;
     background-color: white;
-
     cursor: pointer;
   }
 }
-
 .icon-close {
   width: 30px;
   height: 30px;
@@ -78,7 +70,6 @@
     fill: getColor('secondary-text-color');
   }
 }
-
 .modal-wrap {
   display: flex;
   flex-wrap: wrap;
@@ -91,7 +82,6 @@
     column-gap: 16px;
   }
 }
-
 .modal-img-wrap {
   margin-bottom: 20px;
   @include media-min(tablet) {
@@ -102,32 +92,31 @@
     height: 478px;
   }
 }
-
 .modal-image {
   display: block;
   width: 240px;
-  min-height: 357px;
+  height: 357px;
   border-radius: 5px;
   @include media-min(tablet) {
     width: 264px;
-    min-height: 374px;
+    height: 374px;
   }
   @include media-min(desktop) {
     width: 375px;
-    min-height: 478px;
+    height: 478px;
   }
 }
-
 .modal-info {
   width: 100%;
+  @include media-min(tablet) {
+    width: 264px;
+  }
   @include media-min(desktop) {
     width: 391px;
   }
 }
-
 .modal-info-name {
   margin-bottom: 20px;
-
   font-weight: 500;
   font-size: 20px;
   line-height: 1.15;
@@ -136,30 +125,24 @@
     line-height: 1.17;
   }
 }
-
 .modal-info-list {
   position: relative;
   margin-bottom: 20px;
 }
-
 .modal-info-item {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-
-  color: #8c8c8c;
-
+  color: #8C8C8C;
   &:not(:last-child) {
     margin-bottom: 8px;
   }
 }
-
 .modal-info-value {
   position: absolute;
   left: 108px;
   color: getColor('primary-text-color');
 }
-
 .modal-info-value-vote {
   display: inline-flex;
   align-items: center;
@@ -167,47 +150,38 @@
   margin-right: 3px;
   width: 36px;
   height: 16px;
-
-  background-color: #ff6b01;
+  background-color: #FF6B01;
   border-radius: 5px;
-
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;
   text-align: center;
   color: getColor('white');
 }
-
 .modal-info-value-votes {
   margin-left: 3px;
-
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;
   text-align: center;
   color: getColor('primary-text-color');
 }
-
 .modal-info-pre-about {
   margin-bottom: 8px;
-
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
   text-transform: uppercase;
-
   color: getColor('primary-text-color');
 }
 .modal-info-about {
   margin-bottom: 20px;
-
   font-weight: 500;
   font-size: 12px;
   line-height: 1.67;
   height: 260px;
   overflow-y: scroll;
   color: getColor('primary-text-color');
-
   @include media-min(tablet) {
     height: 236px;
   }
@@ -215,43 +189,44 @@
     height: 160px;
   }
 }
-
 .btn-modal-wrap {
   display: flex;
-  column-gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
   @include media-min(tablet) {
-    column-gap: 15px;
+    gap: 10px;
+  }
+  @include media-min(desktop) {
+    flex-wrap: nowrap;
+    justify-content: normal;
   }
 }
-
 .modal-btn {
   width: 110px;
   height: 44px;
-
   @include media-min(tablet) {
     width: 126px;
   }
-
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
   text-align: center;
   text-transform: uppercase;
-
+  border: 1px solid getColor('primary-text-color');
+  background-color: getColor('white');
+  border-radius: 5px;
+  transition: background-color 250ms linear, color 250ms linear;
+  &:hover,
+  &:focus {
+    background-color: #FF6B01;
+    border: 1px solid #FF6B01;
+    color: #FFFFFF;
+  }
   &-watched {
     padding: 6px 27px;
     @include media-min(tablet) {
       padding: 0;
-    }
-    background-color: #ff6b01;
-    border: 1px solid #ff6b01;
-    border-radius: 5px;
-    color: #ffffff;
-    transition: background-color 250ms linear, color 250ms linear;
-    &:hover,
-    &:focus {
-      background-color: getColor('white');
-      color: #ff6b01;
     }
   }
   &-queue {
@@ -259,14 +234,11 @@
     @include media-min(tablet) {
       padding: 0;
     }
-    border: 1px solid getColor('primary-text-color');
-    background-color: getColor('white');
-    border-radius: 5px;
-    transition: border-color 250ms linear, color 250ms linear;
-    &:hover,
-    &:focus {
-      color: #ff6b01;
-      border-color: #ff6b01;
+  }
+  &-trailer {
+    padding: 6px;
+    @include media-min(tablet) {
+      padding: 0;
     }
   }
 }

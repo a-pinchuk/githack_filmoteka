@@ -10,6 +10,10 @@ const ref = {
   libraryWatchedBtn: document.querySelector('#library-watched'),
   libraryQueueBtn: document.querySelector('#library-queue'),
   libraryList: document.querySelector('.movie-list'),
+  openModalBtn: document.querySelector('[data-modal-open]'),
+  closeModalBtn: document.querySelector('[data-modal-close]'),
+  modal: document.querySelector('[data-modal]'),
+  modalWrap: document.querySelector('.modal-wrap'),
 };
 
 export { ref };
