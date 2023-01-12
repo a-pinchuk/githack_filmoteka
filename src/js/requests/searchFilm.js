@@ -12,28 +12,31 @@ let page = 1;
 
 
 
-ref.form.addEventListener('submit', clickOnSubmit);
+ref.form.addEventListener('submit', renderSearchFilms);
 
 
-function clickOnSubmit(e) {
-  e.preventDefault();
-  
-  if (ref.input.value === '') {
+
+async function renderSearchFilms(e) {
+	e.preventDefault();
+	searchQuery = ref.input.value.trim();
+	let totalResults = 0;
+
+  if (searchQuery === '') {
     return Notify.warning('Searching starts after providing data to search.');
+  } else if (totalResults.length === 0 ) {
+	  return Notify.warning('no matches');
   } else {
-    content = ref.input.value.trim()
+	  searchQuery;
   }
   ref.input.value = '';
 	renderSearchFilms();
 	
-    
-    
-}
 
-async function renderSearchFilms() {
     try {
-    const promis = await fetchSearchedFilms(content, page);
+    	const promis = await fetchSearchedFilms(searchQuery, page);
 		 const data = promis.data.results;
+			totalResults = promis.data.total_results;
+		 console.log(totalResults);
 		 clearGallery();
 		 createMarkUp(data);
         
