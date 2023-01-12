@@ -7,6 +7,9 @@ const ref = {
   loader: document.getElementById('loading'),
   photoCard: document.querySelector('.photo-card'),
   galleryList: document.querySelector('.gallery__list'),
+  libraryWatchedBtn: document.querySelector('#library-watched'),
+  libraryQueueBtn: document.querySelector('#library-queue'),
+  libraryList: document.querySelector('.movie-list'),
 };
 
 export { ref };
