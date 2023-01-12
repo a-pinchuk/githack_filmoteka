@@ -12,3 +12,9 @@ import './js/requests/searchFilms';
 import './js/render/renderSearchFilms';
 
 // Переключатель темы
+
+import './js/switcher';
+
+// import Darkmode from 'drkmd-js';
+
+// new Darkmode().attach();
