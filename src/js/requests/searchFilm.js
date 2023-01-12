@@ -19,30 +19,29 @@ ref.form.addEventListener('submit', renderSearchFilms);
 async function renderSearchFilms(e) {
 	e.preventDefault();
 	searchQuery = ref.input.value.trim();
-	let totalResults = 0;
-
+	// let totalResults = 0;
+	
   if (searchQuery === '') {
     return Notify.warning('Searching starts after providing data to search.');
-  } else if (totalResults.length === 0 ) {
-	  return Notify.warning('no matches');
-  } else {
-	  searchQuery;
-  }
-  ref.input.value = '';
-	renderSearchFilms();
-	
+	}; 
 
     try {
     	const promis = await fetchSearchedFilms(searchQuery, page);
-		 const data = promis.data.results;
-			totalResults = promis.data.total_results;
-		 console.log(totalResults);
+		 let data = promis.data.results;
+		 if (data.length === 0) {
+			 return Notify.warning('no match');
+		 }
+		 ref.input.value = '';
 		 clearGallery();
 		 createMarkUp(data);
+		renderSearchFilms();
         
     } catch (error) {
         console.log(error)
-    }
+	 }
+	
+	
+	
    
 }
 
@@ -94,7 +93,8 @@ function getGeners(allGenres, idGenres) {
     }
      });
   if (newArray.length > 3) {
-    newArray = newArray.slice(0, 2).join(', ')
+	  newArray = newArray.slice(0, 2).join(', ') + `other`; 
+	  return newArray;
   }
   
   return newArray;
