@@ -33,6 +33,10 @@
         }
 }
 
+.students-modal::-webkit-scrollbar{
+    display: none;
+}
+
 .student-modal_name {
     font-family: inherit;
     text-align: center;
@@ -104,6 +108,10 @@
     }
 }
 
+.swiper-slide::-webkit-scrollbar{
+    display: none;
+}
+
 .student-modal-info {
     display: flex;
     flex-direction: column;
@@ -142,5 +150,4 @@
     right: 8px;
     cursor: pointer;
     z-index: 111;
-
 }
