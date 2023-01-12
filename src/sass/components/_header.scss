@@ -59,7 +59,9 @@
   @include media-min(desktop) {
     max-width: 394px;
   }
-
+  @include media-max(tablet) {
+    margin-top: 130px;
+  }
   margin-top: 80px;
   margin-left: auto;
   margin-right: auto;
@@ -83,7 +85,7 @@
     width: 100%;
     background-color: transparent;
 
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -94,7 +96,7 @@
     color: white;
 
     &::placeholder {
-      font-family: 'Roboto';
+      font-family: "Roboto";
       font-style: normal;
       font-weight: 400;
       font-size: 14px;
@@ -120,7 +122,7 @@
 }
 
 .mob-navigation__main {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
   font-size: 30px;
@@ -137,7 +139,7 @@
 .mob-navigation__link {
   position: relative;
 
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -151,7 +153,7 @@
   color: #ffffff;
 
   &--current::after {
-    content: '';
+    content: "";
     position: absolute;
     display: block;
     bottom: -3px;
@@ -165,4 +167,94 @@
   fill: currentColor;
   width: 30px;
   height: 30px;
+}
+
+.open-auth-dropdown {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: baseline;
+}
+
+.authentication {
+  &_box {
+    opacity: 1;
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    transform: translate(-50%);
+    visibility: visible;
+    background-color: #0000;
+    transition: opacity 0.35s linear, visibility 0.25s linear;
+    width: 60px;
+
+    &.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+  }
+  &__button {
+    cursor: pointer;
+    background: none;
+    fill: #ff6b01;
+    transition: transform 0.25s linear, visibility 0.25s linear, fill 0.35s linear;
+    &:hover {
+      transform: scale(1.1);
+      fill: #000;
+    }
+  }
+}
+.sign-up {
+  &__button {
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #ff6b01;
+    color: #fff;
+    padding: 5px 5px;
+    transition: transform 0.25s linear, visibility 0.25s linear;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+.login {
+  &__button {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px 5px;
+    background-color: #ff6b01;
+    color: #fff;
+    transition: transform 0.25s linear, visibility 0.25s linear;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+.user-name {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  font-weight: 500;
+  color: #ff6b01;
+}
+
+.logout {
+  cursor: pointer;
+  fill: #ff6b01;
+  transition: transform 0.25s linear, visibility 0.25s linear, fill 0.35s linear;
+  &:hover {
+    transform: scale(1.1);
+    fill: #000;
+  }
 }

@@ -13,26 +13,32 @@
 
       <ul class="mob-navigation__buttons">
         <li class="mob-navigation__item">
-          <a
-            href="./index.html"
-            class="mob-navigation__link mob-navigation__link--current"
-            >Home</a
-          >
+          <a href="./index.html" class="mob-navigation__link mob-navigation__link--current">Home</a>
         </li>
         <li class="mob-navigation__item">
-          <a href="./my-library.html" class="mob-navigation__link"
-            >My Library</a
-          >
+          <a href="./my-library.html" class="mob-navigation__link">My Library</a>
+          <div class="open-auth-dropdown">
+            <button class='authentication__button' type="button" open-auth-box>
+              <svg style="width: 24px; height: 24px;">
+                <use href="./images/sprite.svg#icon-log-in"></use>
+              </svg>
+            </button>
+            <p class="user-name "><span>User</span><svg class="logout" style="width: 24px; height: 24px; ">
+                <use href="./images/sprite.svg#icon-log-out"></use>
+              </svg>
+            </p>
+            <div class="authentication_box is-hidden" data-modal-open-auth-box>
+              <button type=" button" class="sign-up__button">Sign Up</button>
+              <button type="button" class="login__button">Log In</button>
+
+            </div>
+          </div>
         </li>
       </ul>
     </div>
 
     <form class="search-form" action="">
-      <input
-        class="search-form__input"
-        type="text"
-        placeholder="Movie search"
-      />
+      <input class="search-form__input" type="text" placeholder="Movie search" />
       <button class="search-form__button" type="submit"></button>
     </form>
   </nav>
