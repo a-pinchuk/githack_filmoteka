@@ -2,10 +2,8 @@ export function renderFilmsByIdForLibrary(ref, datas) {
   const markup = datas.map(({data}) => {
   const genres = compareGenres(data.genres);
 		//   console.log(typeof data.vote_average);
-	    return `<li class="photo__card">
-          <a href="https://image.tmdb.org/t/p/w500/${data.poster_path}">
-            <img src="https://image.tmdb.org/t/p/w500/${data.poster_path}" loading="lazy" alt="" "loading="lazy" class="movie__image"/>
-          </a>
+	    return `<li class="photo__card" data-modal-open id=${data.id}">
+            <img src="https://image.tmdb.org/t/p/w500/${data.poster_path}" alt="${data.title}" "loading="lazy" class="movie__image"/>
           <div class="movie__info">
             <h2 class="film__title">${data.title}</h2>
             <div class="movie__details">
