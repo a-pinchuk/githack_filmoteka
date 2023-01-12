@@ -23,7 +23,6 @@ async function fetchAndRenderPopularFilm(e) {
     const data = image.data.results;
     console.log('🚀 ~ data', data);
     const genresID = genres.data.genres;
-    console.log('🚀 ~ genresID', genresID);
 
     renderPopularFilms(ref, data, genresID);
   } catch (error) {
