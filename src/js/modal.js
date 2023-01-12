@@ -5,18 +5,20 @@ import { fetchFilmById, fetchTrendedFilms } from './api/fetch';
 import { ref } from './references/ref';
 
 // ref.openModalBtn.addEventListener('click', openModal);
-// ref.galleryList.addEventListener('click', openModal);
-// ref.closeModalBtn.addEventListener('click', closeModal);
-// ref.modal.addEventListener('keydown', closeModal);
-// ref.modal.addEventListener('click', closeModalbyClick);
+ref.galleryList.addEventListener('click', openModal);
+ref.closeModalBtn.addEventListener('click', closeModal);
+ref.modal.addEventListener('keydown', closeModal);
+ref.modal.addEventListener('click', closeModalbyClick);
 
 async function openModal(item) {
   document.addEventListener('keydown', closeModal);
   ref.modal.classList.toggle('is-hidden');
-  const response = await fetchFilmById(76800).then(r => {
+  const li = item.target.closest('.photo__card');
+  const id = li.getAttribute('id');
+  const response = await fetchFilmById(id).then(r => {
     return r.data;
   });
-  console.log(response);
+  // console.log(response);
   ref.modalWrap.insertAdjacentHTML('afterBegin', renderMarkupModal(response));
 }
 
