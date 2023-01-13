@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { log } from 'console';
 import { API_KEY, TREND_URL, SEARCH_URL, ID_URL } from './api/api-vars';
-import { fetchFilmById, fetchTrendedFilms } from './api/fetch';
+import { fetchFilmById, fetchTrendedFilms, fetchFilmTrailer } from './api/fetch';
 import { ref } from './references/ref';
 
 // ref.openModalBtn.addEventListener('click', openModal);
@@ -23,12 +23,33 @@ async function openModal(item) {
 
   const li = item.target.closest('.photo__card');
   const id = li.getAttribute('id');
+  
   const response = await fetchFilmById(id).then(r => {
     return r.data;
   });
 
   renderBackdrop(response);
   ref.modalWrap.insertAdjacentHTML('afterBegin', renderMarkupModal(response));
+// -------------TRAILER------------------------
+  const btnTreil = document.querySelector('.modal-btn-trailer')
+  const imgss = document.querySelector('.modal-image')
+  const div = document.querySelector('.modal-wrap-img-btn')
+  console.log(div)
+  console.log(imgss)
+  console.log(btnTreil)
+  btnTreil.addEventListener('click', onClickWatch)
+  
+  async function onClickWatch (event) {
+    const li = item.target.closest('.photo__card');
+    const id = li.getAttribute('id');
+
+    const response = await fetchFilmTrailer(id).then(r => {
+      return r.data;
+    })
+    console.log(response.results.length -1)
+    const officialTrail = response.results.length -1
+    renderTrail(response.results[officialTrail])
+}
 }
 
 function renderBackdrop(film) {
@@ -103,4 +124,29 @@ function closeModalbyClick(e) {
     document.body.style.overflow = '';
     document.removeEventListener('keydown', closeModal);
   }
+}
+
+// -------- RENDER TREILER --------------------
+function renderTrail (video) {
+  const {key} = video
+  imgss.remove()
+  div.innerHTML = `<iframe
+  width="394"
+  height="574"
+  src="https://www.youtube.com/embed/${key}"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen
+  waitUntil()
+></iframe>`
+// setTimeout(() => {
+//   console.clear()
+// }, 3000);
+// setTimeout(() => {
+//   console.clear()
+// }, 3000);
+// setTimeout(() => {
+//   console.clear()
+// }, 4000);
 }
