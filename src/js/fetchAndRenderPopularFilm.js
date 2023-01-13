@@ -20,6 +20,7 @@ async function fetchAndRenderPopularFilm(e) {
   try {
     ref.loader.style.display = 'flex';
     const image = await fetchTrendedFilms();
+    console.log('🚀 ~ image', image);
     const genres = await fetchFilmGenres();
     const data = image.data.results;
     const genresID = genres.data.genres;

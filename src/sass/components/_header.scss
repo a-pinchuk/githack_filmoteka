@@ -107,6 +107,10 @@
 
       color: white;
     }
+
+    &:focus::placeholder {
+      color: transparent;
+    }
   }
 
   &__button {
