@@ -8,18 +8,18 @@ import { loaderHide } from '../fetchAndRenderPopularFilm';
 
 let searchQuery = '';
 
-
 ref.form.addEventListener('submit', onCLickSubmit);
 
 function onCLickSubmit(e) {
   e.preventDefault();
   searchQuery = ref.input.value.trim();
   if (searchQuery === '') {
-      const alertElement = document.createElement('p');
-      alertElement.style.color = 'red';
-      alertElement.style.textAlign = 'center';
-      alertElement.style.paddingTop = '10px';
-      alertElement.textContent = 'Searching starts after providing data to search.';
+    const alertElement = document.createElement('p');
+    alertElement.style.color = 'red';
+    alertElement.style.textAlign = 'center';
+    alertElement.style.paddingTop = '10px';
+    alertElement.textContent =
+      'Searching starts after providing data to search.';
     ref.form.appendChild(alertElement);
     return Notify.warning('Searching starts after providing data to search.');
   }
@@ -41,9 +41,9 @@ async function renderSearchFilms() {
       alertElement.style.color = 'red';
       alertElement.style.textAlign = 'center';
       alertElement.style.paddingTop = '10px';
-      alertElement.textContent = 'Search result is not successful. Enter the correct movie name and';
-    ref.form.appendChild(alertElement);
-    console.log(alertElement);
+      alertElement.textContent =
+        'Search result is not successful. Enter the correct movie name and';
+      ref.form.appendChild(alertElement);
       return Notify.warning('no matches found');
     }
     clearGallery();
