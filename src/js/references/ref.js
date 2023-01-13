@@ -19,6 +19,8 @@ const ref = {
   modalWrap: document.querySelector('.modal-wrap'),
   modalWindow: document.querySelector('.modal-window'),
   checkbox: document.querySelector('.checkbox'),
+  btnTreil: document.querySelector('.modal-btn-trailer'),
+ wrapIMG:  document.querySelector('.modal-img-wrap')
 };
 
 export { ref };
