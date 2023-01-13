@@ -64,24 +64,32 @@ const AuthBox = document.querySelector('[data-modal-open-auth-box]');
 const userName = document.querySelector('.user-name');
 
 const openAuthBox = document.querySelector('[open-auth-box]');
-openAuthBox.addEventListener('click', () => {
-  AuthBox.classList.toggle('is-hidden');
-  signUpBtn.style.display = 'block';
-  loginBtn.style.display = 'block';
-});
+
+if (openAuthBox) {
+  openAuthBox.addEventListener('click', () => {
+    AuthBox.classList.toggle('is-hidden');
+    signUpBtn.style.display = 'block';
+    loginBtn.style.display = 'block';
+  });
+}
 
 const loginBtn = document.querySelector('.login__button');
-loginBtn.addEventListener('click', () => {
-  loginForm.classList.toggle('is-hidden');
-  loginForm.style.display = 'flex';
-  openLoginModalBtn.classList.toggle('is-hidden');
-});
+if (loginBtn) {
+  loginBtn.addEventListener('click', () => {
+    loginForm.classList.toggle('is-hidden');
+    loginForm.style.display = 'flex';
+    openLoginModalBtn.classList.toggle('is-hidden');
+  });
+}
 
 const signUpBtn = document.querySelector('.sign-up__button');
-signUpBtn.addEventListener('click', () => {
-  singUpForm.style.display = 'flex';
-  openSignUpModalBtn.classList.toggle('is-hidden');
-});
+
+if (signUpBtn) {
+  signUpBtn.addEventListener('click', () => {
+    singUpForm.style.display = 'flex';
+    openSignUpModalBtn.classList.toggle('is-hidden');
+  });
+}
 
 // Registration
 
@@ -134,12 +142,11 @@ function onLoginFormSubmit(event) {
     signInWithEmailAndPassword(auth, email, password)
       .then(userCredential => {
         const user = userCredential.user;
-
+        openAuthBox.style.display = 'none';
         set(ref(database, 'users/' + user.uid), {
           email,
           password,
         });
-        Notify.success(`Hello`);
       })
       .catch(error => {
         const errorMessage = error.message;
@@ -151,8 +158,10 @@ function onLoginFormSubmit(event) {
 }
 
 // LogOut
+
 const logoutBtn = document.querySelector('.logout');
 logoutBtn.addEventListener('click', onLogout);
+
 function onLogout(event) {
   signOut(auth)
     .then(() => {
@@ -160,6 +169,7 @@ function onLogout(event) {
       loginBtn.style.display = 'none';
       Notify.info(`Bye, see you later`);
       AuthBox.classList.add('is-hidden');
+      window.location.href = 'index.html';
     })
     .catch(error => {
       const errorMessage = error.message;
@@ -169,23 +179,60 @@ function onLogout(event) {
 
 // AuthState
 
-onAuthStateChanged(auth, user => {
-  if (user) {
-    openLoginModalBtn.classList.add('is-hidden');
-    openSignUpModalBtn.classList.add('is-hidden');
-    openAuthBox.style.display = 'none';
-    loginForm.style.display = 'none';
-    singUpForm.style.display = 'none';
-    signUpBtn.style.display = 'none';
-    loginBtn.style.display = 'none';
-    logoutBtn.style.display = 'block';
-    userName.style.display = 'flex';
-    console.log('on');
-  } else {
-    openAuthBox.style.display = 'flex';
-    userName.style.display = 'none';
-    signUpBtn.style.display = 'block';
-    loginBtn.style.display = 'block';
-    logoutBtn.style.display = 'none';
+const openLibraryPage = document.querySelector('[open-library-page]');
+
+if (openLibraryPage) {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      openLibraryPage.addEventListener('click', e => {
+        window.location.href = 'library.html';
+      });
+      console.log('login');
+    } else {
+      openLibraryPage.addEventListener('click', e => {
+        e.preventDefault();
+        Notify.info('You must be logged in to access this page.');
+      });
+    }
+  });
+}
+
+const logoutLibraryBtn = document.querySelector('.header-library__use-name');
+if (logoutLibraryBtn) {
+  logoutLibraryBtn.addEventListener('click', onLogout);
+
+  function onLogout(e) {
+    signOut(auth)
+      .then(() => {
+        logoutLibraryBtn.removeEventListener('click', e);
+        window.location.href = 'library.html';
+      })
+      .catch(error => {
+        const errorMessage = error.message;
+        Notify.failure(errorMessage);
+      });
   }
-});
+}
+
+if (openLibraryPage) {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      openLoginModalBtn.classList.add('is-hidden');
+      openSignUpModalBtn.classList.add('is-hidden');
+      openAuthBox.style.display = 'none';
+      loginForm.style.display = 'none';
+      singUpForm.style.display = 'none';
+      signUpBtn.style.display = 'none';
+      loginBtn.style.display = 'none';
+      logoutBtn.style.display = 'block';
+      userName.style.display = 'flex';
+      console.log('on');
+    } else {
+      openAuthBox.style.display = 'flex';
+      userName.style.display = 'none';
+      signUpBtn.style.display = 'block';
+      loginBtn.style.display = 'block';
+      logoutBtn.style.display = 'none';
+    }
+  });
+}
