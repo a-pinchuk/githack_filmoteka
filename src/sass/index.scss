@@ -14,12 +14,14 @@
 
 // COMPONENTS
 @import './components/header';
-@import './components/modal-login';
-@import './components/modal-singup';
 @import './components/theme-switcher';
 @import './components/modal-students';
+@import './components/modal-login';
+@import './components/modal-singup';
+@import './components/scroll-to-top';
 
 //LAYOUT
 @import './components/galery';
 @import './components/footer';
+
 @import './layouts/modal';
