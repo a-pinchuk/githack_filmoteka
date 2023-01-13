@@ -97,11 +97,11 @@
   color: getColor(secondary-text-color);
 }
 .movie__year {
-  border-left: 1px solid getColor(secondary-text-color);
-  padding: 0px 4px;
-  @include media-min(tablet) {
-    padding: 0px 7px;
-  }
+  // border-left: 1px solid getColor(secondary-text-color);
+  // padding: 0px 4px;
+  // @include media-min(tablet) {
+  //   padding: 0px 7px;
+  // }
 }
 
 .movie__rating {
