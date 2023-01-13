@@ -1,14 +1,14 @@
 // import { Notify } from 'notiflix/build/notiflix-notify-aio';
 // import { fetchTrendedFilms } from './api/fetch';
 // import { fetchSearchedFilms } from './api/fetch';
- import { fetchFilmById } from './api/fetch';
+import { fetchFilmById } from './api/fetch';
 import { fetchFilmGenres } from './api/fetch';
 // import { renderPopularFilms } from './render/renderPopularFilm';
 import { renderFilmsByIdForLibrary } from './render/renderFilmByIdForLibrary';
 // import { renderFilms } from './render/renderHTML';
 import { ref } from './references/ref';
 // import { options, pagination } from './pagination';
-// import { PAGES } from './api/api-vars';
+// import { LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE } from './api/api-vars';
 
 // let textContent = '';
 const  LOCALSTORAGE_WATCHED =  "watched";
@@ -29,29 +29,50 @@ function load (key) {
 	}
  };
 
-document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
-ref.libraryWatchedBtn.addEventListener('click', onClickWatchedBtn);
-ref.libraryQueueBtn.addEventListener('click', onClickQueueBtn);
+try {
+	document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
+	ref.libraryWatchedBtn.addEventListener('click', onClickWatchedBtn);
+	ref.libraryQueueBtn.addEventListener('click', onClickQueueBtn);
+	 } catch (error) {
+		console.log(error);
+	 }
 
 function onDOMContentLoaded() {
 	// console.log(ref.libraryWatchedBtn.style);
 	const arrayWatched = load (LOCALSTORAGE_WATCHED);
+	//   console.log(arrayWatched);
+	if (arrayWatched===undefined) {
+		return
+	}
+	// // console.log(arrayWatched);
+	// const ars =arrayWatched.map(ar => ar.id);
 	fetchAndRenderFilm(arrayWatched);	
 }
 function onClickWatchedBtn(e) {
 	ref.libraryList.innerHTML = "";
- const arrayWatched = load (LOCALSTORAGE_WATCHED);
- fetchAndRenderFilm(arrayWatched);
+	const arrayWatched = load (LOCALSTORAGE_WATCHED);
+	// console.log(arrayWatched);
+	if (arrayWatched===undefined) {
+		return
+	}
+	// const ars = arrayWatched.map(ar => ar.id);
+	fetchAndRenderFilm(arrayWatched);
  }
 function onClickQueueBtn(e) {
 	ref.libraryList.innerHTML = "";
 	const arrayQueue = load (LOCALSTORAGE_QUEUE);
+	// console.log(arrayQueue);
+	if (arrayQueue===undefined) {
+		return
+	}
+	// const ars = arrayQueue.map(ar => ar.id);
 	fetchAndRenderFilm(arrayQueue);
 }
 // const ids = [550, 299536, 383498];
 // console.log(ids.map(id => console.log(id)));
 async function fetchAndRenderFilm(ids) {
 	try {
+		// console.log(ids);
 	 const arrayOfPromises = ids.map(async (id) => await fetchFilmById(id));
 	 const data = await Promise.all(arrayOfPromises);
 	//   console.log(data);
