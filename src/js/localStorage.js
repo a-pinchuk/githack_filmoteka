@@ -54,10 +54,13 @@ function saveLocal(array, id, key) {
 	array.push (id);
 	save(key, array);
 }
-// function onClickModalWatchedBtn(params) {
-// 	const arrayWatched = load (LOCALSTORAGE_WATCHED);
-//  	console.log(params.dataset.watched);
-// }
+function onClickModalWatchedBtn(arrayLocalStorage, arrayWatched, currentId, LOCALSTORAGE_WATCHED) {
+	if (arrayLocalStorage ===undefined) {
+		saveLocal(arrayWatched, currentId, LOCALSTORAGE_WATCHED);
+	return
+	}
+	saveLocal(arrayLocalStorage, currentId, LOCALSTORAGE_WATCHED);;
+}
 // function onClickModalQueuedBtn(params) {
 // 	console.log(10);
 // }
