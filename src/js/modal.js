@@ -32,7 +32,9 @@ async function openModal(item) {
   renderBackdrop(response);
   ref.modalWrap.insertAdjacentHTML('afterBegin', renderMarkupModal(response));
   loaderHide();
-  // ====================TREILER=========================================
+
+  
+  // ======НЕ ЗВАЖАЙ УВАГИ====TREILER====НЕ ЗВАЖАЙ УВАГИ======НЕ ЗВАЖАЙ УВАГИ===============================
   const btnTreil = document.querySelector('.modal-btn-trailer')
 const div = document.querySelector('.modal-wrap-img-btn')
 const wrapIMG = document.querySelector('.modal-img-wrap')
@@ -49,7 +51,7 @@ async function onClickWatch () {
   btnTreil.style.display = 'none'
   ref.modalWrap.insertAdjacentHTML('afterBegin', renderTrail(response.results[officialTrail]));
 }
-  // ====================TREILER========================================
+  // ====НЕ ЗВАЖАЙ УВАГИ======TREILER=======НЕ ЗВАЖАЙ УВАГИ=======НЕ ЗВАЖАЙ УВАГИ==========================
 }
 
 function renderBackdrop(film) {
@@ -125,7 +127,7 @@ function closeModalbyClick(e) {
     document.removeEventListener('keydown', closeModal);
   }
 }
-
+// =========НЕ ЗВАЖАЙ УВАГИ========TREILER===========НЕ ЗВАЖАЙ УВАГИ==============НЕ ЗВАЖАЙ УВАГИ===========
 function renderTrail ({key}) {
   return `<iframe
   width="375"
@@ -139,3 +141,4 @@ function renderTrail ({key}) {
     class='modal-image'
   ></iframe>`
   }
+// =============НЕ ЗВАЖАЙ УВАГИ======TREILER========НЕ ЗВАЖАЙ УВАГИ=============НЕ ЗВАЖАЙ УВАГИ===============
