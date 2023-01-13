@@ -12,41 +12,41 @@ ref.modal.addEventListener('click', closeModalbyClick);
 
 async function openModal(item) {
   document.addEventListener('keydown', closeModal);
+  const theme = JSON.parse(localStorage.getItem('darkmode'));
+  console.log(theme);
+  if (theme) {
+    ref.modalWindow.classList.add('modal-window-dark');
+  } else {
+    ref.modalWindow.classList.remove('modal-window-dark');
+  }
   ref.modal.classList.toggle('is-hidden');
+  document.body.style.overflow = 'hidden';
+
   const li = item.target.closest('.photo__card');
   const id = li.getAttribute('id');
   const response = await fetchFilmById(id).then(r => {
     return r.data;
   });
-  ref.modal.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${response.backdrop_path})`;
+
+  renderBackdrop(response);
   ref.modalWrap.insertAdjacentHTML('afterBegin', renderMarkupModal(response));
+}
+
+function renderBackdrop(film) {
+  const backdrop = document.querySelector('.backdrop-info');
+  backdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/w1280/${film.backdrop_path})`;
+  backdrop.style.backgroundRepeat = 'no-repeat';
+  backdrop.style.backgroundSize = 'cover';
+  backdrop.style.backgroundPosition = 'center';
 }
 
 function renderMarkupModal(film) {
   return `<div class="modal-img-wrap">
-        <picture class="modal-image">
-          <source
-            srcset="https://image.tmdb.org/t/p/w500/${
-              film.poster_path
-            } 1x, https://image.tmdb.org/t/p/w500/${film.poster_path} 2x"
-            media="(min-width:1280px)"
-          />
-          <source
-            srcset="https://image.tmdb.org/t/p/w500/${
-              film.poster_path
-            } 1x, https://image.tmdb.org/t/p/w500/${film.poster_path} 2x"
-            media="(min-width:768px)"
-          />
-          <source
-            srcset="https://image.tmdb.org/t/p/w500/${
-              film.poster_path
-            } 1x, https://image.tmdb.org/t/p/w500/${film.poster_path} 2x"
-            media="(max-width:767px)"
-          />
-          <img src="https://image.tmdb.org/t/p/w500/${film.poster_path}" alt="${
-    film.title
-  }" class="modal-image"/>
-        </picture>
+          <div class="modal-wrap-img-btn"><img src="https://image.tmdb.org/t/p/w500/${
+            film.poster_path
+          }" alt="${film.title}" class="modal-image"/>
+            <button type="button" class="modal-btn-trailer">GO!<svg class="btn-trailer-icon"><use href="./img/icons.svg#icon-play"></use></svg>
+          </button></div>
       </div>
       <div class="modal-info">
         <h2 class="modal-info-name">${film.title}</h2>
@@ -86,9 +86,6 @@ function renderMarkupModal(film) {
           <button type="button" class="modal-btn modal-btn-queue">
             Add to queue
           </button>
-          <button type="button" class="modal-btn modal-btn-trailer">
-            Watch trailer
-          </button>
         </div>
       </div>`;
 }
@@ -96,6 +93,7 @@ function closeModal(e) {
   if (e.key === 'Escape' || e.type === 'click') {
     ref.modal.classList.toggle('is-hidden');
     ref.modalWrap.innerHTML = '';
+    document.body.style.overflow = '';
     document.removeEventListener('keydown', closeModal);
   }
 }
@@ -103,6 +101,7 @@ function closeModalbyClick(e) {
   if (e.target === e.currentTarget) {
     ref.modal.classList.toggle('is-hidden');
     ref.modalWrap.innerHTML = '';
+    document.body.style.overflow = '';
     document.removeEventListener('keydown', closeModal);
   }
 }

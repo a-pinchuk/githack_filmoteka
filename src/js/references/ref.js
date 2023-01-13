@@ -17,6 +17,7 @@ const ref = {
   closeModalBtn: document.querySelector('[data-modal-close]'),
   modal: document.querySelector('[data-modal]'),
   modalWrap: document.querySelector('.modal-wrap'),
+  modalWindow: document.querySelector('.modal-window'),
   checkbox: document.querySelector('.checkbox'),
 };
 
