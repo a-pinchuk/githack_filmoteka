@@ -1,4 +1,5 @@
 const ref = {
+  bodyRef: document.querySelector('body'),
   form: document.querySelector('.search-form'),
   input: document.querySelector('.search-form__input'),
   photoCard: document.querySelector('.photo-card'),

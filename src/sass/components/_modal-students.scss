@@ -3,6 +3,7 @@
 @import '../base/colors';
 
 .students-modal {
+    color: getColor(primary-text-color);
     max-height: 90%;
     max-width: 90%;
     overflow-y: scroll;
@@ -44,7 +45,7 @@
     font-size: 20px;
     line-height: 23px;
     text-transform: uppercase;
-    color: getColor(primary-text-color);
+    color: inherit;
     margin-bottom: 8px;
 
     @include media-min(desktop) {
@@ -116,6 +117,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: inherit;
     @include media-min(tablet) {
         align-content: center;
         align-items: flex-start;
@@ -136,7 +138,13 @@
     fill: #000000;
     width: 14px;
     height: 14px;
+    transition: fill 1000ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+
+.students-modal-close-button__icon:hover {
+    fill: getColor(secondary-text-color)
+}
+
 
 .students-modal-close-button {
     display: flex;
@@ -150,4 +158,36 @@
     right: 8px;
     cursor: pointer;
     z-index: 111;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #FF6B08;
+  position: absolute;
+  top: 50%;
+  width: calc(var(--swiper-navigation-size) / 44 * 27);
+  height: var(--swiper-navigation-size);
+  margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 767px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+     top: 80%;
+    }
+  
+    .swiper-button-prev:after,
+    .swiper-button-next:after {
+    font-size: 10px;
+    
+  } }
+
+.students-modal-on-dark-mode {
+    background-color: #000000;
+    color: #FFFFFF;
 }

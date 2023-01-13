@@ -25,8 +25,16 @@ new Swiper('.swiper', {
 
 ref.studentsModalOpenBtnRef.addEventListener('click', (e) => {
     e.preventDefault()
+
+    if(ref.bodyRef.classList.contains('dark-theme')) {
+        ref.studentsModal.classList.add('students-modal-on-dark-mode')
+    }
+    else ref.studentsModal.classList.remove('students-modal-on-dark-mode')
+    
     ref.studentsModal.classList.remove('students-modal-close')
     ref.backdropRef.classList.remove('is-hidden')
+
+    
 })
 
 ref.backdropRef.addEventListener('click', (e) => {
@@ -47,3 +55,6 @@ document.addEventListener('keydown', (e) => {
         ref.backdropRef.classList.add('is-hidden')
     }
 })
+
+
+    // ref.studentsModal.classList.add('students-modal-on-dark-mode')
