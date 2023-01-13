@@ -30,16 +30,14 @@ async function openModal(item) {
 
   renderBackdrop(response);
   ref.modalWrap.insertAdjacentHTML('afterBegin', renderMarkupModal(response));
+
 // -------------TRAILER------------------------
   const btnTreil = document.querySelector('.modal-btn-trailer')
   const imgss = document.querySelector('.modal-image')
   const div = document.querySelector('.modal-wrap-img-btn')
-  console.log(div)
-  console.log(imgss)
-  console.log(btnTreil)
   btnTreil.addEventListener('click', onClickWatch)
   
-  async function onClickWatch (event) {
+  async function onClickWatch () {
     const li = item.target.closest('.photo__card');
     const id = li.getAttribute('id');
 
@@ -48,8 +46,11 @@ async function openModal(item) {
     })
     console.log(response.results.length -1)
     const officialTrail = response.results.length -1
-    renderTrail(response.results[officialTrail])
+    imgss.remove();
+    btnTreil.style.display = 'none'
+    ref.modalWrap.insertAdjacentHTML('afterBegin', renderTrail(response.results[officialTrail]));
 }
+// ------------TREILER------------------------
 }
 
 function renderBackdrop(film) {
@@ -127,12 +128,10 @@ function closeModalbyClick(e) {
 }
 
 // -------- RENDER TREILER --------------------
-function renderTrail (video) {
-  const {key} = video
-  imgss.remove()
-  div.innerHTML = `<iframe
-  width="394"
-  height="574"
+function renderTrail ({key}) {
+return `<iframe
+  width="264"
+  height="374"
   src="https://www.youtube.com/embed/${key}"
   title="YouTube video player"
   frameborder="0"
@@ -140,13 +139,5 @@ function renderTrail (video) {
   allowfullscreen
   waitUntil()
 ></iframe>`
-// setTimeout(() => {
-//   console.clear()
-// }, 3000);
-// setTimeout(() => {
-//   console.clear()
-// }, 3000);
-// setTimeout(() => {
-//   console.clear()
-// }, 4000);
 }
+// -------- RENDER TREILER --------------------
