@@ -18,12 +18,14 @@ fetchAndRenderPopularFilm();
 
 async function fetchAndRenderPopularFilm(e) {
   try {
+    ref.loader.style.display = 'flex';
     const image = await fetchTrendedFilms();
     const genres = await fetchFilmGenres();
     const data = image.data.results;
     const genresID = genres.data.genres;
 
     renderPopularFilms(ref, data, genresID);
+    loaderHide();
   } catch (error) {
     console.log(error);
   }
@@ -37,6 +39,12 @@ async function fetchAndRenderTrailerFilm(id) {
   } catch (error) {
     console.log(error);
   }
+}
+
+export function loaderHide() {
+  setTimeout(() => {
+    ref.loader.style.display = 'none';
+  }, 200);
 }
 // fetchAndRenderFilmById(89125);
 // fetchFilmByGenres();

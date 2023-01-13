@@ -4,6 +4,7 @@ import { ref } from '../references/ref';
 import { Notify } from 'notiflix';
 import { PAGE } from '../api/api-vars';
 import { renderPopularFilms } from '../render/renderPopularFilm';
+import { loaderHide } from '../fetchAndRenderPopularFilm';
 
 let searchQuery = '';
 
@@ -26,6 +27,7 @@ function onCLickSubmit(e) {
 async function renderSearchFilms() {
   // let totalResults = 0;
   try {
+    ref.loader.style.display = 'flex';
     const promis = await fetchSearchedFilms(searchQuery, PAGE);
     const data = promis.data.results;
     if (data.length === 0) {
@@ -33,7 +35,7 @@ async function renderSearchFilms() {
     }
     clearGallery();
     createMarkUp(ref, data);
-  
+    loaderHide();
   } catch (error) {
     console.log(error);
   }

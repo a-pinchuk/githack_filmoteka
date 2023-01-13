@@ -3,6 +3,7 @@ import { log } from 'console';
 import { API_KEY, TREND_URL, SEARCH_URL, ID_URL } from './api/api-vars';
 import { fetchFilmById, fetchTrendedFilms } from './api/fetch';
 import { ref } from './references/ref';
+import { loaderHide } from '../js/fetchAndRenderPopularFilm';
 
 // ref.openModalBtn.addEventListener('click', openModal);
 ref.galleryList.addEventListener('click', openModal);
@@ -12,6 +13,7 @@ ref.modal.addEventListener('click', closeModalbyClick);
 
 async function openModal(item) {
   document.addEventListener('keydown', closeModal);
+  ref.loader.style.display = 'flex';
   const theme = JSON.parse(localStorage.getItem('darkmode'));
   if (theme) {
     ref.modalWindow.classList.add('modal-window-dark');
@@ -29,6 +31,7 @@ async function openModal(item) {
 
   renderBackdrop(response);
   ref.modalWrap.insertAdjacentHTML('afterBegin', renderMarkupModal(response));
+  loaderHide();
 }
 
 function renderBackdrop(film) {
