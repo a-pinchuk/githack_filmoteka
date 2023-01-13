@@ -13,7 +13,6 @@ ref.modal.addEventListener('click', closeModalbyClick);
 async function openModal(item) {
   document.addEventListener('keydown', closeModal);
   const theme = JSON.parse(localStorage.getItem('darkmode'));
-  console.log(theme);
   if (theme) {
     ref.modalWindow.classList.add('modal-window-dark');
   } else {
