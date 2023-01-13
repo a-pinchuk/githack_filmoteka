@@ -8,8 +8,9 @@ import './js/references/ref';
 // import './js/fetchAndRenderPopularFilm';
 import './js/render/renderFilmByIdForLibrary';
 import './js/render/modal-students';
- import './js/library';
+import './js/library';
 import './js/modal';
+import './js/authentication/authentication';
 
 import './js/requests/searchFilms';
 import './js/render/renderSearchFilms';

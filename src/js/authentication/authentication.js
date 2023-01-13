@@ -1,5 +1,6 @@
 import { Notify } from 'notiflix';
 
+// FIREBASE DATA
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set } from 'firebase/database';
 import {
@@ -9,7 +10,6 @@ import {
   signOut,
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
-import { Notify } from 'notiflix';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBSxHMpTM9zFqKEQxKrDCL--X3YmGwmeVA',
@@ -59,7 +59,7 @@ closeSignUpModalBtn.addEventListener('click', () => {
   openSignUpModalBtn.classList.toggle('is-hidden');
 });
 
-// Header Btn
+// Header login/sig in button
 const AuthBox = document.querySelector('[data-modal-open-auth-box]');
 const userName = document.querySelector('.user-name');
 
@@ -113,7 +113,6 @@ function onSingUpFormSubmit(event) {
         set(ref(database, 'users/' + user.uid), {
           username,
           email,
-          password,
         });
       })
       .catch(error => {
@@ -160,24 +159,27 @@ function onLoginFormSubmit(event) {
 // LogOut
 
 const logoutBtn = document.querySelector('.logout');
-logoutBtn.addEventListener('click', onLogout);
 
-function onLogout(event) {
-  signOut(auth)
-    .then(() => {
-      signUpBtn.style.display = 'none';
-      loginBtn.style.display = 'none';
-      Notify.info(`Bye, see you later`);
-      AuthBox.classList.add('is-hidden');
-      window.location.href = 'index.html';
-    })
-    .catch(error => {
-      const errorMessage = error.message;
-      Notify.failure(errorMessage);
-    });
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', onLogout);
+
+  function onLogout(event) {
+    signOut(auth)
+      .then(() => {
+        signUpBtn.style.display = 'none';
+        loginBtn.style.display = 'none';
+        Notify.info(`Bye, see you later`);
+        AuthBox.classList.add('is-hidden');
+        window.location.href = 'index.html';
+      })
+      .catch(error => {
+        const errorMessage = error.message;
+        Notify.failure(errorMessage);
+      });
+  }
 }
 
-// AuthState
+// Library login/logout button
 
 const openLibraryPage = document.querySelector('[open-library-page]');
 
@@ -197,14 +199,14 @@ if (openLibraryPage) {
   });
 }
 
-const logoutLibraryBtn = document.querySelector('.header-library__use-name');
+const logoutLibraryBtn = document.querySelector('.logout-library-btn');
+
 if (logoutLibraryBtn) {
   logoutLibraryBtn.addEventListener('click', onLogout);
 
   function onLogout(e) {
     signOut(auth)
       .then(() => {
-        logoutLibraryBtn.removeEventListener('click', e);
         window.location.href = 'library.html';
       })
       .catch(error => {
@@ -213,6 +215,8 @@ if (logoutLibraryBtn) {
       });
   }
 }
+
+// AuthState
 
 if (openLibraryPage) {
   onAuthStateChanged(auth, user => {
