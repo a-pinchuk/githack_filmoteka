@@ -2,8 +2,7 @@ export function renderPopularFilms(ref, data, genres) {
   const markup = data
     .map(el => {
       const genreId = el.genre_ids;
-		 const movieGenres = compareGenresId(genres, genreId);
-		 console.log(el.id)
+      const movieGenres = compareGenresId(genres, genreId);
       return `
       <li class="photo__card" data-modal-open id="${el.id}">
             <img src="https://image.tmdb.org/t/p/w500/${

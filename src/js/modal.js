@@ -18,7 +18,7 @@ async function openModal(item) {
   const response = await fetchFilmById(id).then(r => {
     return r.data;
   });
-  // console.log(response);
+  ref.modal.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${response.backdrop_path})`;
   ref.modalWrap.insertAdjacentHTML('afterBegin', renderMarkupModal(response));
 }
 

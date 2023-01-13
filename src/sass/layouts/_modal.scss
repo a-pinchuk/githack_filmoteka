@@ -6,7 +6,13 @@
   height: calc(100% + 38px);
   background-color: #5F5F5F;
   transition: opacity 250ms linear, visibility 250ms linear;
+  
+  background-size: cover;
+  background-position: center;
 }
+
+
+
 .backdrop.is-hidden {
   visibility: hidden;
   opacity: 0;
