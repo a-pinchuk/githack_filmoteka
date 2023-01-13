@@ -24,6 +24,7 @@
 }
 
 .photo__card {
+  position: relative;
   display: block;
   width: 100%;
   //   background-color: aqua;
@@ -93,4 +94,17 @@
   @include media-min(tablet) {
     padding: 0px 7px;
   }
+}
+
+.movie__rating {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 35px;
+  height: 18px;
+  background-color: getColor(secondary-text-color);
+  border-radius: 5px;
+  padding: 1px;
+  text-align: center;
+  font-weight: bold;
 }

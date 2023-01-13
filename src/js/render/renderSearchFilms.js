@@ -3,19 +3,20 @@ import allGeners from '../../json/genres.json';
 export function createMarkUp(ref, data) {
   const markUp = data
     .map(item => {
-      const defaultPicture = 'https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg';
+      const defaultPicture =
+        'https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg';
       // const defaultPicture = defImg;
-      const { title, poster_path, release_date, genre_ids, id} = item;
-		 const filmGenre = getGeners(allGeners, genre_ids);
-		 console.log(release_date);
+      const { title, poster_path, release_date, genre_ids, id } = item;
+      const filmGenre = getGeners(allGeners, genre_ids);
       let link = `https://image.tmdb.org/t/p/w500null`;
       let baseImafge = `https://image.tmdb.org/t/p/w500${poster_path}`;
-		 const normalizeDate = release_date.slice(0, 4);
+      const normalizeDate = release_date.slice(0, 4);
       return `
       <li class="photo__card" data-modal-open id="${id}">
-          
-            <img src="${baseImafge !== link ? baseImafge : defaultPicture}" alt="" "loading="lazy" class="movie__image"/>
-       
+            <img src="${
+              baseImafge !== link ? baseImafge : defaultPicture
+            }" alt="" "loading="lazy" class="movie__image"/>
+            <span class="movie__rating">${item.vote_average.toFixed(2)}</span> 
           <div class="movie__info">
             <h2 class="film__title">${title}</h2>
             <div class="movie__details">
