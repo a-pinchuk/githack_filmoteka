@@ -3,21 +3,24 @@
     <div class="nav-library">
       <a class="nav-library__logo" href="./index.html">
         <svg class="header-library__icon" width="24px" height="24px">
-          <use href="./images/sprite.svg#icon-film"></use></svg>
-          <span class="header-library__tittle">Filmoteka</span></a>
+          <use href="./images/sprite.svg#icon-film"></use>
+        </svg>
+        <span class="header-library__tittle">Filmoteka</span></a>
 
-      
+
       <ul class="header-library__list">
         <li><a class="header-library__link" href="./index.html">Home</a></li>
-        <li>
-          <a
-            class="header-library__link site-nav__link--current"
-            href="./my-library.html"
-            >My Library</a
-          >
+        <li style="position: relative;">
+          <a class="header-library__link site-nav__link--current" href="./my-library.html">My Library</a>
+          <p class="header-library__use-name">
+            <span>User</span><svg class="logout" style="width: 24px; height: 24px; ">
+              <use href="./images/sprite.svg#icon-log-out"></use>
+            </svg>
+          </p>
         </li>
+
       </ul>
-    </div>  
+    </div>
 
     <div class="header-library__btn-list">
       <button class="header-library__btn" id="library-watched" type="button">Watched</button>

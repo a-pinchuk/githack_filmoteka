@@ -12,6 +12,7 @@ import './js/modal';
 
 import './js/requests/searchFilms';
 import './js/render/renderSearchFilms';
+import './js/library-page/libraryPage';
 
 // Переключатель темы
 
