@@ -27,12 +27,11 @@ export function saveLocalStorage() {
 		save: false,
 	};
 	//   localStorage.clear();
-	const btn = true;
+	// const btn = true;
 	let arrayWatched =[];
 	const arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
 	
 	modalWatchedBtn.addEventListener ('click', () => {
-	if (arrayLocalStorage ===undefined) {
 		const currentId = Number(modalWatchedBtn.dataset.watched);
 		   film.id = currentId;
 		   film.save = true;
@@ -46,22 +45,8 @@ export function saveLocalStorage() {
 			arrayLocalStorage.push (film);
 			save(LOCALSTORAGE_WATCHED, arrayLocalStorage);
 			
-		}
-		const t = arrayLocalStorage.find(op => op.save);
-		if (t === false) {
-			const currentId = Number(modalWatchedBtn.dataset.watched);
-		   film.id = currentId;
-		   film.save = true;
-			modalWatchedBtn.textContent = "Rem to watched";
-		// console.log(arrayLocalStorage);
-		   if (arrayLocalStorage ===undefined) {
-			arrayWatched.push (film);
-			save(LOCALSTORAGE_WATCHED, arrayWatched)
-			return
-			}
-			arrayLocalStorage.push (film);
-			save(LOCALSTORAGE_WATCHED, arrayLocalStorage);
-		}
+		
+		
 	})
    
 			
