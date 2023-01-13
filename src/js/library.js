@@ -8,17 +8,17 @@ import { renderFilmsByIdForLibrary } from './render/renderFilmByIdForLibrary';
 // import { renderFilms } from './render/renderHTML';
 import { ref } from './references/ref';
 // import { options, pagination } from './pagination';
-// import { PAGES } from './api/api-vars';
+import { LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE } from './api/api-vars';
 
 // let textContent = '';
-const  LOCALSTORAGE_WATCHED =  "watched";
-const  LOCALSTORAGE_QUEUE =  "queue";
+// const  LOCALSTORAGE_WATCHED =  "watched";
+// const  LOCALSTORAGE_QUEUE =  "queue";
 
-const dyk = [800815];
-	  localStorage.setItem(LOCALSTORAGE_WATCHED, JSON.stringify(dyk));
+// const dyk = [800815];
+// 	  localStorage.setItem(LOCALSTORAGE_WATCHED, JSON.stringify(dyk));
 
-const qyk = [653851];
-localStorage.setItem(LOCALSTORAGE_QUEUE, JSON.stringify(qyk));
+// const qyk = [653851];
+// localStorage.setItem(LOCALSTORAGE_QUEUE, JSON.stringify(qyk));
 
 function load (key) {
 	try {
@@ -29,24 +29,42 @@ function load (key) {
 	}
  };
 
-document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
-ref.libraryWatchedBtn.addEventListener('click', onClickWatchedBtn);
-ref.libraryQueueBtn.addEventListener('click', onClickQueueBtn);
+try {
+	document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
+	ref.libraryWatchedBtn.addEventListener('click', onClickWatchedBtn);
+	ref.libraryQueueBtn.addEventListener('click', onClickQueueBtn);
+	 } catch (error) {
+		console.log(error);
+	 }
 
 function onDOMContentLoaded() {
 	// console.log(ref.libraryWatchedBtn.style);
 	const arrayWatched = load (LOCALSTORAGE_WATCHED);
-	fetchAndRenderFilm(arrayWatched);	
+	// console.log(arrayWatched);
+	if (arrayWatched===undefined) {
+		return
+	}
+	// console.log(arrayWatched);
+	const ars =arrayWatched.map(ar => ar.id);
+	fetchAndRenderFilm(ars);	
 }
 function onClickWatchedBtn(e) {
 	ref.libraryList.innerHTML = "";
- const arrayWatched = load (LOCALSTORAGE_WATCHED);
- fetchAndRenderFilm(arrayWatched);
+	const arrayWatched = load (LOCALSTORAGE_WATCHED);
+	if (arrayWatched===undefined) {
+		return
+	}
+	const ars = arrayWatched.map(ar => ar.id);
+	fetchAndRenderFilm(ars);
  }
 function onClickQueueBtn(e) {
 	ref.libraryList.innerHTML = "";
 	const arrayQueue = load (LOCALSTORAGE_QUEUE);
-	fetchAndRenderFilm(arrayQueue);
+	if (arrayQueue===undefined) {
+		return
+	}
+	const ars = arrayQueue.map(ar => ar.id);
+	fetchAndRenderFilm(ars);
 }
 // const ids = [550, 299536, 383498];
 // console.log(ids.map(id => console.log(id)));

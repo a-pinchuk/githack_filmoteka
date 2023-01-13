@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { log } from 'console';
-import { API_KEY, TREND_URL, SEARCH_URL, ID_URL } from './api/api-vars';
+import { API_KEY, TREND_URL, SEARCH_URL, ID_URL, LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE} from './api/api-vars';
 import { fetchFilmById, fetchTrendedFilms } from './api/fetch';
 import { ref } from './references/ref';
+import { saveLocalStorage} from './localStorage';
 
 // ref.openModalBtn.addEventListener('click', openModal);
+
 ref.galleryList.addEventListener('click', openModal);
 ref.closeModalBtn.addEventListener('click', closeModal);
 ref.modal.addEventListener('keydown', closeModal);
@@ -20,6 +22,7 @@ async function openModal(item) {
   });
   // console.log(response);
   ref.modalWrap.insertAdjacentHTML('afterBegin', renderMarkupModal(response));
+  saveLocalStorage();
 }
 
 function renderMarkupModal(film) {
@@ -80,13 +83,13 @@ function renderMarkupModal(film) {
           ${film.overview}
         </p>
         <div class="btn-modal-wrap">
-          <button type="button" class="modal-btn modal-btn-watched">
+          <button type="button" class="modal-btn modal-btn-watched" data-watched="${film.id}">
             Add to watched
           </button>
-          <button type="button" class="modal-btn modal-btn-queue">
+          <button type="button" class="modal-btn modal-btn-queue" data-queue="${film.id}">
             Add to queue
           </button>
-          <button type="button" class="modal-btn modal-btn-trailer">
+          <button type="button" class="modal-btn modal-btn-trailer" data-trailer="${film.id}">
             Watch trailer
           </button>
         </div>

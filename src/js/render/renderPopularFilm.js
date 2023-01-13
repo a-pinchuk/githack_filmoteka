@@ -3,7 +3,7 @@ export function renderPopularFilms(ref, data, genres) {
     .map(el => {
       const genreId = el.genre_ids;
 		 const movieGenres = compareGenresId(genres, genreId);
-		 console.log(el.id)
+		//  console.log(el.id)
       return `
       <li class="photo__card" data-modal-open id="${el.id}">
             <img src="https://image.tmdb.org/t/p/w500/${

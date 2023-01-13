@@ -28,7 +28,7 @@ function compareGenres (genres) {
 		 }
 	);
  
-	if (arrayOfGenres.length > 2) {
+	if (arrayOfGenres.length > 3) {
 	  arrayOfGenres = arrayOfGenres.splice(0, 2).join(', ') + ', Other';
 	  
 	}
