@@ -2,7 +2,7 @@ import {ref} from '../references/ref'
 import Swiper, { EffectCoverflow, Navigation } from 'swiper';
 
   // import styles bundle
-import 'swiper/swiper-bundle.css';
+import 'swiper/swiper.scss';
 
 new Swiper('.swiper', {
     modules: [Navigation, EffectCoverflow],
@@ -25,25 +25,36 @@ new Swiper('.swiper', {
 
 ref.studentsModalOpenBtnRef.addEventListener('click', (e) => {
     e.preventDefault()
-    ref.studentsModal.classList.remove('students-modal-close')
-    ref.backdropRef.classList.remove('is-hidden')
+    openStudentsModal()
 })
 
 ref.backdropRef.addEventListener('click', (e) => {
 if (e.target === ref.backdropRef) {
-        ref.studentsModal.classList.add('students-modal-close')
-        ref.backdropRef.classList.add('is-hidden')
+    closeStudentsModal()
     }
 })
 
 ref.studentsModalCloseBtnRef.addEventListener('click', () => {
-    ref.studentsModal.classList.add('students-modal-close')
-    ref.backdropRef.classList.add('is-hidden')
+    closeStudentsModal()
 })
 
 document.addEventListener('keydown', (e) => {
     if (e.key === "Escape") {
-        ref.studentsModal.classList.add('students-modal-close')
-        ref.backdropRef.classList.add('is-hidden')
+        closeStudentsModal()
     }
 })
+
+
+function openStudentsModal() {
+    ref.bodyRef.classList.contains('dark-theme') ?
+    ref.studentsModal.classList.add('students-modal-dark-theme') :
+    ref.studentsModal.classList.remove('students-modal-dark-theme')
+    
+    ref.studentsModal.classList.remove('students-modal-close')
+    ref.backdropRef.classList.remove('is-hidden')
+    
+}
+function closeStudentsModal() {
+    ref.studentsModal.classList.add('students-modal-close')
+    ref.backdropRef.classList.add('is-hidden')
+}
