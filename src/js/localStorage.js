@@ -10,62 +10,57 @@ import { ref } from './references/ref';
 // import { options, pagination } from './pagination';
 import { LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE } from './api/api-vars';
 
-// let textContent = '';
-// const  LOCALSTORAGE_WATCHED =  "watched";
-// const  LOCALSTORAGE_QUEUE =  "queue";
-
- const dyk = [800815];
-// 	  localStorage.setItem(LOCALSTORAGE_WATCHED, JSON.stringify(dyk));
-
- const qyk = [653851];
-// localStorage.setItem(LOCALSTORAGE_QUEUE, JSON.stringify(qyk));
 export function saveLocalStorage() {
 	const modalWatchedBtn = document.querySelector('button[data-watched]');
 	const modalQueuedBtn = document.querySelector('button[data-queue]');
-   let film ={
-		id: 0,
-		save: false,
-	};
-	//   localStorage.clear();
-	// const btn = true;
+   //  localStorage.clear();
 	let arrayWatched =[];
+	let arrayQueued =[];
 	const arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
-	
+	const arrayLocQueuedStorage = load (LOCALSTORAGE_QUEUE);
+	const currentId = Number(modalWatchedBtn.dataset.watched);
+	// if (arrayLocalStorage !== undefined && arrayLocalStorage.includes(currentId)) {
+	// 	modalWatchedBtn.textContent = "Rem to watched";
+	// 	modalWatchedBtn.addEventListener ('click', () => {
+	// 		const g = arrayLocalStorage.indexOf(currentId);
+	// 		const v = arrayLocalStorage.splice(g, 1);
+	// 		save(LOCALSTORAGE_WATCHED, v);
+	// 		modalWatchedBtn.textContent = "Add to watched";
+
+	// 		// if (modalWatchedBtn.textContent.toLowerCase()==="add to watched") {
+	// 			// modalWatchedBtn.textContent = "Add to watched";
+				
+	// 	})
+		
+	// }
 	modalWatchedBtn.addEventListener ('click', () => {
-		const currentId = Number(modalWatchedBtn.dataset.watched);
-		   film.id = currentId;
-		   film.save = true;
-			modalWatchedBtn.textContent = "Rem to watched";
-		// console.log(arrayLocalStorage);
-		   if (arrayLocalStorage ===undefined) {
-			arrayWatched.push (film);
-			save(LOCALSTORAGE_WATCHED, arrayWatched)
-			return
-			}
-			arrayLocalStorage.push (film);
-			save(LOCALSTORAGE_WATCHED, arrayLocalStorage);
-			
-		
-		
+				if (arrayLocalStorage ===undefined) {
+					saveLocal(arrayWatched, currentId, LOCALSTORAGE_WATCHED);
+				return
+				}
+				saveLocal(arrayLocalStorage, currentId, LOCALSTORAGE_WATCHED);
 	})
-   
-			
-	modalQueuedBtn.addEventListener ('click', onClickModalQueuedBtn);
 	
-		// console.log(a);
-	// save("k", a)
-	// console.log(load("k"));})
-	// 	// console.log(ref.libraryWatchedBtn.style);
-	// 	const arrayWatched = load (LOCALSTORAGE_WATCHED);
-	// 	fetchAndRenderFilm(arrayWatched);	
+
+  	modalQueuedBtn.addEventListener ('click', () => {
+		if (arrayLocQueuedStorage ===undefined) {
+			saveLocal(arrayQueued, currentId, LOCALSTORAGE_QUEUE);
+		return
+		}
+		saveLocal(arrayLocQueuedStorage, currentId, LOCALSTORAGE_QUEUE);
+});
 	}
+function saveLocal(array, id, key) {
+	array.push (id);
+	save(key, array);
+}
 // function onClickModalWatchedBtn(params) {
 // 	const arrayWatched = load (LOCALSTORAGE_WATCHED);
 //  	console.log(params.dataset.watched);
 // }
-function onClickModalQueuedBtn(params) {
-	console.log(10);
-}
+// function onClickModalQueuedBtn(params) {
+// 	console.log(10);
+// }
 function save (key, value) {
 	try {
 	  const serializedState = JSON.stringify(value);

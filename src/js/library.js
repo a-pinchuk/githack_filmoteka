@@ -40,36 +40,39 @@ try {
 function onDOMContentLoaded() {
 	// console.log(ref.libraryWatchedBtn.style);
 	const arrayWatched = load (LOCALSTORAGE_WATCHED);
-	// console.log(arrayWatched);
+	  console.log(arrayWatched);
 	if (arrayWatched===undefined) {
 		return
 	}
-	// console.log(arrayWatched);
-	const ars =arrayWatched.map(ar => ar.id);
-	fetchAndRenderFilm(ars);	
+	// // console.log(arrayWatched);
+	// const ars =arrayWatched.map(ar => ar.id);
+	fetchAndRenderFilm(arrayWatched);	
 }
 function onClickWatchedBtn(e) {
 	ref.libraryList.innerHTML = "";
 	const arrayWatched = load (LOCALSTORAGE_WATCHED);
+	console.log(arrayWatched);
 	if (arrayWatched===undefined) {
 		return
 	}
-	const ars = arrayWatched.map(ar => ar.id);
-	fetchAndRenderFilm(ars);
+	// const ars = arrayWatched.map(ar => ar.id);
+	fetchAndRenderFilm(arrayWatched);
  }
 function onClickQueueBtn(e) {
 	ref.libraryList.innerHTML = "";
 	const arrayQueue = load (LOCALSTORAGE_QUEUE);
+	console.log(arrayQueue);
 	if (arrayQueue===undefined) {
 		return
 	}
-	const ars = arrayQueue.map(ar => ar.id);
-	fetchAndRenderFilm(ars);
+	// const ars = arrayQueue.map(ar => ar.id);
+	fetchAndRenderFilm(arrayQueue);
 }
 // const ids = [550, 299536, 383498];
 // console.log(ids.map(id => console.log(id)));
 async function fetchAndRenderFilm(ids) {
 	try {
+		console.log(ids);
 	 const arrayOfPromises = ids.map(async (id) => await fetchFilmById(id));
 	 const data = await Promise.all(arrayOfPromises);
 	//   console.log(data);
