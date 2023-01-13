@@ -4,6 +4,7 @@
 
 .students-modal {
     color: getColor(primary-text-color);
+    fill: #000000;
     max-height: 90%;
     max-width: 90%;
     overflow-y: scroll;
@@ -135,7 +136,7 @@
 }
 
 .students-modal-close-button__icon {
-    fill: #000000;
+    fill: inherit;
     width: 14px;
     height: 14px;
     transition: fill 1000ms cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -189,5 +190,6 @@
 
 .students-modal-on-dark-mode {
     background-color: #000000;
+    fill: #FFFFFF;
     color: #FFFFFF;
 }
