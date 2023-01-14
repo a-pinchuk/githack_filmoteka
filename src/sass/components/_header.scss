@@ -118,6 +118,13 @@
       color: transparent;
     }
   }
+//--------Добавил калсс для алерта
+  &__info {
+    color: #ff001b;
+    padding-top: 20px;
+    display: block;
+    text-align: center;
+  }
 
   &__button {
     position: absolute;

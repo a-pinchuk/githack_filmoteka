@@ -3,6 +3,8 @@ const ref = {
   bodyRef: document.querySelector('body'),
   form: document.querySelector('.search-form'),
   input: document.querySelector('.search-form__input'),
+  // Добавил ссылку для алерта
+  alertMessage: document.querySelector('.search-form__info'),
   photoCard: document.querySelector('.photo-card'),
   galleryList: document.querySelector('.gallery__list'),
   studentsModalOpenBtnRef: document.querySelector('.footer__link'),
