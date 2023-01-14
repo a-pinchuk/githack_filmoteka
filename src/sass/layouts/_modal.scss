@@ -254,13 +254,17 @@
   background-color: inherit;
   border-radius: 5px;
   transition: background-color 250ms linear, color 250ms linear;
-  &:hover,
-  &:focus,
-  &.hover {
-    background-color: #ff6b01;
-    border: 1px solid #ff6b01;
-    color: #ffffff;
-  }
+  &:hover {
+	background-color: #e5b99a;
+	border: 1px solid #ff6b01;
+	color: #ffffff;
+ }
+//   &:focus,
+//   &.hover {
+//     background-color: #ff6b01;
+//     border: 1px solid #ff6b01;
+//     color: #ffffff;
+//   }
   &-watched {
     padding: 6px 27px;
     @include media-min(tablet) {
@@ -281,12 +285,17 @@
 	background-color: #ff6b01;
     border: 1px solid #ff6b01;
     color: #ffffff;
-	 &:hover,
-    &:focus {
-    background-color: inherit;
-    border: 1px solid getColor('primary-text-color');
-    color: getColor('primary-text-color');
+	 &:hover {
+		background-color: #e5b99a;
+		border: 1px solid #ff6b01;
+		color: #ffffff;
+	 }
+   //  &:focus {
+   //  background-color: inherit;
+   //  border: 1px solid getColor('primary-text-color');
+   //  color: getColor('primary-text-color');
 	//  visibility: hidden;
    //  opacity: 0;
    //  pointer-events: none;
-	}}
+	// }
+}

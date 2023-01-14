@@ -57,7 +57,8 @@ export function saveLocalStorage() {
 	modalWatchedRevBtn.addEventListener('click', remFilmLocal);
 
 	function addFilmLocal() {
-		// modalWatchedBtn.classList.remove("hover")
+		modalWatchedBtn.classList.toggle("modal-btn-rev");
+		modalWatchedRevBtn.classList.toggle("modal-btn-rev");
 		arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
 		if (arrayLocalStorage === undefined) {
 		//  console.log(arrayLocalStorage);
@@ -71,7 +72,8 @@ export function saveLocalStorage() {
 			// console.log(load (LOCALSTORAGE_WATCHED));
 	}
 	function remFilmLocal() {
-		// modalWatchedRevBtn.classList.remove("hover")
+		modalWatchedBtn.classList.toggle("modal-btn-rev");
+		modalWatchedRevBtn.classList.toggle("modal-btn-rev");
 		arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
 		//  console.log(arrayLocalStorage);
 		if (arrayLocalStorage === undefined) {
@@ -96,7 +98,8 @@ export function saveLocalStorage() {
 	modalQueuedRevBtn.addEventListener('click', remFilmLocalQueued);
 
 	function addFilmLocalQueued() {
-		// console.log(arrayLocalQueuedStorage);
+		modalQueuedBtn.classList.toggle("modal-btn-rev");
+		modalQueuedRevBtn.classList.toggle("modal-btn-rev");
 		arrayLocalQueuedStorage = load (LOCALSTORAGE_QUEUE);
 		if (arrayLocalQueuedStorage ===undefined) {
 			//  console.log(arrayLocalQueuedStorage);
@@ -111,7 +114,8 @@ export function saveLocalStorage() {
 			// console.log(arrayLocalQueuedStorage);
 	}
 	function remFilmLocalQueued() {
-		// console.log(arrayLocalQueuedStorage);
+		modalQueuedBtn.classList.toggle("modal-btn-rev");
+		modalQueuedRevBtn.classList.toggle("modal-btn-rev");
 		arrayLocalQueuedStorage = load (LOCALSTORAGE_QUEUE);
 		if (arrayLocalQueuedStorage ===undefined) {
 			return
@@ -135,14 +139,14 @@ export function saveLocalStorage() {
 };
 function defineColorBtn (array, btn1, btn2, id) {
 	if (array===undefined) {
-		btn1.classList.toggle("modal-btn-rev") 
+		btn1.classList.add("modal-btn-rev") 
 		// modalWatchedBtn.style.backgroundColor = "#ff6b01";
 		return
 	}  if (array.includes(id)) {
-		btn2.classList.toggle("modal-btn-rev") 
+		btn2.classList.add("modal-btn-rev") 
 		// modalWatchedRevBtn.style.backgroundColor = "#ff6b01";
 		return
-	} btn1.classList.toggle("modal-btn-rev") 
+	} btn1.classList.add("modal-btn-rev") 
 	// modalWatchedBtn.style.backgroundColor = "#ff6b01"
 }
 
