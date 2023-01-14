@@ -8,7 +8,7 @@ import { loaderHide } from '../fetchAndRenderPopularFilm';
 import Pagination from 'tui-pagination';
 
 let searchQuery = '';
-
+PAGE = 2;
 ref.form.addEventListener('submit', onCLickSubmit);
 
 function onCLickSubmit(e) {
@@ -24,7 +24,8 @@ function onCLickSubmit(e) {
   if (searchQuery.length > 0) {
 	  ref.alertMessage.textContent = '';
     ref.input.value = '';
-	  renderSearchFilms();
+    renderSearchFilms();
+    
 	  
   } else {
     renderPopularFilms();
@@ -36,8 +37,7 @@ async function renderSearchFilms() {
     const promis = await fetchSearchedFilms(searchQuery, PAGE);
     const data = promis.data.results;
     const paginationData = promis.data;
-    console.log(paginationData.total_pages);
-    paginationPage(paginationData)
+    
     if (data.length === 0) {
       ref.alertMessage.textContent = 'Search result not successful. Enter the correct movie name and '
       return Notify.warning('Search result not successful. Enter the correct movie name and ');
@@ -45,13 +45,17 @@ async function renderSearchFilms() {
     ref.alertMessage.textContent = '';
     ref.loader.style.display = 'flex';
     clearGallery();
+    paginationPage(paginationData);
     createMarkUp(ref, data);
-    
     loaderHide();
   } catch (error) {
     console.log(error);
   }
 }
+
+
+
+
 
 function clearGallery() {
   ref.galleryList.innerHTML = '';
@@ -59,12 +63,13 @@ function clearGallery() {
 
 
 // TUI pagination-------
-
+// const data = 440;
+// paginationPage(data);
 function paginationPage(data) {
   const container = document.getElementById('pagination');
   const itemsPerPage = 20;
   const options = {
-    totalItems: data.total_pages,
+    totalItems: data.total_results,
     itemsPerPage,
     visiblePages: 10,
 	  centerAlign: false,
@@ -85,16 +90,20 @@ function paginationPage(data) {
   };
 	console.log(options.totalItems);
 	
-	const pagination = new Pagination(container, options);
+  const pagination = new Pagination(container, options);
+
 
 	console.log(pagination);
-	pagination.on('beforeMove', event => {
+	pagination.on('aftereMove', event => {
 		data.page = event.page;
 		console.log(event)
-		
+		// if (currentPage === 10) {
+    //     return false;
+    //     // return true;
+    // }
 		
 		
 	})
-	pagination.movePageTo(0);
+	pagination.movePageTo(1000);
 	
 }

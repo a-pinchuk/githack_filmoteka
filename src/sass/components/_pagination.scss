@@ -1,7 +1,12 @@
-
-.pagination__list{
+.pagination__section{
 	display: flex;
+	justify-content: center;
+	padding: 20px 0;
+}
+.pagination__list{
+	display: inline-flex;
 	align-items: center;
+	justify-content: center;
 }
 .tui-page-btn {
 	display: flex;
