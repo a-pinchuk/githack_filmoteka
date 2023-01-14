@@ -60,7 +60,7 @@
 .icon-close {
   width: 30px;
   height: 30px;
-  fill: #000000;
+  fill: getColor('primary-text-color');
   position: absolute;
   top: 50%;
   left: 50%;
@@ -69,6 +69,9 @@
   .modal-window-close:hover &,
   .modal-window-close:focus & {
     fill: getColor('secondary-text-color');
+  }
+  &-dark {
+    fill: getColor('white');
   }
 }
 .modal-wrap {
@@ -95,7 +98,7 @@
   }
 }
 
-.modal-wrap-img-btn{
+.modal-wrap-img-btn {
   position: relative;
 }
 
@@ -123,15 +126,32 @@
   height: 40px;
   border-radius: 50%;
   background-color: #ff6b01;
+  transition: color 250ms linear;
+  &:hover,
+  &:focus {
+    color: getColor('white');
+  }
 }
 
-.btn-trailer-icon{
+.btn-trailer-icon {
+  width: 30px;
+  height: 30px;
+  fill: #000000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: fill 250ms linear;
+  .modal-btn-trailer:hover &,
+  .modal-btn-trailer:focus & {
+    fill: getColor('secondary-text-color');
+  }
+}
+
+.icon-play {
   width: 15px;
   height: 15px;
-  fill: #ffffff;
-  position: absolute;
-  top: 0;
-  z-index: 200;
+  color: #ffffff;
 }
 
 .modal-info {
@@ -158,6 +178,9 @@
   margin-bottom: 20px;
 }
 .modal-info-item {
+  display: flex;
+  flex-grow: 1;
+
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
@@ -166,20 +189,33 @@
     margin-bottom: 8px;
   }
 }
-.modal-info-value {
-  position: absolute;
-  left: 108px;
+.modal-info-name-value {
+  width: 108px;
+
+  @include media-min(desktop) {
+    width: 150px;
+  }
 }
-.modal-info-value-vote {
+.modal-info-value {
+  width: calc(100% - 108px);
+  @include media-min(desktop) {
+    width: calc(100% - 150px);
+  }
+  color: getColor('primary-text-color');
+  &-dark {
+    color: getColor('white');
+  }
+}
+.modal-info-value-vote,
+.modal-info-value-votes {
   display: inline-flex;
-  // display: block;
   align-items: center;
   justify-content: center;
   margin-right: 3px;
   padding-left: 10px;
   padding-right: 9px;
-  // width: 36px;
   height: 16px;
+
   background-color: #ff6b01;
   border-radius: 5px;
   font-weight: 500;
@@ -190,10 +226,10 @@
 }
 .modal-info-value-votes {
   margin-left: 3px;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.17;
-  text-align: center;
+  margin-right: 0px;
+
+  background-color: getColor('footer-background');
+  color: getColor('primary-text-color');
 }
 .modal-info-pre-about {
   margin-bottom: 8px;
@@ -262,5 +298,9 @@
     @include media-min(tablet) {
       padding: 0;
     }
+  }
+  &-dark {
+    border: 1px solid #ff6b01;
+    color: #ff6b01;
   }
 }
