@@ -5,7 +5,7 @@ export function renderFilmsByIdForLibrary(ref, datas) {
  		 return `<li class="photo__card" data-modal-open id=${data.id}">
             <img src="https://image.tmdb.org/t/p/w500/${data.poster_path}" alt="${data.title}" "loading="lazy" class="movie__image"/>
           <div class="movie__info">
-            <h2 class="film__title">${data.title}</h2>
+            <h2 class="movie__title">${data.title}</h2>
             <div class="movie__details">
             <p class="movie__genre">${genres}</p>
             <p class="movie__year">${data.release_date.slice(0, 4)}</p>

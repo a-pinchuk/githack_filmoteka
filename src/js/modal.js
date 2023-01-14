@@ -8,6 +8,7 @@ import {
 } from './api/fetch';
 import { ref } from './references/ref';
 import { loaderHide } from '../js/fetchAndRenderPopularFilm';
+import { saveLocalStorage } from '../js/localStorage';
 
 // ref.openModalBtn.addEventListener('click', openModal);
 ref.galleryList.addEventListener('click', openModal);
@@ -25,6 +26,7 @@ async function openModal(item) {
     ref.modalWindow.classList.remove('modal-window-dark');
   }
   ref.modal.classList.toggle('is-hidden');
+
   document.body.style.overflow = 'hidden';
 
   const li = item.target.closest('.photo__card');
@@ -35,6 +37,7 @@ async function openModal(item) {
   renderBackdrop(response);
   ref.modalWrap.insertAdjacentHTML('afterBegin', renderMarkupModal(response));
   loaderHide();
+  await saveLocalStorage();
 
   const btnTreil = document.querySelector('.modal-btn-trailer');
   const wrapIMG = document.querySelector('.modal-img-wrap');
@@ -54,7 +57,6 @@ async function openModal(item) {
       renderTrail(response.results[officialTrail])
     );
   }
-  // ====НЕ ЗВАЖАЙ УВАГИ======TREILER=======НЕ ЗВАЖАЙ УВАГИ=======НЕ ЗВАЖАЙ УВАГИ==========================
 }
 
 function renderBackdrop(film) {
@@ -105,12 +107,30 @@ function renderMarkupModal(film) {
           ${film.overview}
         </p>
         <div class="btn-modal-wrap">
-          <button type="button" class="modal-btn modal-btn-watched">
+		  <div class="modal-btn-wrap">
+          <button type="button" class="modal-btn modal-btn-watched" data-watched="${
+            film.id
+          }">
             Add to watched
           </button>
-          <button type="button" class="modal-btn modal-btn-queue">
+			 <button type="button" class="modal-btn modal-btn-watched" data-watched-rem="${
+         film.id
+       }">
+			 Rem to watched
+          </button>
+			 </div>
+			 <div class="modal-btn-wrap">
+          <button type="button" class="modal-btn modal-btn-queue" data-queue="${
+            film.id
+          }">
             Add to queue
           </button>
+			 <button type="button" class="modal-btn modal-btn-queue" data-queue-rem="${
+         film.id
+       }">
+			 Rem to queue
+          </button>
+			 </div>
         </div>
       </div>`;
 }

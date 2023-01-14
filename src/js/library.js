@@ -8,17 +8,17 @@ import { renderFilmsByIdForLibrary } from './render/renderFilmByIdForLibrary';
 // import { renderFilms } from './render/renderHTML';
 import { ref } from './references/ref';
 // import { options, pagination } from './pagination';
-// import { LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE } from './api/api-vars';
+import { LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE } from './api/api-vars';
 
 // let textContent = '';
-const  LOCALSTORAGE_WATCHED =  "watched";
-const  LOCALSTORAGE_QUEUE =  "queue";
+// const  LOCALSTORAGE_WATCHED =  "watched";
+// const  LOCALSTORAGE_QUEUE =  "queue";
 
-const dyk = [800815];
-	  localStorage.setItem(LOCALSTORAGE_WATCHED, JSON.stringify(dyk));
+// const dyk = [800815];
+// 	  localStorage.setItem(LOCALSTORAGE_WATCHED, JSON.stringify(dyk));
 
-const qyk = [653851];
-localStorage.setItem(LOCALSTORAGE_QUEUE, JSON.stringify(qyk));
+// const qyk = [653851];
+// localStorage.setItem(LOCALSTORAGE_QUEUE, JSON.stringify(qyk));
 
 function load (key) {
 	try {
@@ -36,11 +36,13 @@ try {
 	 } catch (error) {
 		console.log(error);
 	 }
-
+// ref.libraryWatchedBtn.classList.add("modal-btn-rev")
+ ref.libraryWatchedBtn.style.backgroundColor = "#ff6b01"; 
 function onDOMContentLoaded() {
-	// console.log(ref.libraryWatchedBtn.style);
+	 console.log(load (LOCALSTORAGE_WATCHED));
 	const arrayWatched = load (LOCALSTORAGE_WATCHED);
-	//   console.log(arrayWatched);
+	  console.log(arrayWatched);
+	  
 	if (arrayWatched===undefined) {
 		return
 	}
@@ -49,6 +51,7 @@ function onDOMContentLoaded() {
 	fetchAndRenderFilm(arrayWatched);	
 }
 function onClickWatchedBtn(e) {
+	ref.libraryWatchedBtn.style.backgroundColor = "#ff6b01"; 
 	ref.libraryList.innerHTML = "";
 	const arrayWatched = load (LOCALSTORAGE_WATCHED);
 	// console.log(arrayWatched);
@@ -59,6 +62,7 @@ function onClickWatchedBtn(e) {
 	fetchAndRenderFilm(arrayWatched);
  }
 function onClickQueueBtn(e) {
+	ref.libraryWatchedBtn.style.backgroundColor = "#000000"; 
 	ref.libraryList.innerHTML = "";
 	const arrayQueue = load (LOCALSTORAGE_QUEUE);
 	// console.log(arrayQueue);

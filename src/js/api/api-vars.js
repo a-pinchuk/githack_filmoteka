@@ -5,5 +5,8 @@ const SEARCH_URL = `${BASE_URL}/search/movie`;
 const ID_URL = `${BASE_URL}/movie/`;
 const GENRE_URL = `${BASE_URL}/genre/movie/list`;
 let PAGE = 1;
+const  LOCALSTORAGE_WATCHED =  "watched";
+const  LOCALSTORAGE_QUEUE =  "queue";
 
-export { API_KEY, BASE_URL, TREND_URL, SEARCH_URL, ID_URL, GENRE_URL, PAGE };
+export { API_KEY, BASE_URL, TREND_URL, SEARCH_URL, ID_URL, GENRE_URL, PAGE, LOCALSTORAGE_WATCHED,
+	LOCALSTORAGE_QUEUE };
