@@ -4,7 +4,9 @@ import { ref } from '../references/ref';
 import { Notify } from 'notiflix';
 import { PAGE } from '../api/api-vars';
 import { renderPopularFilms } from '../render/renderPopularFilm';
+import { showPagination } from '../pagination';
 import { loaderHide } from '../fetchAndRenderPopularFilm';
+
 
 let searchQuery = '';
 
@@ -14,28 +16,49 @@ function onCLickSubmit(e) {
   e.preventDefault();
   searchQuery = ref.input.value.trim();
   if (searchQuery === '') {
+    const alertElement = document.createElement('p');
+    alertElement.style.color = 'red';
+    alertElement.style.textAlign = 'center';
+    alertElement.style.paddingTop = '10px';
+    alertElement.textContent =
+      'Searching starts after providing data to search.';
+    ref.form.appendChild(alertElement);
     return Notify.warning('Searching starts after providing data to search.');
   }
   if (searchQuery.length > 0) {
     ref.input.value = '';
-    renderSearchFilms();
+    renderSearchFilms().then(res => {
+      showPagination(res.data.total_pages)
+    }
+    )
   } else {
     renderPopularFilms();
   }
+  
 }
 
-async function renderSearchFilms() {
+async function renderSearchFilms(page) {
   // let totalResults = 0;
   try {
     ref.loader.style.display = 'flex';
-    const promis = await fetchSearchedFilms(searchQuery, PAGE);
+    const promis = await fetchSearchedFilms(searchQuery, page);
+
     const data = promis.data.results;
     if (data.length === 0) {
+      const alertElement = document.createElement('p');
+      alertElement.style.color = 'red';
+      alertElement.style.textAlign = 'center';
+      alertElement.style.paddingTop = '10px';
+      alertElement.textContent =
+        'Search result is not successful. Enter the correct movie name and';
+      ref.form.appendChild(alertElement);
       return Notify.warning('no matches found');
     }
     clearGallery();
     createMarkUp(ref, data);
     loaderHide();
+    return promis
+
   } catch (error) {
     console.log(error);
   }
@@ -44,3 +67,5 @@ async function renderSearchFilms() {
 function clearGallery() {
   ref.galleryList.innerHTML = '';
 }
+
+export {renderSearchFilms}

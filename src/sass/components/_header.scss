@@ -1,3 +1,4 @@
+@import '../base/colors';
 .header {
   background-image: url(/src/images/abstract-background-with-red-lines\ 1.jpg);
   background-size: 100% 320px;
@@ -18,6 +19,11 @@
 .logo {
   display: flex;
   text-indent: -9999px;
+  transition: filter 300ms ease-in-out;
+  &:hover,
+  &:focus {
+    filter: drop-shadow(2px -2px 2px getColor(primary-text-color));
+  }
   @include media-min(mobile) {
     text-indent: 0px;
     align-items: center;
@@ -87,7 +93,7 @@
     width: 100%;
     background-color: transparent;
 
-    font-family: "Roboto";
+    font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -98,7 +104,7 @@
     color: white;
 
     &::placeholder {
-      font-family: "Roboto";
+      font-family: 'Roboto';
       font-style: normal;
       font-weight: 400;
       font-size: 14px;
@@ -107,6 +113,10 @@
       align-items: center;
 
       color: white;
+    }
+
+    &:focus::placeholder {
+      color: transparent;
     }
   }
 
@@ -120,11 +130,16 @@
     background-image: url(/src/images/search\ 2.svg);
     border: transparent;
     background-color: transparent;
+    transition: transform 300ms ease-in-out;
+    &:hover,
+    &:focus {
+      transform: scale(1.5);
+    }
   }
 }
 
 .mob-navigation__main {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 30px;
@@ -141,7 +156,7 @@
 .mob-navigation__link {
   position: relative;
 
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -153,15 +168,31 @@
   text-transform: uppercase;
 
   color: #ffffff;
-
-  &--current::after {
-    content: "";
+  &::after {
+    content: '';
     position: absolute;
     display: block;
     bottom: -3px;
     width: 100%;
     height: 3px;
     background-color: #ff001b;
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+  }
+
+  &--current::after {
+    content: '';
+    position: absolute;
+    display: block;
+    bottom: -3px;
+    width: 100%;
+    height: 3px;
+    background-color: #ff001b;
+    opacity: 1;
+  }
+
+  &:hover::after {
+    opacity: 1;
   }
 }
 
@@ -213,7 +244,8 @@
     cursor: pointer;
     background: none;
     fill: #ff6b01;
-    transition: transform 0.25s linear, visibility 0.25s linear, fill 0.35s linear;
+    transition: transform 0.25s linear, visibility 0.25s linear,
+      fill 0.35s linear;
     &:hover {
       transform: scale(1.1);
       fill: #000;

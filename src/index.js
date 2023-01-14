@@ -9,11 +9,11 @@ import './js/fetchAndRenderPopularFilm';
 // import './js/library';
 import './js/render/modal-students';
 import './js/modal';
-
+import './js/localStorage';
 import './js/requests/searchFilms';
 import './js/render/renderSearchFilms';
 import './js/scroll-to-top';
-
+import './js/pagination'
 // Переключатель темы
 
 import './js/switcher';

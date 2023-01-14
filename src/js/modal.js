@@ -1,9 +1,14 @@
 import axios from 'axios';
 import { log } from 'console';
 import { API_KEY, TREND_URL, SEARCH_URL, ID_URL } from './api/api-vars';
-import { fetchFilmById, fetchTrendedFilms } from './api/fetch';
+import {
+  fetchFilmById,
+  fetchTrendedFilms,
+  fetchFilmTrailer,
+} from './api/fetch';
 import { ref } from './references/ref';
 import { loaderHide } from '../js/fetchAndRenderPopularFilm';
+import { saveLocalStorage } from '../js/localStorage';
 
 // ref.openModalBtn.addEventListener('click', openModal);
 ref.galleryList.addEventListener('click', openModal);
@@ -21,6 +26,7 @@ async function openModal(item) {
     ref.modalWindow.classList.remove('modal-window-dark');
   }
   ref.modal.classList.toggle('is-hidden');
+
   document.body.style.overflow = 'hidden';
 
   const li = item.target.closest('.photo__card');
@@ -28,10 +34,29 @@ async function openModal(item) {
   const response = await fetchFilmById(id).then(r => {
     return r.data;
   });
-
   renderBackdrop(response);
   ref.modalWrap.insertAdjacentHTML('afterBegin', renderMarkupModal(response));
   loaderHide();
+  await saveLocalStorage();
+
+  const btnTreil = document.querySelector('.modal-btn-trailer');
+  const wrapIMG = document.querySelector('.modal-img-wrap');
+  btnTreil.addEventListener('click', onClickWatch);
+
+  async function onClickWatch() {
+    const li = item.target.closest('.photo__card');
+    const id = li.getAttribute('id');
+    const response = await fetchFilmTrailer(id).then(r => {
+      return r.data;
+    });
+    const officialTrail = response.results.length - 1;
+    wrapIMG.remove();
+    btnTreil.style.display = 'none';
+    ref.modalWrap.insertAdjacentHTML(
+      'afterBegin',
+      renderTrail(response.results[officialTrail])
+    );
+  }
 }
 
 function renderBackdrop(film) {
@@ -82,12 +107,30 @@ function renderMarkupModal(film) {
           ${film.overview}
         </p>
         <div class="btn-modal-wrap">
-          <button type="button" class="modal-btn modal-btn-watched">
+		  <div class="modal-btn-wrap">
+          <button type="button" class="modal-btn modal-btn-watched" data-watched="${
+            film.id
+          }">
             Add to watched
           </button>
-          <button type="button" class="modal-btn modal-btn-queue">
+			 <button type="button" class="modal-btn modal-btn-watched" data-watched-rem="${
+         film.id
+       }">
+			 Rem to watched
+          </button>
+			 </div>
+			 <div class="modal-btn-wrap">
+          <button type="button" class="modal-btn modal-btn-queue" data-queue="${
+            film.id
+          }">
             Add to queue
           </button>
+			 <button type="button" class="modal-btn modal-btn-queue" data-queue-rem="${
+         film.id
+       }">
+			 Rem to queue
+          </button>
+			 </div>
         </div>
       </div>`;
 }
@@ -107,3 +150,18 @@ function closeModalbyClick(e) {
     document.removeEventListener('keydown', closeModal);
   }
 }
+// =========НЕ ЗВАЖАЙ УВАГИ========TREILER===========НЕ ЗВАЖАЙ УВАГИ==============НЕ ЗВАЖАЙ УВАГИ===========
+function renderTrail({ key }) {
+  return `<iframe
+  width="375"
+    height="478"
+    src="https://www.youtube.com/embed/${key}"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    waitUntil()
+    class='modal-image'
+  ></iframe>`;
+}
+// =============НЕ ЗВАЖАЙ УВАГИ======TREILER========НЕ ЗВАЖАЙ УВАГИ=============НЕ ЗВАЖАЙ УВАГИ===============
