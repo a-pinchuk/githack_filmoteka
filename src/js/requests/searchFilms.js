@@ -14,8 +14,7 @@ function onCLickSubmit(e) {
   e.preventDefault();
 	searchQuery = ref.input.value.trim();
 	if (searchQuery === '') {
-	  
-    	ref.alertMessage.textContent = 'Searching starts after providing data to search';
+   	ref.alertMessage.textContent = 'Searching starts after providing data to search';
 	  Notify.warning('Searching starts after providing data to search.');
 	  return;
 	  
