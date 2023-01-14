@@ -4,7 +4,9 @@ import { ref } from '../references/ref';
 import { Notify } from 'notiflix';
 import { PAGE } from '../api/api-vars';
 import { renderPopularFilms } from '../render/renderPopularFilm';
+import { showPagination } from '../pagination';
 import { loaderHide } from '../fetchAndRenderPopularFilm';
+
 
 let searchQuery = '';
 
@@ -25,16 +27,22 @@ function onCLickSubmit(e) {
   }
   if (searchQuery.length > 0) {
     ref.input.value = '';
-    renderSearchFilms();
+    renderSearchFilms().then(res => {
+      showPagination(res.data.total_pages)
+    }
+    )
   } else {
     renderPopularFilms();
   }
+  
 }
-async function renderSearchFilms() {
+
+async function renderSearchFilms(page) {
   // let totalResults = 0;
   try {
     ref.loader.style.display = 'flex';
-    const promis = await fetchSearchedFilms(searchQuery, PAGE);
+    const promis = await fetchSearchedFilms(searchQuery, page);
+
     const data = promis.data.results;
     if (data.length === 0) {
       const alertElement = document.createElement('p');
@@ -49,6 +57,8 @@ async function renderSearchFilms() {
     clearGallery();
     createMarkUp(ref, data);
     loaderHide();
+    return promis
+
   } catch (error) {
     console.log(error);
   }
@@ -57,3 +67,5 @@ async function renderSearchFilms() {
 function clearGallery() {
   ref.galleryList.innerHTML = '';
 }
+
+export {renderSearchFilms}
