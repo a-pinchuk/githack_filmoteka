@@ -5,7 +5,7 @@ import { Notify } from 'notiflix';
 import { PAGE } from '../api/api-vars';
 import { renderPopularFilms } from '../render/renderPopularFilm';
 import { loaderHide } from '../fetchAndRenderPopularFilm';
-
+import Pagination from 'tui-pagination';
 
 let searchQuery = '';
 PAGE = 2;
@@ -26,7 +26,7 @@ function onCLickSubmit(e) {
   if (searchQuery.length > 0) {
 	  ref.alertMessage.textContent = '';
 	  ref.input.value = '';
-    renderSearchFilms();
+	  renderSearchFilms()
 
   } else {
     renderPopularFilms();
@@ -61,6 +61,7 @@ async function renderSearchFilms() {
 function clearGallery() {
   ref.galleryList.innerHTML = '';
 }
+
 
 
 
