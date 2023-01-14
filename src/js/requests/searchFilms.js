@@ -4,6 +4,7 @@ import { ref } from '../references/ref';
 import { Notify } from 'notiflix';
 import { PAGE } from '../api/api-vars';
 import { renderPopularFilms } from '../render/renderPopularFilm';
+import { showPagination } from '../pagination';
 
 let searchQuery = '';
 
@@ -17,23 +18,27 @@ function onCLickSubmit(e) {
   }
   if (searchQuery.length > 0) {
     ref.input.value = '';
-    renderSearchFilms();
+    renderSearchFilms().then(res => {
+      showPagination(res.data.total_pages)
+    }
+    )
   } else {
     renderPopularFilms();
   }
+  
 }
 
-async function renderSearchFilms() {
+async function renderSearchFilms(page) {
   // let totalResults = 0;
   try {
-    const promis = await fetchSearchedFilms(searchQuery, PAGE);
+    const promis = await fetchSearchedFilms(searchQuery, page);
     const data = promis.data.results;
     if (data.length === 0) {
       return Notify.warning('no matches found');
     }
     clearGallery();
     createMarkUp(ref, data);
-  
+    return promis
   } catch (error) {
     console.log(error);
   }
@@ -42,3 +47,5 @@ async function renderSearchFilms() {
 function clearGallery() {
   ref.galleryList.innerHTML = '';
 }
+
+export {renderSearchFilms}

@@ -58,3 +58,4 @@ function closeStudentsModal() {
     ref.studentsModal.classList.add('students-modal-close')
     ref.backdropRef.classList.add('is-hidden')
 }
+

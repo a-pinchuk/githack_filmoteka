@@ -1,4 +1,5 @@
 const ref = {
+  paginationRef: document.querySelector('.pagination-btns'),
   bodyRef: document.querySelector('body'),
   form: document.querySelector('.search-form'),
   input: document.querySelector('.search-form__input'),
