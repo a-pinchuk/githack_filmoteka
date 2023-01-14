@@ -8,18 +8,19 @@ import { loaderHide } from '../fetchAndRenderPopularFilm';
 
 let searchQuery = '';
 
-console.log(ref.alertMessage);
+
 ref.form.addEventListener('submit', onCLickSubmit);
 
 function onCLickSubmit(e) {
   e.preventDefault();
   searchQuery = ref.input.value.trim();
   if (searchQuery === '') {
-    ref.alertMessage.classList.add('active');
-    return Notify.warning('Searching starts after providing data to search.');
+    	ref.alertMessage.textContent = 'Search result is not successful. Enter the correct movie name and';
+	  Notify.warning('Searching starts after providing data to search.');
+	  return;
   }
   if (searchQuery.length > 0) {
-    ref.alertMessage.classList.remove('active');
+    
     ref.input.value = '';
     renderSearchFilms();
   } else {
