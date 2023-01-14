@@ -5,7 +5,7 @@ import { Notify } from 'notiflix';
 import { PAGE } from '../api/api-vars';
 import { renderPopularFilms } from '../render/renderPopularFilm';
 import { loaderHide } from '../fetchAndRenderPopularFilm';
-// import Pagination from 'tui-pagination';
+
 
 let searchQuery = '';
 PAGE = 2;
@@ -37,7 +37,7 @@ async function renderSearchFilms() {
     
     const promis = await fetchSearchedFilms(searchQuery, PAGE);
     const data = promis.data.results;
-   //  const paginationData = promis.data;
+    
     
     if (data.length === 0) {
 		loaderHide();
@@ -47,7 +47,7 @@ async function renderSearchFilms() {
     ref.alertMessage.textContent = '';
     ref.loader.style.display = 'flex';
     clearGallery();
-	// paginationPage(paginationData);
+	
 	   createMarkUp(ref, data);
     loaderHide();
   } catch (error) {
@@ -63,48 +63,4 @@ function clearGallery() {
 }
 
 
-// TUI pagination-------
-// const data = 440;
-// paginationPage(data);
-// function paginationPage(dataPag) {
-// 	const container = document.getElementById('pagination');
-// 	console.log(dataPag.page)
-//   const itemsPerPage = 20;
-//   const options = {
-//     totalItems: dataPag.total_results,
-//     itemsPerPage,
-//     visiblePages: 10,
-// 	  centerAlign: false,
-// 	        page: '<a href="#" class="tui-page-btn">{{page}}p</a>',
-//             currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}p</strong>',
-//             moveButton:
-//                 '<a href="#" class="tui-page-btn tui-{{type}} custom-class-{{type}}">' +
-//                     '<span class="tui-ico-{{type}}">{{type}}</span>' +
-//                 '</a>',
-//             disabledMoveButton:
-//                 '<span class="tui-page-btn tui-is-disabled tui-{{type}} custom-class-{{type}}">' +
-//                     '<span class="tui-ico-{{type}}">{{type}}</span>' +
-//                 '</span>',
-//             moreButton:
-//                 '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip custom-class-{{type}}">' +
-//                     '<span class="tui-ico-ellip">...</span>' +
-//                 '</a>'
-//   };
-// 	console.log(options.totalItems);
-	
-//   const pagination = new Pagination(container, options);
 
-
-// 	console.log(pagination);
-// 	pagination.on('beforeMove', event => {
-// 		dataPag.page = event.page;
-// 		clearGallery();
-// 		// createMarkUp(ref, data);
-// 		const promis = fetchSearchedFilms(searchQuery, PAGE);
-//     	console.log(promis);
-		
-		
-// 	})
-	
-// 	pagination.movePageTo(1);
-// }
