@@ -96,18 +96,12 @@
 .movie__year {
   color: getColor(secondary-text-color);
 }
-.movie__year {
-  border-left: 1px solid getColor(secondary-text-color);
-  padding: 0px 4px;
-  @include media-min(tablet) {
-    padding: 0px 7px;
-  }
-}
+
 
 .movie__rating {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 10px;
+  left: 10px;
   width: 50px;
   height: 25px;
   background-color: getColor(secondary-text-color);

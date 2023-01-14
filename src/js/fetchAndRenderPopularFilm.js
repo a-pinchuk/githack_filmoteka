@@ -44,7 +44,7 @@ async function fetchAndRenderTrailerFilm(id) {
 export function loaderHide() {
   setTimeout(() => {
     ref.loader.style.display = 'none';
-  }, 200);
+  }, 500);
 }
 // fetchAndRenderFilmById(89125);
 // fetchFilmByGenres();

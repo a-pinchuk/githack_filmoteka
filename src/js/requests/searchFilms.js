@@ -8,7 +8,6 @@ import { loaderHide } from '../fetchAndRenderPopularFilm';
 
 let searchQuery = '';
 
-
 ref.form.addEventListener('submit', onCLickSubmit);
 
 function onCLickSubmit(e) {
@@ -18,6 +17,14 @@ function onCLickSubmit(e) {
     	ref.alertMessage.textContent = 'Search result is not successful. Enter the correct movie name and';
 	  Notify.warning('Searching starts after providing data to search.');
 	  return;
+    const alertElement = document.createElement('p');
+    alertElement.style.color = 'red';
+    alertElement.style.textAlign = 'center';
+    alertElement.style.paddingTop = '10px';
+    alertElement.textContent =
+      'Searching starts after providing data to search.';
+    ref.form.appendChild(alertElement);
+    return Notify.warning('Searching starts after providing data to search.');
   }
   if (searchQuery.length > 0) {
     
