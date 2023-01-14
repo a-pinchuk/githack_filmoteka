@@ -7,10 +7,7 @@ import { renderPopularFilms } from '../render/renderPopularFilm';
 import { showPagination } from '../pagination';
 import { loaderHide } from '../fetchAndRenderPopularFilm';
 
-// import Pagination from 'tui-pagination';
-
 let searchQuery = '';
-PAGE = 2;
 ref.form.addEventListener('submit', onCLickSubmit);
 
 function onCLickSubmit(e) {
