@@ -10,7 +10,7 @@ export function createMarkUp(ref, data) {
       const filmGenre = getGeners(allGeners, genre_ids);
       let link = `https://image.tmdb.org/t/p/w500null`;
       let baseImafge = `https://image.tmdb.org/t/p/w500${poster_path}`;
-      const normalizeDate = release_date.slice(0, 4);
+      const normalizeDate = new Date(release_date).getFullYear();
       return `
       <li class="photo__card" data-modal-open id="${id}">
             <img src="${
