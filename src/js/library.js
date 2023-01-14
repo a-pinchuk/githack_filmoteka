@@ -36,11 +36,13 @@ try {
 	 } catch (error) {
 		console.log(error);
 	 }
-
+// ref.libraryWatchedBtn.classList.add("modal-btn-rev")
+ ref.libraryWatchedBtn.style.backgroundColor = "#ff6b01"; 
 function onDOMContentLoaded() {
-	// console.log(ref.libraryWatchedBtn.style);
+	 console.log(load (LOCALSTORAGE_WATCHED));
 	const arrayWatched = load (LOCALSTORAGE_WATCHED);
 	  console.log(arrayWatched);
+	  
 	if (arrayWatched===undefined) {
 		return
 	}
@@ -49,6 +51,7 @@ function onDOMContentLoaded() {
 	fetchAndRenderFilm(arrayWatched);	
 }
 function onClickWatchedBtn(e) {
+	ref.libraryWatchedBtn.style.backgroundColor = "#ff6b01"; 
 	ref.libraryList.innerHTML = "";
 	const arrayWatched = load (LOCALSTORAGE_WATCHED);
 	// console.log(arrayWatched);
@@ -59,6 +62,7 @@ function onClickWatchedBtn(e) {
 	fetchAndRenderFilm(arrayWatched);
  }
 function onClickQueueBtn(e) {
+	ref.libraryWatchedBtn.style.backgroundColor = "#000000"; 
 	ref.libraryList.innerHTML = "";
 	const arrayQueue = load (LOCALSTORAGE_QUEUE);
 	// console.log(arrayQueue);

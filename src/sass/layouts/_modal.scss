@@ -235,9 +235,9 @@
     justify-content: normal;
   }
 }
-.modal-btn-wrap {
-	// position: relative;
-}
+// .modal-btn-wrap {
+// 	 position: relative;
+// }
 .modal-btn {
   width: 65px;
   height: 44px;
@@ -273,14 +273,19 @@
     }
   }
 }
-// .modal-btn-rev {
-// 	// position: absolute;
-// // 	top: 0;
-// //   right: 0;
-// 	background-color: #ff6b01;
-//     border: 1px solid #ff6b01;
-//     color: #ffffff;
-// 	 visibility: hidden;
-//     opacity: 0;
-//     pointer-events: none;
-// }
+.modal-btn-rev {
+	// position: absolute;
+// 	top: 0;
+//   right: 0;
+	background-color: #ff6b01;
+    border: 1px solid #ff6b01;
+    color: #ffffff;
+	 &:hover,
+   &:focus {
+    background-color: inherit;
+    border: 1px solid getColor('primary-text-color');
+    color: getColor('primary-text-color');
+	//  visibility: hidden;
+   //  opacity: 0;
+   //  pointer-events: none;
+	}}

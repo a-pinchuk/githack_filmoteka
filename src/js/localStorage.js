@@ -17,7 +17,7 @@ export function saveLocalStorage() {
 	const modalWatchedRevBtn = document.querySelector('button[data-watched-rem]');
 	const modalQueuedBtn = document.querySelector('button[data-queue]');
 	const modalQueuedRevBtn = document.querySelector('button[data-queue-rem]');
-	   // localStorage.clear();
+	   //  localStorage.clear();
 	let arrayWatched =[];
 	let arrayQueued =[];
 	const currentId = Number(modalWatchedBtn.dataset.watched);
@@ -25,24 +25,20 @@ export function saveLocalStorage() {
 	let arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
 	let arrayLocalQueuedStorage = load (LOCALSTORAGE_QUEUE);
 	console.log(arrayLocalStorage);
-	 modalWatchedBtn.addEventListener('click', () => {
-		arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
-		if (arrayLocalStorage ===undefined) {
-			// console.log(arrayLocalStorage);
-			saveLocal(arrayWatched, currentId, LOCALSTORAGE_WATCHED);
-			// console.log(arrayLocalStorage);
-			return
-			} 
-		if (arrayLocalStorage.includes(currentId)) {
-			// console.log(arrayLocalStorage);
-			return
-		}
-			saveLocal(arrayLocalStorage, currentId, LOCALSTORAGE_WATCHED);
-			// console.log(arrayLocalStorage);
-	});
-	 modalWatchedRevBtn.addEventListener('click', remFilmLocal);
+	defineColorBtn (arrayLocalStorage, modalWatchedBtn, modalWatchedRevBtn, currentId);
+	// if (arrayLocalStorage===undefined) {
+	// 	modalWatchedBtn.classList.add("modal-btn-rev") 
+	// 	// modalWatchedBtn.style.backgroundColor = "#ff6b01";
+	// 	return
+	// }  if (arrayLocalStorage.includes(currentId)) {
+	// 	modalWatchedRevBtn.classList.add("modal-btn-rev") 
+	// 	// modalWatchedRevBtn.style.backgroundColor = "#ff6b01";
+	// 	return
+	// } modalWatchedBtn.classList.add("modal-btn-rev") 
+	// // modalWatchedBtn.style.backgroundColor = "#ff6b01"
 
-	// function addFilmLocal() {
+	modalWatchedBtn.addEventListener('click', addFilmLocal)
+	// () => {
 	// 	arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
 	// 	if (arrayLocalStorage ===undefined) {
 	// 		// console.log(arrayLocalStorage);
@@ -56,24 +52,45 @@ export function saveLocalStorage() {
 	// 	}
 	// 		saveLocal(arrayLocalStorage, currentId, LOCALSTORAGE_WATCHED);
 	// 		// console.log(arrayLocalStorage);
-	// }
+	// });
+	modalWatchedRevBtn.addEventListener('click', remFilmLocal);
+
+	function addFilmLocal() {
+		// modalWatchedRevBtn.classList.add("modal-btn-rev")
+		console.log(3);
+		arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
+		if (arrayLocalStorage === undefined) {
+		 console.log(arrayLocalStorage);
+		saveLocal(arrayWatched, currentId, LOCALSTORAGE_WATCHED);
+		 console.log(load (LOCALSTORAGE_WATCHED));
+		return
+		} 	if (arrayLocalStorage.includes(currentId)) {
+			console.log(arrayLocalStorage);
+			return
+		}	saveLocal(arrayLocalStorage, currentId, LOCALSTORAGE_WATCHED);
+			console.log(load (LOCALSTORAGE_WATCHED));
+	}
 	function remFilmLocal() {
+		console.log(6);
 		console.log(arrayLocalStorage);
 		arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
 		 console.log(arrayLocalStorage);
-		if (arrayLocalStorage ===undefined) {
+		if (arrayLocalStorage === undefined) {
 			return
-		} 
-		if (arrayLocalStorage.includes(currentId)) {
-			arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
+		} 	if (arrayLocalStorage.includes(currentId)) {
+			// arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
+			console.log(arrayLocalStorage);
 			const g = arrayLocalStorage.indexOf(currentId);
-			 console.log(g);
-			//  const v = delete arrayLocalStorage[g];
-          const v = arrayLocalStorage.splice(g, 1);
-			console.log(v);
+			 console.log(arrayLocalStorage.length===1);
+			 if (arrayLocalStorage.length===1) {
+				localStorage.removeItem(LOCALSTORAGE_WATCHED);
+				return
+			 }  const v = arrayLocalStorage.splice(g, 1);
+			 console.log(v);
+			console.log(arrayLocalStorage.splice(g, 1));
  			save(LOCALSTORAGE_WATCHED, v);
-			 arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
-			  console.log(arrayLocalStorage);
+			//   arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
+			  console.log(load (LOCALSTORAGE_WATCHED));
 			 return
 			 }	
 	}
@@ -106,12 +123,24 @@ export function saveLocalStorage() {
 			// const v = delete arrayLocalQueuedStorage[g];
           const v = arrayLocalQueuedStorage.splice(g, 1);
  			save(LOCALSTORAGE_QUEUE, v);
-			 arrayLocalQueuedStorage = load (LOCALSTORAGE_QUEUE);
+			//  arrayLocalQueuedStorage = load (LOCALSTORAGE_QUEUE);
 			 console.log(arrayLocalQueuedStorage);
 			 return
 			 }	
 	}
 };
+function defineColorBtn (array, btn1, btn2, id) {
+	if (array===undefined) {
+		btn1.classList.add("modal-btn-rev") 
+		// modalWatchedBtn.style.backgroundColor = "#ff6b01";
+		return
+	}  if (array.includes(id)) {
+		btn2.classList.add("modal-btn-rev") 
+		// modalWatchedRevBtn.style.backgroundColor = "#ff6b01";
+		return
+	} btn1.classList.add("modal-btn-rev") 
+	// modalWatchedBtn.style.backgroundColor = "#ff6b01"
+}
 
 function saveLocal(array, id, key) {
 	array.push (id);
