@@ -50,3 +50,45 @@ async function renderSearchFilms() {
 function clearGallery() {
   ref.galleryList.innerHTML = '';
 }
+
+
+//TUI pagination-------
+
+// function paginationPage(data) {
+//   const container = document.getElementById('pagination');
+//   const itemsPerPage = 20;
+//   const options = {
+//     totalItems: data.total_pages,
+//     itemsPerPage,
+//     visiblePages: 10,
+// 	  centerAlign: false,
+// 	        page: '<a href="#" class="tui-page-btn">{{page}}p</a>',
+//             currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}p</strong>',
+//             moveButton:
+//                 '<a href="#" class="tui-page-btn tui-{{type}} custom-class-{{type}}">' +
+//                     '<span class="tui-ico-{{type}}">{{type}}</span>' +
+//                 '</a>',
+//             disabledMoveButton:
+//                 '<span class="tui-page-btn tui-is-disabled tui-{{type}} custom-class-{{type}}">' +
+//                     '<span class="tui-ico-{{type}}">{{type}}</span>' +
+//                 '</span>',
+//             moreButton:
+//                 '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip custom-class-{{type}}">' +
+//                     '<span class="tui-ico-ellip">...</span>' +
+//                 '</a>'
+//   };
+// 	console.log(options.totalItems);
+	
+// 	const pagination = new Pagination(container, options);
+
+// 	console.log(pagination);
+// 	pagination.on('beforeMove', event => {
+// 		data.page = event.page;
+// 		console.log(event)
+		
+// 		renderMarkUp(data.results);
+		
+// 	})
+// 	pagination.movePageTo(0);
+	
+// }
