@@ -9,6 +9,7 @@ import {
   onAuthStateChanged,
   signOut,
   createUserWithEmailAndPassword,
+  updateProfile,
 } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -110,10 +111,24 @@ function onSingUpFormSubmit(event) {
       .then(userCredential => {
         const user = userCredential.user;
         Notify.success(`Welcome to Filmoteka, ${username}`);
+        userName.textContent = username;
+        userName.style.display = 'flex';
+
         set(ref(database, 'users/' + user.uid), {
           username,
           email,
         });
+        updateProfile(auth.currentUser, {
+          displayName: username,
+        })
+          .then(() => {
+            // Profile updated!
+            // ...
+          })
+          .catch(error => {
+            // An error occurred
+            // ...
+          });
       })
       .catch(error => {
         const errorMessage = error.message;
@@ -142,6 +157,7 @@ function onLoginFormSubmit(event) {
       .then(userCredential => {
         const user = userCredential.user;
         openAuthBox.style.display = 'none';
+
         set(ref(database, 'users/' + user.uid), {
           email,
           password,
@@ -200,6 +216,7 @@ if (openLibraryPage) {
 }
 
 const logoutLibraryBtn = document.querySelector('.logout-library-btn');
+const userNameLibrary = document.querySelector('.header-library__user-name');
 
 if (logoutLibraryBtn) {
   logoutLibraryBtn.addEventListener('click', onLogout);
@@ -217,8 +234,7 @@ if (logoutLibraryBtn) {
 }
 
 // AuthState
-
-if (openLibraryPage) {
+if (openAuthBox) {
   onAuthStateChanged(auth, user => {
     if (user) {
       openLoginModalBtn.classList.add('is-hidden');
@@ -230,6 +246,7 @@ if (openLibraryPage) {
       loginBtn.style.display = 'none';
       logoutBtn.style.display = 'block';
       userName.style.display = 'flex';
+      userName.textContent = user.displayName;
       console.log('on');
     } else {
       openAuthBox.style.display = 'flex';
@@ -237,6 +254,16 @@ if (openLibraryPage) {
       signUpBtn.style.display = 'block';
       loginBtn.style.display = 'block';
       logoutBtn.style.display = 'none';
+    }
+  });
+}
+
+if (userNameLibrary) {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      userNameLibrary.style.display = 'flex';
+      userNameLibrary.textContent = user.displayName;
+    } else {
     }
   });
 }

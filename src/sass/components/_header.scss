@@ -177,16 +177,12 @@
 
 .open-auth-dropdown {
   position: absolute;
-  top: 30px;
-  right: 0px;
+  top: 28px;
+  right: 17px;
   transform: translate(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  align-items: baseline;
-
   @include media-max(mobile) {
-    top: 35px;
+    top: 30px;
+    right: 11px;
   }
 }
 
@@ -250,12 +246,23 @@
     }
   }
 }
-.user-name {
+
+.auth-user-box {
+  position: absolute;
+  top: 32px;
+  right: -31px;
+  transform: translate(-50%);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   align-items: center;
-  font-weight: 500;
+  @include media-max(mobile) {
+    top: 0px;
+    left: -27px;
+  }
+}
+.user-name {
+  font-weight: 600;
   color: #ff6b01;
 }
 
