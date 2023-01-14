@@ -24,8 +24,9 @@ export function saveLocalStorage() {
 	const currentIdQueued = Number(modalQueuedBtn.dataset.queue);
 	let arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
 	let arrayLocalQueuedStorage = load (LOCALSTORAGE_QUEUE);
-	console.log(arrayLocalStorage);
+	// console.log(arrayLocalStorage);
 	defineColorBtn (arrayLocalStorage, modalWatchedBtn, modalWatchedRevBtn, currentId);
+	defineColorBtn (arrayLocalQueuedStorage, modalQueuedBtn, modalQueuedRevBtn, currentIdQueued);
 	// if (arrayLocalStorage===undefined) {
 	// 	modalWatchedBtn.classList.add("modal-btn-rev") 
 	// 	// modalWatchedBtn.style.backgroundColor = "#ff6b01";
@@ -56,41 +57,38 @@ export function saveLocalStorage() {
 	modalWatchedRevBtn.addEventListener('click', remFilmLocal);
 
 	function addFilmLocal() {
-		// modalWatchedRevBtn.classList.add("modal-btn-rev")
-		console.log(3);
+		// modalWatchedBtn.classList.remove("hover")
 		arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
 		if (arrayLocalStorage === undefined) {
-		 console.log(arrayLocalStorage);
+		//  console.log(arrayLocalStorage);
 		saveLocal(arrayWatched, currentId, LOCALSTORAGE_WATCHED);
-		 console.log(load (LOCALSTORAGE_WATCHED));
+		//  console.log(load (LOCALSTORAGE_WATCHED));
 		return
 		} 	if (arrayLocalStorage.includes(currentId)) {
-			console.log(arrayLocalStorage);
+			// console.log(arrayLocalStorage);
 			return
 		}	saveLocal(arrayLocalStorage, currentId, LOCALSTORAGE_WATCHED);
-			console.log(load (LOCALSTORAGE_WATCHED));
+			// console.log(load (LOCALSTORAGE_WATCHED));
 	}
 	function remFilmLocal() {
-		console.log(6);
-		console.log(arrayLocalStorage);
+		// modalWatchedRevBtn.classList.remove("hover")
 		arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
-		 console.log(arrayLocalStorage);
+		//  console.log(arrayLocalStorage);
 		if (arrayLocalStorage === undefined) {
 			return
-		} 	if (arrayLocalStorage.includes(currentId)) {
+		} 	if (arrayLocalStorage.length >= 1) {
+			const b = arrayLocalStorage.includes(currentId);
 			// arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
-			console.log(arrayLocalStorage);
-			const g = arrayLocalStorage.indexOf(currentId);
-			 console.log(arrayLocalStorage.length===1);
-			 if (arrayLocalStorage.length===1) {
+			// console.log(arrayLocalStorage);
+			 if (arrayLocalStorage.length===1 && b) {
 				localStorage.removeItem(LOCALSTORAGE_WATCHED);
 				return
-			 }  const v = arrayLocalStorage.splice(g, 1);
-			 console.log(v);
-			console.log(arrayLocalStorage.splice(g, 1));
+			 }  const v = arrayLocalStorage.filter(value => value !== currentId);
+			//  console.log(v);
+			// console.log(arrayLocalStorage.splice(g, 1));
  			save(LOCALSTORAGE_WATCHED, v);
 			//   arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
-			  console.log(load (LOCALSTORAGE_WATCHED));
+			//   console.log(load (LOCALSTORAGE_WATCHED));
 			 return
 			 }	
 	}
@@ -98,9 +96,10 @@ export function saveLocalStorage() {
 	modalQueuedRevBtn.addEventListener('click', remFilmLocalQueued);
 
 	function addFilmLocalQueued() {
-		console.log(arrayLocalQueuedStorage);
+		// console.log(arrayLocalQueuedStorage);
+		arrayLocalQueuedStorage = load (LOCALSTORAGE_QUEUE);
 		if (arrayLocalQueuedStorage ===undefined) {
-			 console.log(arrayLocalQueuedStorage);
+			//  console.log(arrayLocalQueuedStorage);
 			saveLocal(arrayQueued, currentIdQueued, LOCALSTORAGE_QUEUE);
 			// console.log(arrayLocalQueuedStorage);
 			return
@@ -108,37 +107,42 @@ export function saveLocalStorage() {
 		if (arrayLocalQueuedStorage.includes(currentIdQueued)) {
 			// console.log(arrayLocalQueuedStorage);
 			return
-		}	
-			saveLocal(arrayLocalQueuedStorage, currentIdQueued, LOCALSTORAGE_QUEUE);
+		}	saveLocal(arrayLocalQueuedStorage, currentIdQueued, LOCALSTORAGE_QUEUE);
 			// console.log(arrayLocalQueuedStorage);
 	}
 	function remFilmLocalQueued() {
 		// console.log(arrayLocalQueuedStorage);
+		arrayLocalQueuedStorage = load (LOCALSTORAGE_QUEUE);
 		if (arrayLocalQueuedStorage ===undefined) {
 			return
 		};
-		if (arrayLocalQueuedStorage.includes(currentIdQueued)) {
-			const g = arrayLocalQueuedStorage.indexOf(currentId);
+		if (arrayLocalQueuedStorage.length >= 1) {
+			const b = arrayLocalQueuedStorage.includes(currentIdQueued);
 			// console.log(g);
 			// const v = delete arrayLocalQueuedStorage[g];
-          const v = arrayLocalQueuedStorage.splice(g, 1);
+         if (arrayLocalQueuedStorage.length===1 && b) {
+				localStorage.removeItem(LOCALSTORAGE_QUEUE);
+				return
+			 }  const v = arrayLocalQueuedStorage.filter(value => value !== currentIdQueued);
+			//  console.log(v);
+			// console.log(arrayLocalStorage.splice(g, 1));
  			save(LOCALSTORAGE_QUEUE, v);
-			//  arrayLocalQueuedStorage = load (LOCALSTORAGE_QUEUE);
-			 console.log(arrayLocalQueuedStorage);
+			//   arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
+			//   console.log(load (LOCALSTORAGE_WATCHED));
 			 return
 			 }	
 	}
 };
 function defineColorBtn (array, btn1, btn2, id) {
 	if (array===undefined) {
-		btn1.classList.add("modal-btn-rev") 
+		btn1.classList.toggle("modal-btn-rev") 
 		// modalWatchedBtn.style.backgroundColor = "#ff6b01";
 		return
 	}  if (array.includes(id)) {
-		btn2.classList.add("modal-btn-rev") 
+		btn2.classList.toggle("modal-btn-rev") 
 		// modalWatchedRevBtn.style.backgroundColor = "#ff6b01";
 		return
-	} btn1.classList.add("modal-btn-rev") 
+	} btn1.classList.toggle("modal-btn-rev") 
 	// modalWatchedBtn.style.backgroundColor = "#ff6b01"
 }
 

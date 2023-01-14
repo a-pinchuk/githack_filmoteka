@@ -255,7 +255,8 @@
   border-radius: 5px;
   transition: background-color 250ms linear, color 250ms linear;
   &:hover,
-  &:focus {
+  &:focus,
+  &.hover {
     background-color: #ff6b01;
     border: 1px solid #ff6b01;
     color: #ffffff;
@@ -281,7 +282,7 @@
     border: 1px solid #ff6b01;
     color: #ffffff;
 	 &:hover,
-   &:focus {
+    &:focus {
     background-color: inherit;
     border: 1px solid getColor('primary-text-color');
     color: getColor('primary-text-color');
