@@ -13,7 +13,7 @@ import './js/modal';
 import './js/requests/searchFilms';
 import './js/render/renderSearchFilms';
 import './js/scroll-to-top';
-
+import './js/pagination'
 // Переключатель темы
 
 import './js/switcher';
