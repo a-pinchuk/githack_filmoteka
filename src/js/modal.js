@@ -98,7 +98,7 @@ function renderMarkupModal(film) {
             Add to queue
           </button>
 			 <button type="button" class="modal-btn modal-btn-queue" data-queue-rem="${film.id}">
-			 Rem to watched
+			 Rem to queue
           </button>
 			 </div>
         </div>

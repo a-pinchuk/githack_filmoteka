@@ -225,6 +225,7 @@
 .btn-modal-wrap {
   display: flex;
   flex-wrap: wrap;
+  padding-left: 20px;
   justify-content: center;
   gap: 20px;
   @include media-min(tablet) {
@@ -252,7 +253,7 @@
   color: inherit;
   border: 1px solid getColor('primary-text-color');
   background-color: inherit;
-  border-radius: 5px;
+  border-radius: 20px;
   transition: background-color 250ms linear, color 250ms linear;
   &:hover {
 	background-color: #e5b99a;
