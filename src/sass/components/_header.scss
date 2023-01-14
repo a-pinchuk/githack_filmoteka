@@ -116,11 +116,9 @@
   &__info {
     color: #ff001b;
     padding-top: 10px;
-    display: none;
+    display: block;
     text-align: center;
-    &.active{
-      display: block;
-    }
+   
   }
 
   &__button {

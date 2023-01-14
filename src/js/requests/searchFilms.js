@@ -12,22 +12,17 @@ ref.form.addEventListener('submit', onCLickSubmit);
 
 function onCLickSubmit(e) {
   e.preventDefault();
-  searchQuery = ref.input.value.trim();
-  if (searchQuery === '') {
-    	ref.alertMessage.textContent = 'Search result is not successful. Enter the correct movie name and';
+	searchQuery = ref.input.value.trim();
+	if (searchQuery === '') {
+	  
+    	ref.alertMessage.textContent = 'Searching starts after providing data to search';
 	  Notify.warning('Searching starts after providing data to search.');
 	  return;
-    const alertElement = document.createElement('p');
-    alertElement.style.color = 'red';
-    alertElement.style.textAlign = 'center';
-    alertElement.style.paddingTop = '10px';
-    alertElement.textContent =
-      'Searching starts after providing data to search.';
-    ref.form.appendChild(alertElement);
-    return Notify.warning('Searching starts after providing data to search.');
+	  
+
   }
   if (searchQuery.length > 0) {
-    
+	  ref.alertMessage.textContent = '';
     ref.input.value = '';
     renderSearchFilms();
   } else {
@@ -40,10 +35,10 @@ async function renderSearchFilms() {
     const promis = await fetchSearchedFilms(searchQuery, PAGE);
     const data = promis.data.results;
     if (data.length === 0) {
-      ref.alertMessage.classList.add('active');
-      return Notify.warning('no matches found');
+      ref.alertMessage.textContent = 'Search result not successful. Enter the correct movie name and '
+      return Notify.warning('Search result not successful. Enter the correct movie name and ');
     }
-    ref.alertMessage.classList.remove('active');
+    ref.alertMessage.textContent = '';
     ref.loader.style.display = 'flex';
     clearGallery();
     createMarkUp(ref, data);
