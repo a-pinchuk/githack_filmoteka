@@ -109,20 +109,32 @@ function onSingUpFormSubmit(event) {
     createUserWithEmailAndPassword(auth, email, password)
       .then(userCredential => {
         const user = userCredential.user;
+
+        userName.style.display = 'block';
+        userName.textContent = username;
+        userNameLibrary.style.display = 'block';
+        userNameLibrary.textContent = username;
         Notify.success(`Welcome to Filmoteka, ${username}`);
         set(ref(database, 'users/' + user.uid), {
           username,
           email,
-          password,
         });
+        updateProfile(auth.currentUser, {
+          displayName: username,
+        })
+          .then(() => {
+            console.log('Profile updated!');
+          })
+          .catch(error => {
+            console.log(error);
+          });
       })
       .catch(error => {
         const errorMessage = error.message;
         Notify.failure(errorMessage);
       });
-
-    document.querySelector('.sing-up-form').reset();
   }
+  singUpForm.reset();
 }
 
 // Login
@@ -152,29 +164,30 @@ function onLoginFormSubmit(event) {
         const errorMessage = error.message;
         Notify.failure(errorMessage);
       });
-
-    document.querySelector('.login-form').reset();
   }
+  loginForm.reset();
 }
 
 // LogOut
 
 const logoutBtn = document.querySelector('.logout');
-logoutBtn.addEventListener('click', onLogout);
 
-function onLogout(event) {
-  signOut(auth)
-    .then(() => {
-      signUpBtn.style.display = 'none';
-      loginBtn.style.display = 'none';
-      Notify.info(`Bye, see you later`);
-      AuthBox.classList.add('is-hidden');
-      window.location.href = 'index.html';
-    })
-    .catch(error => {
-      const errorMessage = error.message;
-      Notify.failure(errorMessage);
-    });
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', onLogout);
+  function onLogout(event) {
+    signOut(auth)
+      .then(() => {
+        signUpBtn.style.display = 'none';
+        loginBtn.style.display = 'none';
+        Notify.info(`Bye, see you later`);
+        AuthBox.classList.add('is-hidden');
+        window.location.href = 'index.html';
+      })
+      .catch(error => {
+        const errorMessage = error.message;
+        Notify.failure(errorMessage);
+      });
+  }
 }
 
 // AuthState
@@ -185,7 +198,7 @@ if (openLibraryPage) {
   onAuthStateChanged(auth, user => {
     if (user) {
       openLibraryPage.addEventListener('click', e => {
-        window.location.href = 'library.html';
+        window.location.href = 'my-library.html';
       });
       console.log('login');
     } else {
@@ -197,15 +210,16 @@ if (openLibraryPage) {
   });
 }
 
-const logoutLibraryBtn = document.querySelector('.header-library__use-name');
+const logoutLibraryBtn = document.querySelector('.header-library__logout-btn');
+const userNameLibrary = document.querySelector('.header-library__user-name');
+
 if (logoutLibraryBtn) {
   logoutLibraryBtn.addEventListener('click', onLogout);
 
   function onLogout(e) {
     signOut(auth)
       .then(() => {
-        logoutLibraryBtn.removeEventListener('click', e);
-        window.location.href = 'library.html';
+        window.location.href = 'index.html';
       })
       .catch(error => {
         const errorMessage = error.message;
@@ -225,7 +239,9 @@ if (openLibraryPage) {
       signUpBtn.style.display = 'none';
       loginBtn.style.display = 'none';
       logoutBtn.style.display = 'block';
-      userName.style.display = 'flex';
+      userName.style.display = 'block';
+      userName.textContent = user.displayName;
+
       console.log('on');
     } else {
       openAuthBox.style.display = 'flex';
@@ -233,6 +249,17 @@ if (openLibraryPage) {
       signUpBtn.style.display = 'block';
       loginBtn.style.display = 'block';
       logoutBtn.style.display = 'none';
+    }
+  });
+}
+
+if (userNameLibrary) {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      userNameLibrary.style.display = 'block';
+      userNameLibrary.textContent = user.displayName;
+      console.log('on');
+    } else {
     }
   });
 }

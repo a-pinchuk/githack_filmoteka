@@ -1,4 +1,4 @@
-@import '../base/colors';
+@import "../base/colors";
 .header {
   background-image: url(/src/images/abstract-background-with-red-lines\ 1.jpg);
   background-size: 100% 320px;
@@ -92,7 +92,7 @@
     width: 100%;
     background-color: transparent;
 
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -103,7 +103,7 @@
     color: white;
 
     &::placeholder {
-      font-family: 'Roboto';
+      font-family: "Roboto";
       font-style: normal;
       font-weight: 400;
       font-size: 14px;
@@ -118,7 +118,7 @@
       color: transparent;
     }
   }
-//--------Добавил калсс для алерта
+  //--------Добавил калсс для алерта
   &__info {
     color: #ff001b;
     padding-top: 20px;
@@ -145,7 +145,7 @@
 }
 
 .mob-navigation__main {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
   font-size: 30px;
@@ -162,7 +162,7 @@
 .mob-navigation__link {
   position: relative;
 
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -175,7 +175,7 @@
 
   color: #ffffff;
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     display: block;
     bottom: -3px;
@@ -187,7 +187,7 @@
   }
 
   &--current::after {
-    content: '';
+    content: "";
     position: absolute;
     display: block;
     bottom: -3px;
@@ -214,13 +214,16 @@
 
 .open-auth-dropdown {
   position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translate(-50%);
+  top: 12px;
+  right: 68px;
   display: flex;
   flex-direction: column;
   gap: 5px;
   align-items: baseline;
+  @include media-max(mobile) {
+    top: 16px;
+    right: 54px;
+  }
 }
 
 .authentication {
@@ -250,8 +253,7 @@
     cursor: pointer;
     background: none;
     fill: #ff6b01;
-    transition: transform 0.25s linear, visibility 0.25s linear,
-      fill 0.35s linear;
+    transition: transform 0.25s linear, visibility 0.25s linear, fill 0.35s linear;
     &:hover {
       transform: scale(1.1);
       fill: #000;
@@ -284,11 +286,18 @@
     }
   }
 }
-.user-name {
+
+.header__user-auth-box {
+  position: absolute;
+  top: 12px;
+  left: -75px;
+  transform: translate(-50%);
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   align-items: center;
+}
+
+.user-name {
   font-weight: 500;
   color: #ff6b01;
 }
