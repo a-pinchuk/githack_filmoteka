@@ -5,6 +5,7 @@ import { Notify } from 'notiflix';
 import { PAGE } from '../api/api-vars';
 import { renderPopularFilms } from '../render/renderPopularFilm';
 import { loaderHide } from '../fetchAndRenderPopularFilm';
+import Pagination from 'tui-pagination';
 
 let searchQuery = '';
 
@@ -24,7 +25,7 @@ function onCLickSubmit(e) {
 	  ref.alertMessage.textContent = '';
     ref.input.value = '';
 	  renderSearchFilms();
-	  paginationPage(data)
+	  
   } else {
     renderPopularFilms();
   }
@@ -34,6 +35,9 @@ async function renderSearchFilms() {
     
     const promis = await fetchSearchedFilms(searchQuery, PAGE);
     const data = promis.data.results;
+    const paginationData = promis.data;
+    console.log(paginationData.total_pages);
+    paginationPage(paginationData)
     if (data.length === 0) {
       ref.alertMessage.textContent = 'Search result not successful. Enter the correct movie name and '
       return Notify.warning('Search result not successful. Enter the correct movie name and ');
@@ -42,6 +46,7 @@ async function renderSearchFilms() {
     ref.loader.style.display = 'flex';
     clearGallery();
     createMarkUp(ref, data);
+    
     loaderHide();
   } catch (error) {
     console.log(error);
@@ -87,7 +92,7 @@ function paginationPage(data) {
 		data.page = event.page;
 		console.log(event)
 		
-		renderMarkUp(data.results);
+		
 		
 	})
 	pagination.movePageTo(0);
