@@ -20,6 +20,7 @@ const ref = {
   modalWrap: document.querySelector('.modal-wrap'),
   modalWindow: document.querySelector('.modal-window'),
   checkbox: document.querySelector('.checkbox'),
+  loader: document.querySelector('.cssload-loader'),
 };
 
 export { ref };

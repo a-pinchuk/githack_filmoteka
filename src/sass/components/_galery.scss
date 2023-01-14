@@ -39,11 +39,15 @@
   border-radius: 5px;
   width: 100%;
   height: auto;
+
+  object-fit: cover;
   @include media-min(tablet) {
     max-width: 336px;
+    max-height: 455px;
   }
   @include media-min(desktop) {
     max-width: 395px;
+    max-height: 575px;
   }
 }
 .movie__info {
@@ -69,7 +73,7 @@
     line-height: 1.33;
   }
   @include media-min(desktop) {
-    font-size: 20px;
+    font-size: 19.5px;
     line-height: 1.2;
   }
 }
@@ -77,6 +81,7 @@
   text-transform: uppercase;
   color: getColor(primary-text-color);
 }
+
 .movie__details {
   display: flex;
   gap: 4px;
@@ -84,22 +89,19 @@
     gap: 7px;
   }
 }
+.film__title {
+  text-transform: uppercase;
+}
 .movie__genre,
 .movie__year {
   color: getColor(secondary-text-color);
 }
-.movie__year {
-  border-left: 1px solid getColor(secondary-text-color);
-  padding: 0px 4px;
-  @include media-min(tablet) {
-    padding: 0px 7px;
-  }
-}
+
 
 .movie__rating {
   position: absolute;
-  top:0;
-  left: 0;
+  top: 10px;
+  left: 10px;
   width: 50px;
   height: 25px;
   background-color: getColor(secondary-text-color);

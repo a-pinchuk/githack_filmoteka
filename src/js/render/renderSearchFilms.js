@@ -21,7 +21,7 @@ export function createMarkUp(ref, data) {
             <h2 class="film__title">${title}</h2>
             <div class="movie__details">
             <p class="movie__genre">${filmGenre}</p>
-            <p class="movie__year">${normalizeDate}</p>
+            <p class="movie__year">| ${normalizeDate}</p>
           </div>
           </div>
       </li>
@@ -44,5 +44,5 @@ function getGeners(allGenres, idGenres) {
     newArray = newArray.slice(0, 2).join(', ');
     return newArray;
   }
-  return newArray.join(', ') + ' other';
+  return newArray.join(', ') + ' Other';
 }

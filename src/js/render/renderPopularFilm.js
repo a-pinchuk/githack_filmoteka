@@ -13,8 +13,7 @@ export function renderPopularFilms(ref, data, genres) {
             <h2 class="film__title">${el.title}</h2>
             <div class="movie__details">
             <p class="movie__genre">${movieGenres}</p>
-            <p class="movie__year">${el.release_date.slice(0, 4)}</p>
-            
+            <p class="movie__year">| ${el.release_date.slice(0, 4)}</p>
           </div>
           </div>
       </li>`;
