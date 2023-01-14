@@ -23,10 +23,9 @@ function onCLickSubmit(e) {
   }
   if (searchQuery.length > 0) {
 	  ref.alertMessage.textContent = '';
-    ref.input.value = '';
+	  ref.input.value = '';
     renderSearchFilms();
-    
-	  
+
   } else {
     renderPopularFilms();
   }
@@ -45,14 +44,15 @@ async function renderSearchFilms() {
     ref.alertMessage.textContent = '';
     ref.loader.style.display = 'flex';
     clearGallery();
-    paginationPage(paginationData);
-    createMarkUp(ref, data);
+    
+	 
+	  paginationPage(paginationData);
+	   createMarkUp(ref, data);
     loaderHide();
   } catch (error) {
     console.log(error);
   }
 }
-
 
 
 
@@ -65,11 +65,12 @@ function clearGallery() {
 // TUI pagination-------
 // const data = 440;
 // paginationPage(data);
-function paginationPage(data) {
-  const container = document.getElementById('pagination');
+function paginationPage(dataPag) {
+	const container = document.getElementById('pagination');
+	console.log(dataPag.page)
   const itemsPerPage = 20;
   const options = {
-    totalItems: data.total_results,
+    totalItems: dataPag.total_results,
     itemsPerPage,
     visiblePages: 10,
 	  centerAlign: false,
@@ -94,16 +95,13 @@ function paginationPage(data) {
 
 
 	console.log(pagination);
-	pagination.on('aftereMove', event => {
-		data.page = event.page;
-		console.log(event)
-		// if (currentPage === 10) {
-    //     return false;
-    //     // return true;
-    // }
+	pagination.on('beforeMove', event => {
+		dataPag.page = event.page;
+		
+	
 		
 		
 	})
-	pagination.movePageTo(1000);
 	
+	pagination.movePageTo(0);
 }
