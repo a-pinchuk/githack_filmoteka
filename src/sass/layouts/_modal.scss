@@ -251,12 +251,12 @@
   background-color: inherit;
   border-radius: 5px;
   transition: background-color 250ms linear, color 250ms linear;
-  &:hover,
-  &:focus {
-    background-color: #ff6b01;
-    border: 1px solid #ff6b01;
-    color: #ffffff;
-  }
+//   &:hover,
+//   &:focus {
+//     background-color: #ff6b01;
+//     border: 1px solid #ff6b01;
+//     color: #ffffff;
+//   }
   &-watched {
     padding: 6px 27px;
     @include media-min(tablet) {
@@ -269,4 +269,9 @@
       padding: 0;
     }
   }
+}
+.modal-btn-rev {
+	background-color: #ff6b01;
+    border: 1px solid #ff6b01;
+    color: #ffffff;
 }

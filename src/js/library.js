@@ -8,17 +8,17 @@ import { renderFilmsByIdForLibrary } from './render/renderFilmByIdForLibrary';
 // import { renderFilms } from './render/renderHTML';
 import { ref } from './references/ref';
 // import { options, pagination } from './pagination';
-// import { LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE } from './api/api-vars';
+import { LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE } from './api/api-vars';
 
 // let textContent = '';
-const  LOCALSTORAGE_WATCHED =  "watched";
-const  LOCALSTORAGE_QUEUE =  "queue";
+// const  LOCALSTORAGE_WATCHED =  "watched";
+// const  LOCALSTORAGE_QUEUE =  "queue";
 
-const dyk = [800815];
-	  localStorage.setItem(LOCALSTORAGE_WATCHED, JSON.stringify(dyk));
+// const dyk = [800815];
+// 	  localStorage.setItem(LOCALSTORAGE_WATCHED, JSON.stringify(dyk));
 
-const qyk = [653851];
-localStorage.setItem(LOCALSTORAGE_QUEUE, JSON.stringify(qyk));
+// const qyk = [653851];
+// localStorage.setItem(LOCALSTORAGE_QUEUE, JSON.stringify(qyk));
 
 function load (key) {
 	try {
@@ -40,7 +40,7 @@ try {
 function onDOMContentLoaded() {
 	// console.log(ref.libraryWatchedBtn.style);
 	const arrayWatched = load (LOCALSTORAGE_WATCHED);
-	//   console.log(arrayWatched);
+	  console.log(arrayWatched);
 	if (arrayWatched===undefined) {
 		return
 	}

@@ -4,6 +4,7 @@ import { API_KEY, TREND_URL, SEARCH_URL, ID_URL } from './api/api-vars';
 import { fetchFilmById, fetchTrendedFilms } from './api/fetch';
 import { ref } from './references/ref';
 import { loaderHide } from '../js/fetchAndRenderPopularFilm';
+import { saveLocalStorage } from '../js/localStorage';
 
 // ref.openModalBtn.addEventListener('click', openModal);
 ref.galleryList.addEventListener('click', openModal);
@@ -21,17 +22,19 @@ async function openModal(item) {
     ref.modalWindow.classList.remove('modal-window-dark');
   }
   ref.modal.classList.toggle('is-hidden');
+
   document.body.style.overflow = 'hidden';
 
   const li = item.target.closest('.photo__card');
   const id = li.getAttribute('id');
   const response = await fetchFilmById(id).then(r => {
     return r.data;
+	
   });
-
-  renderBackdrop(response);
+   renderBackdrop(response);
   ref.modalWrap.insertAdjacentHTML('afterBegin', renderMarkupModal(response));
   loaderHide();
+  await saveLocalStorage()
 }
 
 function renderBackdrop(film) {
@@ -82,10 +85,10 @@ function renderMarkupModal(film) {
           ${film.overview}
         </p>
         <div class="btn-modal-wrap">
-          <button type="button" class="modal-btn modal-btn-watched">
+          <button type="button" class="modal-btn modal-btn-watched" data-watched="${film.id}">
             Add to watched
           </button>
-          <button type="button" class="modal-btn modal-btn-queue">
+          <button type="button" class="modal-btn modal-btn-queue" data-queue="${film.id}">
             Add to queue
           </button>
         </div>
