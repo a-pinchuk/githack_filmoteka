@@ -14,55 +14,80 @@ import { LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE } from './api/api-vars';
 // ref.modalWindow.addEventListener('click', on);
 export function saveLocalStorage() {
 	const modalWatchedBtn = document.querySelector('button[data-watched]');
+	const modalWatchedRevBtn = document.querySelector('button[data-watched-rem]');
 	const modalQueuedBtn = document.querySelector('button[data-queue]');
-	//   localStorage.clear();
+	const modalQueuedRevBtn = document.querySelector('button[data-queue-rem]');
+	   // localStorage.clear();
 	let arrayWatched =[];
 	let arrayQueued =[];
 	const currentId = Number(modalWatchedBtn.dataset.watched);
+	const currentIdQueued = Number(modalQueuedBtn.dataset.queue);
 	const arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
-	if (arrayLocalStorage !== undefined && arrayLocalStorage.includes(currentId)) {
-		modalWatchedBtn.textContent = "Rem to watched";
-		modalWatchedBtn.classList.add("modal-btn-rev");
-	} else {modalWatchedBtn.classList.remove("modal-btn-rev");}
-	const arrayLocQueuedStorage = load (LOCALSTORAGE_QUEUE);
-	if (arrayLocQueuedStorage !== undefined && arrayLocQueuedStorage.includes(currentId)) {
-		modalQueuedBtn.textContent = "Rem to watched";
-	}
-	console.log(modalWatchedBtn.textContent);
-	console.log(modalWatchedBtn.textContent.toLowerCase() === "add to watched");
-	modalWatchedBtn.addEventListener('click', addFilmLocal(arrayLocalStorage, currentId, LOCALSTORAGE_WATCHED, modalWatchedBtn, arrayWatched))
-};
-
- function addFilmLocal(array, id, key, btn, arrayWatched) {
-	if (array ===undefined) {
-		console.log(arrayLocalStorage);
-		saveLocal(arrayWatched, id, key);
-		console.log(array);
-		return
-		} 	
-		saveLocal(array, id, key);
-		// console.log(5);
-		btn.textContent = "Rem to watched";
-		btn.classList.add("modal-btn-rev");
-		array = load (key);
-		remFilmLocal (array, id, key, btn)
- }
-
- function remFilmLocal (array, id, key, btn, arrayWatched) {
-		if (array.includes(id)) {
-			const g = array.indexOf(id);
-         const v = array.splice(g, 1);
- 			save(key, v);
-			 btn.textContent = "Add to watched";	
-			 btn.classList.remove("modal-btn-rev");
-			 array = load (key);
-			 addFilmLocal(array, id, key, btn, arrayWatched)
-			}	
-}
-
+	const arrayLocalQueuedStorage = load (LOCALSTORAGE_QUEUE);
 	
+	 modalWatchedBtn.addEventListener('click', addFilmLocal);
+	 modalWatchedRevBtn.addEventListener('click', remFilmLocal);
 
+	function addFilmLocal() {
+		if (arrayLocalStorage ===undefined) {
+			// console.log(arrayLocalStorage);
+			saveLocal(arrayWatched, currentId, LOCALSTORAGE_WATCHED);
+			// console.log(arrayLocalStorage);
+			return
+			} 
+		if (arrayLocalStorage.includes(currentId)===true) {
+			// console.log(arrayLocalStorage);
+			return
+		}
+			saveLocal(arrayLocalStorage, currentId, LOCALSTORAGE_WATCHED);
+			// console.log(arrayLocalStorage);
+	}
+	function remFilmLocal() {
+		// console.log(arrayLocalStorage);
+		if (arrayLocalStorage ===undefined) {
+			return
+		}
+		if (arrayLocalStorage.includes(currentId)===true) {
+			const g = arrayLocalStorage.indexOf(currentId);
+			// console.log(g);
+         const v = arrayLocalStorage.splice(g, 1);
+ 			save(LOCALSTORAGE_WATCHED, v);
+			//  console.log(arrayLocalStorage);
+			 return
+			 }	
+	}
+	modalQueuedBtn.addEventListener('click', addFilmLocalQueued);
+	modalQueuedRevBtn.addEventListener('click', remFilmLocalQueued);
 
+	function addFilmLocalQueued() {
+		if (arrayLocalQueuedStorage ===undefined) {
+			// console.log(arrayLocalQueuedStorage);
+			saveLocal(arrayQueued, currentIdQueued, LOCALSTORAGE_QUEUE);
+			// console.log(arrayLocalQueuedStorage);
+			return
+			} 
+		if (arrayLocalQueuedStorage.includes(currentIdQueued)===true) {
+			// console.log(arrayLocalQueuedStorage);
+			return
+		}	
+			saveLocal(arrayLocalQueuedStorage, currentIdQueued, LOCALSTORAGE_QUEUE);
+			// console.log(arrayLocalQueuedStorage);
+	}
+	function remFilmLocalQueued() {
+		// console.log(arrayLocalQueuedStorage);
+		if (arrayLocalQueuedStorage ===undefined) {
+			return
+		}
+		if (arrayLocalQueuedStorage.includes(currentIdQueued)===true) {
+			const g = arrayLocalQueuedStorage.indexOf(currentId);
+			// console.log(g);
+         const v = arrayLocalQueuedStorage.splice(g, 1);
+ 			save(LOCALSTORAGE_QUEUE, v);
+			//  console.log(arrayLocalQueuedStorage);
+			 return
+			 }	
+	}
+};
 
 function saveLocal(array, id, key) {
 	array.push (id);

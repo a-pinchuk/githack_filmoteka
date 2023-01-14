@@ -85,12 +85,22 @@ function renderMarkupModal(film) {
           ${film.overview}
         </p>
         <div class="btn-modal-wrap">
+		  <div class="modal-btn-wrap">
           <button type="button" class="modal-btn modal-btn-watched" data-watched="${film.id}">
             Add to watched
           </button>
+			 <button type="button" class="modal-btn modal-btn-watched" data-watched-rem="${film.id}">
+			 Rem to watched
+          </button>
+			 </div>
+			 <div class="modal-btn-wrap">
           <button type="button" class="modal-btn modal-btn-queue" data-queue="${film.id}">
             Add to queue
           </button>
+			 <button type="button" class="modal-btn modal-btn-queue" data-queue-rem="${film.id}">
+			 Rem to watched
+          </button>
+			 </div>
         </div>
       </div>`;
 }

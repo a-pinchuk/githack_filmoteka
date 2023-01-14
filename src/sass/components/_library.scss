@@ -1,8 +1,8 @@
 @import "../base/colors";
-a {
-  display: block;
-  flex-grow: 1;
-}
+// a {
+//   display: block;
+//   flex-grow: 1;
+// }
 .header-library {
   margin-right: auto;
   margin-left: auto;
@@ -180,7 +180,7 @@ a {
   flex-direction: column;
 }
 .movie__image {
-  height: 100%;
+  height: auto;
 }
 .movie__vote-average {
   width: 36px;
@@ -198,7 +198,10 @@ a {
     height: 20px;
   }
 }
-
+.movie__title {
+	text-transform: uppercase;
+	color: getColor(primary-text-color);
+ }
 .header-library__use-name {
   position: absolute;
   top: 23px;
@@ -219,5 +222,6 @@ a {
   &:hover {
     transform: scale(1.1);
     fill: #fff;
+	 border-radius: 2px;
   }
 }
