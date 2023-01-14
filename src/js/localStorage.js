@@ -22,37 +22,58 @@ export function saveLocalStorage() {
 	let arrayQueued =[];
 	const currentId = Number(modalWatchedBtn.dataset.watched);
 	const currentIdQueued = Number(modalQueuedBtn.dataset.queue);
-	const arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
-	const arrayLocalQueuedStorage = load (LOCALSTORAGE_QUEUE);
-	
-	 modalWatchedBtn.addEventListener('click', addFilmLocal);
-	 modalWatchedRevBtn.addEventListener('click', remFilmLocal);
-
-	function addFilmLocal() {
+	let arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
+	let arrayLocalQueuedStorage = load (LOCALSTORAGE_QUEUE);
+	console.log(arrayLocalStorage);
+	 modalWatchedBtn.addEventListener('click', () => {
+		arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
 		if (arrayLocalStorage ===undefined) {
 			// console.log(arrayLocalStorage);
 			saveLocal(arrayWatched, currentId, LOCALSTORAGE_WATCHED);
 			// console.log(arrayLocalStorage);
 			return
 			} 
-		if (arrayLocalStorage.includes(currentId)===true) {
+		if (arrayLocalStorage.includes(currentId)) {
 			// console.log(arrayLocalStorage);
 			return
 		}
 			saveLocal(arrayLocalStorage, currentId, LOCALSTORAGE_WATCHED);
 			// console.log(arrayLocalStorage);
-	}
+	});
+	 modalWatchedRevBtn.addEventListener('click', remFilmLocal);
+
+	// function addFilmLocal() {
+	// 	arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
+	// 	if (arrayLocalStorage ===undefined) {
+	// 		// console.log(arrayLocalStorage);
+	// 		saveLocal(arrayWatched, currentId, LOCALSTORAGE_WATCHED);
+	// 		// console.log(arrayLocalStorage);
+	// 		return
+	// 		} 
+	// 	if (arrayLocalStorage.includes(currentId)) {
+	// 		// console.log(arrayLocalStorage);
+	// 		return
+	// 	}
+	// 		saveLocal(arrayLocalStorage, currentId, LOCALSTORAGE_WATCHED);
+	// 		// console.log(arrayLocalStorage);
+	// }
 	function remFilmLocal() {
-		// console.log(arrayLocalStorage);
+		console.log(arrayLocalStorage);
+		arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
+		 console.log(arrayLocalStorage);
 		if (arrayLocalStorage ===undefined) {
 			return
-		}
-		if (arrayLocalStorage.includes(currentId)===true) {
+		} 
+		if (arrayLocalStorage.includes(currentId)) {
+			arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
 			const g = arrayLocalStorage.indexOf(currentId);
-			// console.log(g);
-         const v = arrayLocalStorage.splice(g, 1);
+			 console.log(g);
+			//  const v = delete arrayLocalStorage[g];
+          const v = arrayLocalStorage.splice(g, 1);
+			console.log(v);
  			save(LOCALSTORAGE_WATCHED, v);
-			//  console.log(arrayLocalStorage);
+			 arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
+			  console.log(arrayLocalStorage);
 			 return
 			 }	
 	}
@@ -60,13 +81,14 @@ export function saveLocalStorage() {
 	modalQueuedRevBtn.addEventListener('click', remFilmLocalQueued);
 
 	function addFilmLocalQueued() {
+		console.log(arrayLocalQueuedStorage);
 		if (arrayLocalQueuedStorage ===undefined) {
-			// console.log(arrayLocalQueuedStorage);
+			 console.log(arrayLocalQueuedStorage);
 			saveLocal(arrayQueued, currentIdQueued, LOCALSTORAGE_QUEUE);
 			// console.log(arrayLocalQueuedStorage);
 			return
 			} 
-		if (arrayLocalQueuedStorage.includes(currentIdQueued)===true) {
+		if (arrayLocalQueuedStorage.includes(currentIdQueued)) {
 			// console.log(arrayLocalQueuedStorage);
 			return
 		}	
@@ -77,13 +99,15 @@ export function saveLocalStorage() {
 		// console.log(arrayLocalQueuedStorage);
 		if (arrayLocalQueuedStorage ===undefined) {
 			return
-		}
-		if (arrayLocalQueuedStorage.includes(currentIdQueued)===true) {
+		};
+		if (arrayLocalQueuedStorage.includes(currentIdQueued)) {
 			const g = arrayLocalQueuedStorage.indexOf(currentId);
 			// console.log(g);
-         const v = arrayLocalQueuedStorage.splice(g, 1);
+			// const v = delete arrayLocalQueuedStorage[g];
+          const v = arrayLocalQueuedStorage.splice(g, 1);
  			save(LOCALSTORAGE_QUEUE, v);
-			//  console.log(arrayLocalQueuedStorage);
+			 arrayLocalQueuedStorage = load (LOCALSTORAGE_QUEUE);
+			 console.log(arrayLocalQueuedStorage);
 			 return
 			 }	
 	}

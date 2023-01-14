@@ -185,6 +185,7 @@
 .movie__vote-average {
   width: 36px;
   height: 16px;
+  border-radius: 5px;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;
@@ -222,6 +223,6 @@
   &:hover {
     transform: scale(1.1);
     fill: #fff;
-	 border-radius: 2px;
+	 
   }
 }
