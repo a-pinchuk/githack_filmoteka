@@ -8,6 +8,7 @@ import {
   onAuthStateChanged,
   signOut,
   createUserWithEmailAndPassword,
+  updateProfile,
 } from 'firebase/auth';
 import { Notify } from 'notiflix';
 
@@ -109,11 +110,8 @@ function onSingUpFormSubmit(event) {
     createUserWithEmailAndPassword(auth, email, password)
       .then(userCredential => {
         const user = userCredential.user;
-
         userName.style.display = 'block';
         userName.textContent = username;
-        userNameLibrary.style.display = 'block';
-        userNameLibrary.textContent = username;
         Notify.success(`Welcome to Filmoteka, ${username}`);
         set(ref(database, 'users/' + user.uid), {
           username,
@@ -155,6 +153,7 @@ function onLoginFormSubmit(event) {
       .then(userCredential => {
         const user = userCredential.user;
         openAuthBox.style.display = 'none';
+        console.log(user);
         set(ref(database, 'users/' + user.uid), {
           email,
           password,

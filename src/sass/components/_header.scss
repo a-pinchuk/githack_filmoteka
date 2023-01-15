@@ -222,7 +222,7 @@
   align-items: baseline;
   @include media-max(mobile) {
     top: 16px;
-    right: 54px;
+    right: 58px;
   }
 }
 
@@ -290,7 +290,7 @@
 .header__user-auth-box {
   position: absolute;
   top: 12px;
-  left: -75px;
+  left: -92px;
   transform: translate(-50%);
   display: flex;
   gap: 5px;

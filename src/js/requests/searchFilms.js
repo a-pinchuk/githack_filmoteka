@@ -8,7 +8,10 @@ import { showPagination } from '../pagination';
 import { loaderHide } from '../fetchAndRenderPopularFilm';
 
 let searchQuery = '';
-ref.form.addEventListener('submit', onCLickSubmit);
+
+if (ref.form) {
+  ref.form.addEventListener('submit', onCLickSubmit);
+}
 
 function onCLickSubmit(e) {
   e.preventDefault();

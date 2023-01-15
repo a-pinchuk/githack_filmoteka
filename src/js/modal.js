@@ -11,10 +11,18 @@ import { loaderHide } from '../js/fetchAndRenderPopularFilm';
 import { saveLocalStorage } from '../js/localStorage';
 
 // ref.openModalBtn.addEventListener('click', openModal);
-ref.galleryList.addEventListener('click', openModal);
-ref.closeModalBtn.addEventListener('click', closeModal);
-ref.modal.addEventListener('keydown', closeModal);
-ref.modal.addEventListener('click', closeModalbyClick);
+if (ref.galleryList) {
+  ref.galleryList.addEventListener('click', openModal);
+}
+
+if (ref.closeModalBtn) {
+  ref.closeModalBtn.addEventListener('click', closeModal);
+}
+
+if (ref.modal) {
+  ref.modal.addEventListener('keydown', closeModal);
+  ref.modal.addEventListener('click', closeModalbyClick);
+}
 
 async function openModal(item) {
   document.addEventListener('keydown', closeModal);
