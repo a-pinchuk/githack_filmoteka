@@ -20,69 +20,68 @@ import { LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE } from './api/api-vars';
 // const qyk = [653851];
 // localStorage.setItem(LOCALSTORAGE_QUEUE, JSON.stringify(qyk));
 
-function load (key) {
-	try {
-	  const serializedState = localStorage.getItem(key);
-	  return serializedState === null ? undefined : JSON.parse(serializedState);
-	} catch (error) {
-	  console.error("Get state error: ", error.message);
-	}
- };
+function load(key) {
+  try {
+    const serializedState = localStorage.getItem(key);
+    return serializedState === null ? undefined : JSON.parse(serializedState);
+  } catch (error) {
+    console.error('Get state error: ', error.message);
+  }
+}
 
 try {
-	document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
-	ref.libraryWatchedBtn.addEventListener('click', onClickWatchedBtn);
-	ref.libraryQueueBtn.addEventListener('click', onClickQueueBtn);
-	 } catch (error) {
-		console.log(error);
-	 }
+  document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
+  ref.libraryWatchedBtn.addEventListener('click', onClickWatchedBtn);
+  ref.libraryQueueBtn.addEventListener('click', onClickQueueBtn);
+} catch (error) {
+  console.log(error);
+}
 // ref.libraryWatchedBtn.classList.add("modal-btn-rev")
- ref.libraryWatchedBtn.style.backgroundColor = "#ff6b01"; 
+ref.libraryWatchedBtn.style.backgroundColor = '#ff6b01';
 function onDOMContentLoaded() {
-	 console.log(load (LOCALSTORAGE_WATCHED));
-	const arrayWatched = load (LOCALSTORAGE_WATCHED);
-	  console.log(arrayWatched);
-	  
-	if (arrayWatched===undefined) {
-		return
-	}
-	// // console.log(arrayWatched);
-	// const ars =arrayWatched.map(ar => ar.id);
-	fetchAndRenderFilm(arrayWatched);	
+  console.log(load(LOCALSTORAGE_WATCHED));
+  const arrayWatched = load(LOCALSTORAGE_WATCHED);
+  console.log(arrayWatched);
+
+  if (arrayWatched === undefined) {
+    return;
+  }
+  // // console.log(arrayWatched);
+  // const ars =arrayWatched.map(ar => ar.id);
+  fetchAndRenderFilm(arrayWatched);
 }
 function onClickWatchedBtn(e) {
-	ref.libraryWatchedBtn.style.backgroundColor = "#ff6b01"; 
-	ref.libraryList.innerHTML = "";
-	const arrayWatched = load (LOCALSTORAGE_WATCHED);
-	// console.log(arrayWatched);
-	if (arrayWatched===undefined) {
-		return
-	}
-	// const ars = arrayWatched.map(ar => ar.id);
-	fetchAndRenderFilm(arrayWatched);
- }
+  ref.libraryWatchedBtn.style.backgroundColor = '#ff6b01';
+  ref.galleryList.innerHTML = '';
+  const arrayWatched = load(LOCALSTORAGE_WATCHED);
+  // console.log(arrayWatched);
+  if (arrayWatched === undefined) {
+    return;
+  }
+  // const ars = arrayWatched.map(ar => ar.id);
+  fetchAndRenderFilm(arrayWatched);
+}
 function onClickQueueBtn(e) {
-	ref.libraryWatchedBtn.style.backgroundColor = "#000000"; 
-	ref.libraryList.innerHTML = "";
-	const arrayQueue = load (LOCALSTORAGE_QUEUE);
-	// console.log(arrayQueue);
-	if (arrayQueue===undefined) {
-		return
-	}
-	// const ars = arrayQueue.map(ar => ar.id);
-	fetchAndRenderFilm(arrayQueue);
+  ref.libraryWatchedBtn.style.backgroundColor = '#000000';
+  ref.galleryList.innerHTML = '';
+  const arrayQueue = load(LOCALSTORAGE_QUEUE);
+  // console.log(arrayQueue);
+  if (arrayQueue === undefined) {
+    return;
+  }
+  // const ars = arrayQueue.map(ar => ar.id);
+  fetchAndRenderFilm(arrayQueue);
 }
 // const ids = [550, 299536, 383498];
 // console.log(ids.map(id => console.log(id)));
 async function fetchAndRenderFilm(ids) {
-	try {
-		// console.log(ids);
-	 const arrayOfPromises = ids.map(async (id) => await fetchFilmById(id));
-	 const data = await Promise.all(arrayOfPromises);
-	//   console.log(data);
-	  renderFilmsByIdForLibrary(ref, data);
-	} catch (error) {
-	  console.log(error);
-	}
- }
-
+  try {
+    // console.log(ids);
+    const arrayOfPromises = ids.map(async id => await fetchFilmById(id));
+    const data = await Promise.all(arrayOfPromises);
+    //   console.log(data);
+    renderFilmsByIdForLibrary(ref, data);
+  } catch (error) {
+    console.log(error);
+  }
+}

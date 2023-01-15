@@ -13,9 +13,9 @@ import './js/authentication/authentication';
 import './js/modal';
 import './js/localStorage';
 
-import './js/requests/searchFilms';
+// import './js/requests/searchFilms';
 import './js/render/renderSearchFilms';
 
 // Переключатель темы
-
+import './js/switcher';
 import './js/authentication/authentication';
