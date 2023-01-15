@@ -43,10 +43,10 @@ try {
 function onDOMContentLoaded() {
   ref.galleryList.classList.add("movie-list");
   const libraryList = document.querySelector('.movie-list');
-  console.log(ref.libraryList);
-  console.log(load(LOCALSTORAGE_WATCHED));
+//   console.log(ref.libraryList);
+//   console.log(load(LOCALSTORAGE_WATCHED));
   const arrayWatched = load(LOCALSTORAGE_WATCHED);
-  console.log(arrayWatched);
+//   console.log(arrayWatched);
 
   if (arrayWatched === undefined) {
     return;
