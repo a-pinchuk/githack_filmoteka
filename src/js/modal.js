@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { log } from 'console';
-import { API_KEY, TREND_URL, SEARCH_URL, ID_URL } from './api/api-vars';
+import {LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE} from './api/api-vars';
 import {
   fetchFilmById,
   fetchTrendedFilms,
@@ -9,6 +9,7 @@ import {
 import { ref } from './references/ref';
 import { loaderHide } from './loader';
 import { saveLocalStorage } from '../js/localStorage';
+// import {onClickWatchedBtn, onClickQueueBtn} from '../js/library';
 import sprite from '../images/sprite.svg';
 
 ref.galleryList.addEventListener('click', openModal);
@@ -124,27 +125,27 @@ function renderMarkupModal(film) {
         </p>
         <div class="btn-modal-wrap">
 		  <div class="modal-btn-wrap">
-          <button type="button" class="modal-btn modal-btn-watched" data-watched="${
+          <button type="button" class="modal-btn" data-watched="${
             film.id
           }">
             Add to watched
           </button>
-			 <button type="button" class="modal-btn modal-btn-watched" data-watched-rem="${
+			 <button type="button" class="modal-btn modal-btn-rem" data-watched-rem="${
          film.id
        }">
-			 Rem to watched
+		 Remove from watched
           </button>
 			 </div>
 			 <div class="modal-btn-wrap">
-          <button type="button" class="modal-btn modal-btn-queue" data-queue="${
+          <button type="button" class="modal-btn" data-queue="${
             film.id
           }">
             Add to queue
           </button>
-			 <button type="button" class="modal-btn modal-btn-queue" data-queue-rem="${
+			 <button type="button" class="modal-btn modal-btn-rem" data-queue-rem="${
          film.id
        }">
-			 Rem to queue
+		 Remove from queue
           </button>
 			 </div>
         </div>
@@ -195,27 +196,27 @@ function renderDarkMarkupModal(film) {
         </p>
         <div class="btn-modal-wrap">
 		  <div class="modal-btn-wrap">
-          <button type="button" class="modal-btn modal-btn-dark modal-btn-watched" data-watched="${
+          <button type="button" class="modal-btn modal-btn-dark" data-watched="${
             film.id
           }">
             Add to watched
           </button>
-			 <button type="button" class="modal-btn modal-btn-dark modal-btn-watched" data-watched-rem="${
+			 <button type="button" class="modal-btn modal-btn-dark modal-btn-rem" data-watched-rem="${
          film.id
        }">
-			 Rem to watched
+		 Remove from watched
           </button>
 			 </div>
 			 <div class="modal-btn-wrap">
-          <button type="button" class="modal-btn modal-btn-dark modal-btn-queue" data-queue="${
+          <button type="button" class="modal-btn modal-btn-dark" data-queue="${
             film.id
           }">
             Add to queue
           </button>
-			 <button type="button" class="modal-btn modal-btn-dark modal-btn-queue" data-queue-rem="${
+			 <button type="button" class="modal-btn modal-btn-dark modal-btn-rem" data-queue-rem="${
          film.id
        }">
-			 Rem to queue
+		 Remove from queue
           </button>
 			 </div>
         </div>
@@ -228,6 +229,8 @@ function closeModal(e) {
     ref.modalWrap.innerHTML = '';
     document.body.style.overflow = '';
     backdrop.style.backgroundImage = '';
+	//   onClickWatchedBtn();
+	//  onClickQueueBtn();
     document.removeEventListener('keydown', closeModal);
   }
 }
@@ -238,6 +241,8 @@ function closeModalbyClick(e) {
     ref.modalWrap.innerHTML = '';
     document.body.style.overflow = '';
     backdrop.style.backgroundImage = '';
+	//  onClickWatchedBtn();
+	//  onClickQueueBtn();
     document.removeEventListener('keydown', closeModal);
   }
 }
