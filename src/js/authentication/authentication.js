@@ -77,7 +77,7 @@ if (openAuthBox) {
 const loginBtn = document.querySelector('.login__button');
 if (loginBtn) {
   loginBtn.addEventListener('click', () => {
-    loginForm.classList.toggle('is-hidden');
+    // loginForm.classList.remove('is-hidden');
     loginForm.style.display = 'flex';
     openLoginModalBtn.classList.toggle('is-hidden');
   });
