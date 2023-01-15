@@ -27,126 +27,85 @@ export function saveLocalStorage() {
 	// console.log(arrayLocalStorage);
 	defineColorBtn (arrayLocalStorage, modalWatchedBtn, modalWatchedRevBtn, currentId);
 	defineColorBtn (arrayLocalQueuedStorage, modalQueuedBtn, modalQueuedRevBtn, currentIdQueued);
-	// if (arrayLocalStorage===undefined) {
-	// 	modalWatchedBtn.classList.add("modal-btn-rev") 
-	// 	// modalWatchedBtn.style.backgroundColor = "#ff6b01";
-	// 	return
-	// }  if (arrayLocalStorage.includes(currentId)) {
-	// 	modalWatchedRevBtn.classList.add("modal-btn-rev") 
-	// 	// modalWatchedRevBtn.style.backgroundColor = "#ff6b01";
-	// 	return
-	// } modalWatchedBtn.classList.add("modal-btn-rev") 
-	// // modalWatchedBtn.style.backgroundColor = "#ff6b01"
-
+	
 	modalWatchedBtn.addEventListener('click', addFilmLocal)
-	// () => {
-	// 	arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
-	// 	if (arrayLocalStorage ===undefined) {
-	// 		// console.log(arrayLocalStorage);
-	// 		saveLocal(arrayWatched, currentId, LOCALSTORAGE_WATCHED);
-	// 		// console.log(arrayLocalStorage);
-	// 		return
-	// 		} 
-	// 	if (arrayLocalStorage.includes(currentId)) {
-	// 		// console.log(arrayLocalStorage);
-	// 		return
-	// 	}
-	// 		saveLocal(arrayLocalStorage, currentId, LOCALSTORAGE_WATCHED);
-	// 		// console.log(arrayLocalStorage);
-	// });
 	modalWatchedRevBtn.addEventListener('click', remFilmLocal);
 
 	function addFilmLocal() {
-		modalWatchedBtn.classList.toggle("modal-btn-rev");
-		modalWatchedRevBtn.classList.toggle("modal-btn-rev");
-		arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
-		if (arrayLocalStorage === undefined) {
-		//  console.log(arrayLocalStorage);
-		saveLocal(arrayWatched, currentId, LOCALSTORAGE_WATCHED);
-		//  console.log(load (LOCALSTORAGE_WATCHED));
-		return
-		} 	if (arrayLocalStorage.includes(currentId)) {
-			// console.log(arrayLocalStorage);
-			return
-		}	saveLocal(arrayLocalStorage, currentId, LOCALSTORAGE_WATCHED);
-			// console.log(load (LOCALSTORAGE_WATCHED));
+		changClass(modalWatchedBtn, modalWatchedRevBtn);
+		addFilm(arrayLocalStorage, LOCALSTORAGE_WATCHED, arrayWatched, currentId);
+		
 	}
 	function remFilmLocal() {
-		modalWatchedBtn.classList.toggle("modal-btn-rev");
-		modalWatchedRevBtn.classList.toggle("modal-btn-rev");
-		arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
-		//  console.log(arrayLocalStorage);
-		if (arrayLocalStorage === undefined) {
-			return
-		} 	if (arrayLocalStorage.length >= 1) {
-			const b = arrayLocalStorage.includes(currentId);
-			// arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
-			// console.log(arrayLocalStorage);
-			 if (arrayLocalStorage.length===1 && b) {
-				localStorage.removeItem(LOCALSTORAGE_WATCHED);
-				return
-			 }  const v = arrayLocalStorage.filter(value => value !== currentId);
-			//  console.log(v);
-			// console.log(arrayLocalStorage.splice(g, 1));
- 			save(LOCALSTORAGE_WATCHED, v);
-			//   arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
-			//   console.log(load (LOCALSTORAGE_WATCHED));
-			 return
-			 }	
+		changClass(modalWatchedBtn, modalWatchedRevBtn);
+		remFilm(arrayLocalStorage, LOCALSTORAGE_WATCHED, currentId);
+		
 	}
 	modalQueuedBtn.addEventListener('click', addFilmLocalQueued);
 	modalQueuedRevBtn.addEventListener('click', remFilmLocalQueued);
 
 	function addFilmLocalQueued() {
-		modalQueuedBtn.classList.toggle("modal-btn-rev");
-		modalQueuedRevBtn.classList.toggle("modal-btn-rev");
-		arrayLocalQueuedStorage = load (LOCALSTORAGE_QUEUE);
-		if (arrayLocalQueuedStorage ===undefined) {
+		changClass(modalQueuedBtn, modalQueuedRevBtn);
+		addFilm(arrayLocalQueuedStorage, LOCALSTORAGE_QUEUE, arrayQueued, currentIdQueued);
+		
+	}
+	function remFilmLocalQueued() {
+		changClass(modalQueuedBtn, modalQueuedRevBtn);
+		remFilm(arrayLocalQueuedStorage, LOCALSTORAGE_QUEUE, currentIdQueued);
+		
+	}
+};
+
+function changClass(btn1, btn2) {
+	btn1.classList.toggle("is-hidden");
+	btn2.classList.toggle("is-hidden");
+}
+
+function addFilm(array, key, ar, id) {
+	array = load (key);
+		if (array ===undefined) {
 			//  console.log(arrayLocalQueuedStorage);
-			saveLocal(arrayQueued, currentIdQueued, LOCALSTORAGE_QUEUE);
+			saveLocal(ar, id, key);
 			// console.log(arrayLocalQueuedStorage);
 			return
 			} 
-		if (arrayLocalQueuedStorage.includes(currentIdQueued)) {
+		if (array.includes(id)) {
 			// console.log(arrayLocalQueuedStorage);
 			return
-		}	saveLocal(arrayLocalQueuedStorage, currentIdQueued, LOCALSTORAGE_QUEUE);
+		}	saveLocal(array, id, key);
 			// console.log(arrayLocalQueuedStorage);
-	}
-	function remFilmLocalQueued() {
-		modalQueuedBtn.classList.toggle("modal-btn-rev");
-		modalQueuedRevBtn.classList.toggle("modal-btn-rev");
-		arrayLocalQueuedStorage = load (LOCALSTORAGE_QUEUE);
-		if (arrayLocalQueuedStorage ===undefined) {
+}
+function remFilm(array, key, id) {
+	array = load (key);
+		if (array ===undefined) {
 			return
 		};
-		if (arrayLocalQueuedStorage.length >= 1) {
-			const b = arrayLocalQueuedStorage.includes(currentIdQueued);
+		if (array.length >= 1) {
+			const b = array.includes(id);
 			// console.log(g);
 			// const v = delete arrayLocalQueuedStorage[g];
-         if (arrayLocalQueuedStorage.length===1 && b) {
-				localStorage.removeItem(LOCALSTORAGE_QUEUE);
+         if (array.length===1 && b) {
+				localStorage.removeItem(key);
 				return
-			 }  const v = arrayLocalQueuedStorage.filter(value => value !== currentIdQueued);
+			 }  const v = array.filter(value => value !== id);
 			//  console.log(v);
 			// console.log(arrayLocalStorage.splice(g, 1));
- 			save(LOCALSTORAGE_QUEUE, v);
+ 			save(key, v);
 			//   arrayLocalStorage = load (LOCALSTORAGE_WATCHED);
 			//   console.log(load (LOCALSTORAGE_WATCHED));
 			 return
 			 }	
-	}
-};
+}
 function defineColorBtn (array, btn1, btn2, id) {
 	if (array===undefined) {
-		btn1.classList.add("modal-btn-rev") 
+		btn2.classList.add("is-hidden") 
 		// modalWatchedBtn.style.backgroundColor = "#ff6b01";
 		return
 	}  if (array.includes(id)) {
-		btn2.classList.add("modal-btn-rev") 
+		btn1.classList.add("is-hidden") 
 		// modalWatchedRevBtn.style.backgroundColor = "#ff6b01";
 		return
-	} btn1.classList.add("modal-btn-rev") 
+	} btn2.classList.add("is-hidden") 
 	// modalWatchedBtn.style.backgroundColor = "#ff6b01"
 }
 

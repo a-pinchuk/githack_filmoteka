@@ -33,12 +33,17 @@ try {
   document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
   ref.libraryWatchedBtn.addEventListener('click', onClickWatchedBtn);
   ref.libraryQueueBtn.addEventListener('click', onClickQueueBtn);
+  ref.libraryWatchedBtn.style.backgroundColor = '#ff6b01';
+  
 } catch (error) {
   console.log(error);
 }
 // ref.libraryWatchedBtn.classList.add("modal-btn-rev")
-ref.libraryWatchedBtn.style.backgroundColor = '#ff6b01';
+
 function onDOMContentLoaded() {
+  ref.galleryList.classList.add("movie-list");
+  const libraryList = document.querySelector('.movie-list');
+  console.log(ref.libraryList);
   console.log(load(LOCALSTORAGE_WATCHED));
   const arrayWatched = load(LOCALSTORAGE_WATCHED);
   console.log(arrayWatched);
@@ -64,17 +69,6 @@ export function onClickWatchedBtn(e) {
 export function onClickQueueBtn(e) {
   ref.libraryWatchedBtn.style.backgroundColor = '#000000';
   ref.galleryList.innerHTML = '';
-  const arrayQueue = load(LOCALSTORAGE_QUEUE);
-  // console.log(arrayQueue);
-  if (arrayQueue === undefined) {
-    return;
-  }
-  // const ars = arrayQueue.map(ar => ar.id);
-  fetchAndRenderFilm(arrayQueue);
-}
-export function yyy () {
-	console.log(5);
-	ref.galleryList.innerHTML = '';
   const arrayQueue = load(LOCALSTORAGE_QUEUE);
   // console.log(arrayQueue);
   if (arrayQueue === undefined) {
