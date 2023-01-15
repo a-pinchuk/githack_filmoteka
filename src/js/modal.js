@@ -17,6 +17,12 @@ ref.modal.addEventListener('keydown', closeModal);
 ref.modal.addEventListener('click', closeModalbyClick);
 
 async function openModal(item) {
+  // if (
+  //   item.target.nodeName !== 'LI' ||
+  // ) {
+  //   return;
+  // }
+
   document.addEventListener('keydown', closeModal);
   ref.loader.style.display = 'flex';
   const theme = JSON.parse(localStorage.getItem('darkmode'));
