@@ -21,6 +21,7 @@ const ref = {
   modal: document.querySelector('[data-modal]'),
   modalWrap: document.querySelector('.modal-wrap'),
   modalWindow: document.querySelector('.modal-window'),
+  closeIcon: document.querySelector(".icon-close"),
   checkbox: document.querySelector('.checkbox'),
   loader: document.querySelector('.cssload-loader'),
   div: document.querySelector('.modal-wrap-img-btn'),

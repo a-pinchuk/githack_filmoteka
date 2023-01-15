@@ -10,9 +10,8 @@ import './js/render/renderFilmByIdForLibrary';
 import './js/render/modal-students';
 import './js/library';
 
-import './js/modal';
 import './js/localStorage';
-
+import './js/modalForLibrary';
 import './js/requests/searchFilms';
 import './js/render/renderSearchFilms';
 
