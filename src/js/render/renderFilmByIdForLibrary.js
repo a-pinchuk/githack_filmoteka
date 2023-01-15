@@ -1,9 +1,12 @@
 import { ref } from '../references/ref';
 export function renderFilmsByIdForLibrary(ref, datas) {
-  const markup = datas.map(({data}) => {
-  const genres = compareGenres(data.genres);
- 		 return `<li class="photo__card" data-modal-open id=${data.id}">
-            <img src="https://image.tmdb.org/t/p/w500/${data.poster_path}" alt="${data.title}" "loading="lazy" class="movie__image"/>
+  const markup = datas
+    .map(({ data }) => {
+      const genres = compareGenres(data.genres);
+      return `<li class="photo__card" data-modal-open id=${data.id}">
+            <img src="https://image.tmdb.org/t/p/w500/${
+              data.poster_path
+            }" alt="${data.title}" "loading="lazy" class="movie__image"/>
           <div class="movie__info">
             <h2 class="movie__title">${data.title}</h2>
             <div class="movie__details">
@@ -17,19 +20,17 @@ export function renderFilmsByIdForLibrary(ref, datas) {
   </div>`;
     })
     .join('');
-  ref.libraryList.insertAdjacentHTML('beforeend', markup);
+  ref.galleryList.insertAdjacentHTML('beforeend', markup);
 }
 
-function compareGenres (genres) {
-	let arrayOfGenres = [];
- 	genres.forEach(e => {
-	 	 arrayOfGenres.push(e.name);
-		 }
-	);
- 
-	if (arrayOfGenres.length > 2) {
-	  arrayOfGenres = arrayOfGenres.splice(0, 2).join(', ') + ', Other';
-	  
-	}
-	return arrayOfGenres;
+function compareGenres(genres) {
+  let arrayOfGenres = [];
+  genres.forEach(e => {
+    arrayOfGenres.push(e.name);
+  });
+
+  if (arrayOfGenres.length > 2) {
+    arrayOfGenres = arrayOfGenres.splice(0, 2).join(', ') + ', Other';
+  }
+  return arrayOfGenres;
 }

@@ -18,5 +18,4 @@ import './js/render/renderSearchFilms';
 
 // Переключатель темы
 
-import './js/switcher';
 import './js/authentication/authentication';
