@@ -6,13 +6,10 @@
   height: 100%;
   background-color: #5f5f5f;
   transition: opacity 250ms linear, visibility 250ms linear;
-  
+
   background-size: cover;
   background-position: center;
 }
-
-
-
 .backdrop.is-hidden {
   visibility: hidden;
   opacity: 0;
@@ -66,7 +63,7 @@
 .icon-close {
   width: 30px;
   height: 30px;
-  fill: #000000;
+  fill: getColor('primary-text-color');
   position: absolute;
   top: 50%;
   left: 50%;
@@ -75,6 +72,9 @@
   .modal-window-close:hover &,
   .modal-window-close:focus & {
     fill: getColor('secondary-text-color');
+  }
+  &-dark {
+    fill: getColor('white');
   }
 }
 .modal-wrap {
@@ -100,11 +100,9 @@
     height: 478px;
   }
 }
-
-.modal-wrap-img-btn{
+.modal-wrap-img-btn {
   position: relative;
 }
-
 .modal-image {
   display: block;
   width: 240px;
@@ -121,6 +119,7 @@
 }
 
 .modal-btn-trailer {
+  cursor: pointer;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -129,15 +128,26 @@
   height: 40px;
   border-radius: 50%;
   background-color: #ff6b01;
+  transition: color 250ms linear;
+  &:hover,
+  &:focus {
+    color: getColor('white');
+  }
 }
 
-.btn-trailer-icon{
-  width: 15px;
-  height: 15px;
-  fill: #ffffff;
+.btn-trailer-icon {
+  width: 25px;
+  height: 25px;
+  fill: getColor('primary-text-color');
   position: absolute;
-  top: 0;
-  z-index: 200;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -55%);
+  transition: fill 250ms linear;
+  .modal-btn-trailer:hover &,
+  .modal-btn-trailer:focus & {
+    fill: getColor('white');
+  }
 }
 
 .modal-info {
@@ -164,6 +174,8 @@
   margin-bottom: 20px;
 }
 .modal-info-item {
+  display: flex;
+  flex-grow: 1;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
@@ -172,19 +184,30 @@
     margin-bottom: 8px;
   }
 }
-.modal-info-value {
-  position: absolute;
-  left: 108px;
+.modal-info-name-value {
+  width: 108px;
+  @include media-min(desktop) {
+    width: 150px;
+  }
 }
-.modal-info-value-vote {
+.modal-info-value {
+  width: calc(100% - 108px);
+  @include media-min(desktop) {
+    width: calc(100% - 150px);
+  }
+  color: getColor('primary-text-color');
+  &-dark {
+    color: getColor('white');
+  }
+}
+.modal-info-value-vote,
+.modal-info-value-votes {
   display: inline-flex;
-  // display: block;
   align-items: center;
   justify-content: center;
   margin-right: 3px;
   padding-left: 10px;
   padding-right: 9px;
-  // width: 36px;
   height: 16px;
   background-color: #ff6b01;
   border-radius: 5px;
@@ -196,10 +219,9 @@
 }
 .modal-info-value-votes {
   margin-left: 3px;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.17;
-  text-align: center;
+  margin-right: 0px;
+  background-color: getColor('footer-background');
+  color: getColor('primary-text-color');
 }
 .modal-info-pre-about {
   margin-bottom: 8px;
@@ -213,41 +235,35 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.67;
-  height: 260px;
+  height: 200px;
   overflow-y: scroll;
+  //   @include media-min(tablet) {
+  //     height: 236px;
+  //   }
   @include media-min(tablet) {
-    height: 236px;
-  }
-  @include media-min(desktop) {
     height: 160px;
   }
 }
 .btn-modal-wrap {
   display: flex;
   flex-wrap: wrap;
-  padding-left: 20px;
+  // padding-left: 20px;
   justify-content: center;
   gap: 30px;
-  @include media-min(tablet) {
-    gap: 30px;
-  }
+
   @include media-min(desktop) {
     flex-wrap: nowrap;
     justify-content: normal;
   }
 }
-// .modal-btn-wrap {
-// 	 position: relative;
-// }
+
 .modal-btn {
+  cursor: pointer;
   width: 70px;
   height: 44px;
-  font-size: 8px;
-  @include media-min(tablet) {
-    width: 75px;
-	 font-size: 12px;
-  }
+
   font-weight: 500;
+  font-size: 8px;
   line-height: 1.33;
   text-align: center;
   text-transform: uppercase;
@@ -256,22 +272,19 @@
   background-color: inherit;
   border-radius: 20px;
   transition: background-color 250ms linear, color 250ms linear;
+
+  @include media-min(tablet) {
+    font-size: 12px;
+    width: 75px;
+  }
+
   &:hover {
-	background-color: #e5b99a;
-	border: 1px solid #ff6b01;
-	color: #ffffff;
- }
-//   &:focus,
-//   &.hover {
-//     background-color: #ff6b01;
-//     border: 1px solid #ff6b01;
-//     color: #ffffff;
-//   }
+    background-color: #e5b99a;
+    border: 1px solid #ff6b01;
+    color: #ffffff;
+  }
   &-watched {
     padding: 6px 6px;
-    @include media-min(tablet) {
-      padding: 6px;
-    }
   }
   &-queue {
     padding: 6px;
@@ -279,25 +292,19 @@
       padding: 0;
     }
   }
+  &-dark {
+    border: 1px solid #ff6b01;
+    color: #ff6b01;
+  }
 }
+
 .modal-btn-rev {
-	// position: absolute;
-// 	top: 0;
-//   right: 0;
-	background-color: #ff6b01;
+  background-color: #ff6b01;
+  border: 1px solid #ff6b01;
+  color: #ffffff;
+  &:hover {
+    background-color: #e5b99a;
     border: 1px solid #ff6b01;
     color: #ffffff;
-	 &:hover {
-		background-color: #e5b99a;
-		border: 1px solid #ff6b01;
-		color: #ffffff;
-	 }
-   //  &:focus {
-   //  background-color: inherit;
-   //  border: 1px solid getColor('primary-text-color');
-   //  color: getColor('primary-text-color');
-	//  visibility: hidden;
-   //  opacity: 0;
-   //  pointer-events: none;
-	// }
+  }
 }

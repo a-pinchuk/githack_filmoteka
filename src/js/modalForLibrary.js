@@ -11,7 +11,7 @@ import { loaderHide } from '../js/fetchAndRenderPopularFilm';
 import { saveLocalStorage } from '../js/localStorage';
 import sprite from '../images/sprite.svg';
 
-ref.galleryList.addEventListener('click', openModal);
+ref.libraryList.addEventListener('click', openModal);
 ref.closeModalBtn.addEventListener('click', closeModal);
 ref.modal.addEventListener('keydown', closeModal);
 ref.modal.addEventListener('click', closeModalbyClick);
