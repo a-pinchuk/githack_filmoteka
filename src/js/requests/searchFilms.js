@@ -5,7 +5,7 @@ import { Notify } from 'notiflix';
 import { PAGE } from '../api/api-vars';
 import { renderPopularFilms } from '../render/renderPopularFilm';
 import { showPagination } from '../pagination';
-import { loaderHide } from '../fetchAndRenderPopularFilm';
+import { loaderHide } from '../loader';
 
 let searchQuery = '';
 ref.form.addEventListener('submit', onCLickSubmit);

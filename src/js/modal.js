@@ -7,7 +7,7 @@ import {
   fetchFilmTrailer,
 } from './api/fetch';
 import { ref } from './references/ref';
-import { loaderHide } from '../js/fetchAndRenderPopularFilm';
+import { loaderHide } from './loader';
 import { saveLocalStorage } from '../js/localStorage';
 import sprite from '../images/sprite.svg';
 
