@@ -10,16 +10,8 @@ import { ref } from './references/ref';
 // import { options, pagination } from './pagination';
 import { LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE } from './api/api-vars';
 
-// let textContent = '';
-// const  LOCALSTORAGE_WATCHED =  "watched";
-// const  LOCALSTORAGE_QUEUE =  "queue";
 
-// const dyk = [800815];
-// 	  localStorage.setItem(LOCALSTORAGE_WATCHED, JSON.stringify(dyk));
-
-// const qyk = [653851];
-// localStorage.setItem(LOCALSTORAGE_QUEUE, JSON.stringify(qyk));
-
+// console.log(document.title==="Githack Filmoteka Library");
 function load(key) {
   try {
     const serializedState = localStorage.getItem(key);
@@ -29,53 +21,88 @@ function load(key) {
   }
 }
 
-try {
-  document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
-  ref.libraryWatchedBtn.addEventListener('click', onClickWatchedBtn);
-  ref.libraryQueueBtn.addEventListener('click', onClickQueueBtn);
-  ref.libraryWatchedBtn.style.backgroundColor = '#ff6b01';
-  
-} catch (error) {
-  console.log(error);
-}
 // ref.libraryWatchedBtn.classList.add("modal-btn-rev")
+if (document.title==="Githack Filmoteka Library") {
+	document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
+	ref.libraryWatchedBtn.addEventListener('click', onClickWatchedBtn);
+  ref.libraryQueueBtn.addEventListener('click', onClickQueueBtn);
+  ref.libraryWatchedBtn.classList.add("header-library__btn-active");
+//   header-library__btn.is-active
+//   ref.libraryWatchedBtn.style.backgroundColor = '#ff6b01';
+ }
+ console.log(ref.notImg);
 
 function onDOMContentLoaded() {
-  ref.galleryList.classList.add("movie-list");
-  const libraryList = document.querySelector('.movie-list');
-//   console.log(ref.libraryList);
-//   console.log(load(LOCALSTORAGE_WATCHED));
+	//  /   console.log(load(LOCALSTORAGE_WATCHED));
   const arrayWatched = load(LOCALSTORAGE_WATCHED);
 //   console.log(arrayWatched);
 
   if (arrayWatched === undefined) {
-    return;
+	ref.notImg.classList.remove("not-img")
+	  return;
   }
   // // console.log(arrayWatched);
   // const ars =arrayWatched.map(ar => ar.id);
   fetchAndRenderFilm(arrayWatched);
 }
-export function onClickWatchedBtn(e) {
-  ref.libraryWatchedBtn.style.backgroundColor = '#ff6b01';
+function onClickWatchedBtn(e) {
+	ref.libraryWatchedBtn.classList.toggle("header-library__btn-active");
+	ref.libraryQueueBtn.classList.toggle("header-library__btn-active");
+//   ref.libraryWatchedBtn.style.backgroundColor = '#ff6b01';
   ref.galleryList.innerHTML = '';
   const arrayWatched = load(LOCALSTORAGE_WATCHED);
   // console.log(arrayWatched);
   if (arrayWatched === undefined) {
+	ref.notImg.classList.remove("not-img")
     return;
   }
+  ref.notImg.classList.remove("not-img")
   // const ars = arrayWatched.map(ar => ar.id);
   fetchAndRenderFilm(arrayWatched);
 }
-export function onClickQueueBtn(e) {
-  ref.libraryWatchedBtn.style.backgroundColor = '#000000';
+function onClickQueueBtn(e) {
+	ref.libraryWatchedBtn.classList.toggle("header-library__btn-active");
+	ref.libraryQueueBtn.classList.toggle("header-library__btn-active");
+//   ref.libraryWatchedBtn.style.backgroundColor = '#000000';
   ref.galleryList.innerHTML = '';
   const arrayQueue = load(LOCALSTORAGE_QUEUE);
   // console.log(arrayQueue);
   if (arrayQueue === undefined) {
+	ref.notImg.classList.remove("not-img")
     return;
   }
   // const ars = arrayQueue.map(ar => ar.id);
   fetchAndRenderFilm(arrayQueue);
+}
+
+export function rederAfterModalWat () {
+	ref.galleryList.innerHTML = '';
+	const arrayWatched = load(LOCALSTORAGE_WATCHED);
+	const arrayQueue = load(LOCALSTORAGE_QUEUE);
+	if (arrayWatched === undefined) {
+		ref.notImg.classList.remove("not-img")
+	  return;
+	} 	
+	if (ref.libraryWatchedBtn.classList.contains("header-library__btn-active")) {
+		fetchAndRenderFilm(arrayWatched);
+		}	
+	
+	
+}
+export function rederAfterModalQue () {
+	ref.galleryList.innerHTML = '';
+	const arrayQueue = load(LOCALSTORAGE_QUEUE);
+	
+	if (arrayQueue === undefined) {
+		ref.notImg.classList.remove("not-img")
+	  return;
+	} 
+	if (ref.libraryQueueBtn.classList.contains("header-library__btn-active")) {
+		fetchAndRenderFilm(arrayQueue)
+		return
+	}	
+	
+	
 }
 // const ids = [550, 299536, 383498];
 // console.log(ids.map(id => console.log(id)));
