@@ -1,5 +1,4 @@
 
-
 const ref = {
   paginationRef: document.querySelector('.pagination-btns'),
   bodyRef: document.querySelector('body'),

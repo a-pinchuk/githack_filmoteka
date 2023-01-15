@@ -48,6 +48,7 @@
 .pagination-btns {
     display: none;
     color: black;
+    align-items: center;
 }
 
 .pagination-btns-dark-theme {
@@ -65,7 +66,21 @@
     margin-right: 10px;
     margin-left: 10px;
     color: #000000;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    border-radius: 5px;
+    width: 40px; 
+    height: 40px;
+
+    .pagination-btns-dark-theme &{
+        background-color: #FF6B08;
+    }
+
 }
+
+
 
 .pagination-more {
     color: #FFFFFF;
@@ -85,7 +100,8 @@
 }
 
 .pagination-more-button {
-    width: 28px;
+    width: 40px;
+    height: 40px;
     padding: 8px 0 6px;
     margin-left: 10px;
     margin-right: 10px;
@@ -96,6 +112,26 @@
     text-decoration: none;
     vertical-align: middle;
     border-width: 1px 0;
+    display: inline-flex;
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.pagination-disabled-button {
+    border: none;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: #000000;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    background-color: white;
+    border-radius: 5px;
+    width: 40px; 
+    height: 40px;
 }
 
 .pagination-first-button {
@@ -106,4 +142,7 @@
 .pagination-section {
     padding-top: 6px;
     padding-bottom: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

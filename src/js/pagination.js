@@ -56,5 +56,5 @@ pagination.on('afterMove', ({ page }) =>{
 function showPagination(totalPages) {
   pagination.setTotalItems(totalPages)
   pagination.movePageTo(options.page)
-  ref.paginationRef.style.display = 'block' 
+  ref.paginationRef.style.display = 'flex'
 }
