@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { log } from 'console';
-import {LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE} from './api/api-vars';
+import { LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE } from './api/api-vars';
 import {
   fetchFilmById,
   fetchTrendedFilms,
@@ -18,11 +18,9 @@ ref.modal.addEventListener('keydown', closeModal);
 ref.modal.addEventListener('click', closeModalbyClick);
 
 async function openModal(item) {
-  // if (
-  //   item.target.nodeName !== 'LI' ||
-  // ) {
-  //   return;
-  // }
+  if (item.target.nodeName !== 'IMG') {
+    return;
+  }
 
   document.addEventListener('keydown', closeModal);
   ref.loader.style.display = 'flex';
@@ -125,9 +123,7 @@ function renderMarkupModal(film) {
         </p>
         <div class="btn-modal-wrap">
 		  <div class="modal-btn-wrap">
-          <button type="button" class="modal-btn" data-watched="${
-            film.id
-          }">
+          <button type="button" class="modal-btn" data-watched="${film.id}">
             Add to watched
           </button>
 			 <button type="button" class="modal-btn modal-btn-rem" data-watched-rem="${
@@ -137,9 +133,7 @@ function renderMarkupModal(film) {
           </button>
 			 </div>
 			 <div class="modal-btn-wrap">
-          <button type="button" class="modal-btn" data-queue="${
-            film.id
-          }">
+          <button type="button" class="modal-btn" data-queue="${film.id}">
             Add to queue
           </button>
 			 <button type="button" class="modal-btn modal-btn-rem" data-queue-rem="${
@@ -229,8 +223,8 @@ function closeModal(e) {
     ref.modalWrap.innerHTML = '';
     document.body.style.overflow = '';
     backdrop.style.backgroundImage = '';
-	//   onClickWatchedBtn();
-	//  onClickQueueBtn();
+    //   onClickWatchedBtn();
+    //  onClickQueueBtn();
     document.removeEventListener('keydown', closeModal);
   }
 }
@@ -241,8 +235,8 @@ function closeModalbyClick(e) {
     ref.modalWrap.innerHTML = '';
     document.body.style.overflow = '';
     backdrop.style.backgroundImage = '';
-	//  onClickWatchedBtn();
-	//  onClickQueueBtn();
+    //  onClickWatchedBtn();
+    //  onClickQueueBtn();
     document.removeEventListener('keydown', closeModal);
   }
 }
