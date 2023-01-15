@@ -1,3 +1,5 @@
+
+
 const ref = {
   paginationRef: document.querySelector('.pagination-btns'),
   bodyRef: document.querySelector('body'),
@@ -26,4 +28,4 @@ const ref = {
   div: document.querySelector('.modal-wrap-img-btn'),
 };
 
-export { ref };
+export {ref}
