@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { log } from 'console';
-import { API_KEY, TREND_URL, SEARCH_URL, ID_URL } from './api/api-vars';
+import {LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE} from './api/api-vars';
 import {
   fetchFilmById,
   fetchTrendedFilms,
@@ -9,6 +9,7 @@ import {
 import { ref } from './references/ref';
 import { loaderHide } from './loader';
 import { saveLocalStorage } from '../js/localStorage';
+import {yyy} from '../js/localStorage';
 import sprite from '../images/sprite.svg';
 
 ref.galleryList.addEventListener('click', openModal);
@@ -222,6 +223,7 @@ function closeModal(e) {
     ref.modalWrap.innerHTML = '';
     document.body.style.overflow = '';
     backdrop.style.backgroundImage = '';
+	  yyy();
     document.removeEventListener('keydown', closeModal);
   }
 }
@@ -232,6 +234,7 @@ function closeModalbyClick(e) {
     ref.modalWrap.innerHTML = '';
     document.body.style.overflow = '';
     backdrop.style.backgroundImage = '';
+	  yyy();
     document.removeEventListener('keydown', closeModal);
   }
 }

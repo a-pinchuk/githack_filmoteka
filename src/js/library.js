@@ -50,7 +50,7 @@ function onDOMContentLoaded() {
   // const ars =arrayWatched.map(ar => ar.id);
   fetchAndRenderFilm(arrayWatched);
 }
-function onClickWatchedBtn(e) {
+export function onClickWatchedBtn(e) {
   ref.libraryWatchedBtn.style.backgroundColor = '#ff6b01';
   ref.galleryList.innerHTML = '';
   const arrayWatched = load(LOCALSTORAGE_WATCHED);
@@ -61,9 +61,20 @@ function onClickWatchedBtn(e) {
   // const ars = arrayWatched.map(ar => ar.id);
   fetchAndRenderFilm(arrayWatched);
 }
-function onClickQueueBtn(e) {
+export function onClickQueueBtn(e) {
   ref.libraryWatchedBtn.style.backgroundColor = '#000000';
   ref.galleryList.innerHTML = '';
+  const arrayQueue = load(LOCALSTORAGE_QUEUE);
+  // console.log(arrayQueue);
+  if (arrayQueue === undefined) {
+    return;
+  }
+  // const ars = arrayQueue.map(ar => ar.id);
+  fetchAndRenderFilm(arrayQueue);
+}
+export function yyy () {
+	console.log(5);
+	ref.galleryList.innerHTML = '';
   const arrayQueue = load(LOCALSTORAGE_QUEUE);
   // console.log(arrayQueue);
   if (arrayQueue === undefined) {
