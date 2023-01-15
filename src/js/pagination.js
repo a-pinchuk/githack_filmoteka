@@ -29,15 +29,15 @@ const options = {
     currentPage: '<a class="pagination-active-button">{{page}}</a>',
     moveButton:
       '<a href="#" class="pagination-next-button">' +
-        '<span class="tui-ico-{{type}}">{{type}}</span>' +
+        '<span class="pag-ico-{{type}}">{{type}}</span>' +
       '</a>',
     disabledMoveButton:
       '<span class="pagination-disabled-button">' +
-        '<span class="tui-ico-{{type}}">{{type}}</span>' +
+        '<span class="pag-ico-{{type}}">{{type}}</span>' +
       '</span>',
       moreButton:
       '<a href="#" class="pagination-more-button">' +
-        '<p class="tui-ico-ellip">...</p>' +
+        '<span class="pag-ico-more"> </span>' +
       '</a>'
 
   }

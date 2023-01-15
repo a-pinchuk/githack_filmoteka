@@ -73,9 +73,10 @@
     border-radius: 5px;
     width: 40px; 
     height: 40px;
+    background-color: #F7F7F7;
 
     .pagination-btns-dark-theme &{
-        background-color: #FF6B08;
+        background-color: transparent;
     }
 
 }
@@ -113,10 +114,21 @@
     vertical-align: middle;
     border-width: 1px 0;
     display: inline-flex;
-    background-color: white;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
+}
+
+.pag-ico-more {
+    background-image: url(../images/dots.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 10px;
+    height: 10px;
+
+    .pagination-btns-dark-theme &{
+        filter: invert(100%);
+    }
 }
 
 .pagination-disabled-button {
@@ -128,10 +140,11 @@
     justify-content: center;
     align-items: center;
     position: sticky;
-    background-color: white;
+    // background-color: white;
     border-radius: 5px;
     width: 40px; 
     height: 40px;
+
 }
 
 .pagination-first-button {
@@ -145,4 +158,56 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.pag-ico-next {
+    background-image: url(../images/arrow-left.svg);
+    
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+
+    .pagination-btns-dark-theme &{
+        filter: invert(100%);
+    }
+}
+
+.pag-ico-prev
+{
+    background-image: url(../images/arrow-left.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    transform: scale(-1);
+
+    .pagination-btns-dark-theme &{
+        filter: invert(100%);
+    }
+}
+
+.pag-ico-first {
+    background-image: url(../images/double-arrow.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 10px;
+    height: 10px;
+    transform: scale(-1);
+
+    .pagination-btns-dark-theme &{
+        filter: invert(100%);
+    }
+}
+
+.pag-ico-last {
+    background-image: url(../images/double-arrow.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 10px;
+    height: 10px;
+
+    .pagination-btns-dark-theme &{
+        filter: invert(100%);
+    }
 }
