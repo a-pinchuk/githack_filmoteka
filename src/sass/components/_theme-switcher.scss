@@ -12,11 +12,13 @@
 .dark-theme {
   background-color: black;
   color: #ecedf3;
+  transition: background-color 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.light-theme {
-  background-color: white;
-}
+// .light-theme {
+//   background-color: white;
+
+// }
 
 [type='checkbox']:checked,
 [type='checkbox']:not(:checked),
@@ -70,6 +72,7 @@
   color: var(--yellow);
   background-color: var(--dark-light);
   box-shadow: 0 4px 4px rgba(26, 53, 71, 0.25), 0 0 0 1px rgba(26, 53, 71, 0.07);
+  
   // display: flex;
   // justify-content: center;
   // align-content: center;
