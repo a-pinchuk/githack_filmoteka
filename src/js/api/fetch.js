@@ -65,6 +65,7 @@ export async function fetchFilteredFilms() {
     include_adult: false,
     with_genres: 16,
     primary_release_year: 2022,
+    vote_average: 4,
   });
   return axios.get(`${DISCOVER}?${searchParams}`);
 }
