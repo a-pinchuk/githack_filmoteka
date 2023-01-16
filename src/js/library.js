@@ -26,7 +26,6 @@ if (document.title === 'Githack Filmoteka Library') {
   ref.libraryWatchedBtn.addEventListener('click', onClickWatchedBtn);
   ref.libraryQueueBtn.addEventListener('click', onClickQueueBtn);
 }
-console.log(ref.notImg);
 
 function onDOMContentLoaded() {
   //  /   console.log(load(LOCALSTORAGE_WATCHED));

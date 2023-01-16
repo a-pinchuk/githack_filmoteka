@@ -8,9 +8,10 @@ import {
   UPCOMING,
 } from './apiVars';
 
-export async function fetchTrendedFilms() {
+export async function fetchTrendedFilms(page) {
   const searchParams = new URLSearchParams({
     api_key: API_KEY,
+    page: page,
   });
   return axios.get(`${TREND_URL}?${searchParams}`);
 }
@@ -46,9 +47,10 @@ export async function fetchFilmTrailer(id) {
   return axios.get(`${ID_URL}/${id}/videos?${searchParams}`);
 }
 
-export async function fetchUncomingFilms() {
+export async function fetchUncomingFilms(page) {
   const searchParams = new URLSearchParams({
     api_key: API_KEY,
+    page: page,
   });
   return axios.get(`${UPCOMING}/?${searchParams}`);
 }

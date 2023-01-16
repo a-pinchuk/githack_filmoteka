@@ -1,15 +1,14 @@
-import { fetchTrendedFilms } from './api/fetch';
-import { fetchFilmGenres } from './api/fetch';
+import { fetchTrendedFilms, fetchFilmGenres } from './api/fetch';
 import { renderPopularFilms } from './render/renderPopularFilm';
 import { ref } from './references/ref';
 import { loaderHide } from './loader';
 
-fetchAndRenderPopularFilm();
+fetchAndRenderPopularFilm(2);
 
-async function fetchAndRenderPopularFilm(e) {
+async function fetchAndRenderPopularFilm(page) {
   try {
     ref.loader.style.display = 'flex';
-    const image = await fetchTrendedFilms();
+    const image = await fetchTrendedFilms(page);
     const genres = await fetchFilmGenres();
     const data = image.data.results;
     const genresID = genres.data.genres;
