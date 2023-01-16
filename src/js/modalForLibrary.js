@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { log } from 'console';
-import { API_KEY, TREND_URL, SEARCH_URL, ID_URL } from './api/api-vars';
+import { API_KEY, TREND_URL, SEARCH_URL, ID_URL } from './api/apiVars';
 import {
   fetchFilmById,
   fetchTrendedFilms,

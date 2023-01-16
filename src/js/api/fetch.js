@@ -1,5 +1,12 @@
 import axios from 'axios';
-import { API_KEY, TREND_URL, SEARCH_URL, ID_URL, GENRE_URL } from './apiVars';
+import {
+  API_KEY,
+  TREND_URL,
+  SEARCH_URL,
+  ID_URL,
+  GENRE_URL,
+  UPCOMING,
+} from './apiVars';
 
 export async function fetchTrendedFilms() {
   const searchParams = new URLSearchParams({
@@ -37,4 +44,11 @@ export async function fetchFilmTrailer(id) {
     api_key: API_KEY,
   });
   return axios.get(`${ID_URL}/${id}/videos?${searchParams}`);
+}
+
+export async function fetchUncomingFilms() {
+  const searchParams = new URLSearchParams({
+    api_key: API_KEY,
+  });
+  return axios.get(`${UPCOMING}/?${searchParams}`);
 }

@@ -201,7 +201,7 @@
 }
 .movie__title {
   text-transform: uppercase;
-  color: getColor(primary-text-color);
+  color: getColor("white");
 }
 .header-library__auth-box {
   position: absolute;

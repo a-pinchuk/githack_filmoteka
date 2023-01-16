@@ -4,6 +4,7 @@ const TREND_URL = `${BASE_URL}/trending/movie/week`;
 const SEARCH_URL = `${BASE_URL}/search/movie`;
 const ID_URL = `${BASE_URL}/movie/`;
 const GENRE_URL = `${BASE_URL}/genre/movie/list`;
+const UPCOMING = `${BASE_URL}/movie/upcoming`;
 let PAGE = 1;
 const LOCALSTORAGE_WATCHED = 'watched';
 const LOCALSTORAGE_QUEUE = 'queue';
@@ -18,4 +19,5 @@ export {
   PAGE,
   LOCALSTORAGE_WATCHED,
   LOCALSTORAGE_QUEUE,
+  UPCOMING,
 };
