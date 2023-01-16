@@ -8,7 +8,7 @@ import {
   UPCOMING,
 } from './apiVars';
 
-export async function fetchTrendedFilms(page) {
+export async function fetchTrendedFilms(page = 1) {
   const searchParams = new URLSearchParams({
     api_key: API_KEY,
     page: page,
@@ -47,7 +47,7 @@ export async function fetchFilmTrailer(id) {
   return axios.get(`${ID_URL}/${id}/videos?${searchParams}`);
 }
 
-export async function fetchUncomingFilms(page) {
+export async function fetchUncomingFilms() {
   const searchParams = new URLSearchParams({
     api_key: API_KEY,
     page: page,

@@ -12,6 +12,7 @@ fetchAndRenderPopularFilm(1).then((res) => {
   showPaginationTrended(res.data.total_pages) }
 )
 
+
 async function fetchAndRenderPopularFilm(page) {
   try {
     ref.galleryList.innerHTML = ''

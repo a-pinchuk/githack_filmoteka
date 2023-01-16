@@ -23,6 +23,7 @@
 }
 
 .logo {
+  margin-right: 10px;
   display: flex;
   text-indent: -9999px;
   transition: filter 300ms ease-in-out;
@@ -42,13 +43,20 @@
   align-items: center;
 
   &__buttons {
-    display: flex;
-    gap: 40px;
+    display: flex;    
     align-items: center;
   }
 
   &__item {
     position: relative;
+    &:not(:last-child) {
+        margin-right: 26px;
+      }
+      @include media-min(mobile) {
+              &:not(:last-child) {
+                  margin-right: 40px;
+                }  
+      }
   }
 }
 
@@ -167,7 +175,7 @@
 
 .mob-navigation__link {
   position: relative;
-
+  white-space: nowrap;
   font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
@@ -296,11 +304,15 @@
 .header__user-auth-box {
   position: absolute;
   top: 12px;
-  left: -88px;
+  left: -76px;
   transform: translate(-50%);
   display: flex;
   gap: 5px;
   align-items: center;
+  @include media-min(mobile) {
+      left: -88px;
+     
+    }
 }
 
 .user-name {
