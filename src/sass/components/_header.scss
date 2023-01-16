@@ -49,17 +49,14 @@
 
   &__item {
     position: relative;
-    margin-right: 30px;
-    &:last-child{
-      margin-right: 0px;
-    }
+    &:not(:last-child) {
+        margin-right: 26px;
+      }
       @include media-min(mobile) {
               &:not(:last-child) {
                   margin-right: 40px;
-                }
-            
+                }  
       }
-         
   }
 }
 
@@ -307,11 +304,15 @@
 .header__user-auth-box {
   position: absolute;
   top: 12px;
-  left: -88px;
+  left: -76px;
   transform: translate(-50%);
   display: flex;
   gap: 5px;
   align-items: center;
+  @include media-min(mobile) {
+      left: -88px;
+     
+    }
 }
 
 .user-name {
