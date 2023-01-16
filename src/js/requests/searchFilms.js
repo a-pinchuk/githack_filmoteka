@@ -4,11 +4,13 @@ import { ref } from '../references/ref';
 import { Notify } from 'notiflix';
 import { PAGE } from '../api/apiVars';
 import { renderPopularFilms } from '../render/renderPopularFilm';
-import { showPagination } from '../pagination';
+import { showPaginationSearched } from '../pagination';
 import { loaderHide } from '../loader';
+
 
 let searchQuery = '';
 ref.form.addEventListener('submit', onCLickSubmit);
+
 
 function onCLickSubmit(e) {
   e.preventDefault();
@@ -25,7 +27,7 @@ function onCLickSubmit(e) {
     ref.alertMessage.textContent = '';
     ref.input.value = '';
     renderSearchFilms().then(res => {
-      showPagination(res.data.total_pages);
+      showPaginationSearched(res.data.total_pages);
     });
   } else {
     renderPopularFilms();
