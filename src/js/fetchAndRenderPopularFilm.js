@@ -4,18 +4,15 @@ import { ref } from './references/ref';
 import { loaderHide } from './loader';
 import { showPaginationTrended } from './pagination';
 
-export {fetchAndRenderPopularFilm}
+export { fetchAndRenderPopularFilm };
 
-
-
-fetchAndRenderPopularFilm(1).then((res) => {
-  showPaginationTrended(res.data.total_pages) }
-)
-
+fetchAndRenderPopularFilm(1).then(res => {
+  showPaginationTrended(res.data.total_pages);
+});
 
 async function fetchAndRenderPopularFilm(page) {
   try {
-    ref.galleryList.innerHTML = ''
+    ref.galleryList.innerHTML = '';
     ref.loader.style.display = 'flex';
     const image = await fetchTrendedFilms(page);
     const genres = await fetchFilmGenres();
@@ -25,11 +22,8 @@ async function fetchAndRenderPopularFilm(page) {
     renderPopularFilms(ref, data, genresID);
     loaderHide();
 
-    return image
-
+    return image;
   } catch (error) {
     console.log(error);
   }
-
-  
 }
