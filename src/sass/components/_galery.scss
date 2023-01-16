@@ -3,6 +3,7 @@
 .gallery__container {
   padding-top: 20px;
   padding-bottom: 40px;
+
   @include media-min(tablet) {
     padding-left: 32px;
     padding-right: 32px;
