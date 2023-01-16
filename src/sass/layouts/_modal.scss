@@ -303,7 +303,7 @@
   }
   &-dark {
     border: 1px solid #ff6b01;
-    color: #ff6b01;
+    color: getColor('white');;
   }
 }
 .modal-btn-rem {

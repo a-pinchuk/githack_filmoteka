@@ -7,7 +7,7 @@ export function renderFilmsByIdForLibrary(ref, datas) {
             <img src="https://image.tmdb.org/t/p/w500/${
               data.poster_path
             }" alt="${data.title}" "loading="lazy" class="movie__image"/>
-				<span class="movie__rating">${data.vote_average.toFixed(2)}</span>
+				<span class="movie__rating">${data.vote_average.toFixed(1)}</span>
           <div class="movie__info">
             <h2 class="movie__title">${data.title}</h2>
             <div class="movie__details">
@@ -21,7 +21,7 @@ export function renderFilmsByIdForLibrary(ref, datas) {
   </div>`;
     })
     .join('');
-  ref.galleryList.insertAdjacentHTML('beforeend', markup);
+  ref.libraryList.insertAdjacentHTML('beforeend', markup);
 }
 
 function compareGenres(genres) {

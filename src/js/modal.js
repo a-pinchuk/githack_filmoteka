@@ -9,7 +9,7 @@ import {
 import { ref } from './references/ref';
 import { loaderHide } from './loader';
 import { saveLocalStorage } from '../js/localStorage';
-// import {onClickWatchedBtn, onClickQueueBtn} from '../js/library';
+import { rederAfterModalWat, rederAfterModalQue } from '../js/library';
 import sprite from '../images/sprite.svg';
 
 ref.galleryList.addEventListener('click', openModal);
@@ -95,9 +95,9 @@ function renderMarkupModal(film) {
                 <ul class="modal-info-list">
           <li class="modal-info-item">
             <p class="modal-info-name-value">Vote / Votes</p>
-            <p class="modal-info-value"><span class="modal-info-value-vote">${
-              film.vote_average
-            }</span>/<span
+            <p class="modal-info-value"><span class="modal-info-value-vote">${film.vote_average.toFixed(
+              1
+            )}</span>/<span
                 class="modal-info-value-votes"
                 >${film.vote_count}</span
               ></p>
@@ -158,9 +158,9 @@ function renderDarkMarkupModal(film) {
         <ul class="modal-info-list">
           <li class="modal-info-item">
             <p class="modal-info-name-value">Vote / Votes</p>
-            <p class="modal-info-value modal-info-value-dark"><span class="modal-info-value-vote">${
-              film.vote_average
-            }</span>/<span
+            <p class="modal-info-value modal-info-value-dark"><span class="modal-info-value-vote">${film.vote_average.toFixed(
+              1
+            )}</span>/<span
                 class="modal-info-value-votes"
                 >${film.vote_count}</span
               ></p>
@@ -223,9 +223,11 @@ function closeModal(e) {
     ref.modalWrap.innerHTML = '';
     document.body.style.overflow = '';
     backdrop.style.backgroundImage = '';
-    //   onClickWatchedBtn();
-    //  onClickQueueBtn();
     document.removeEventListener('keydown', closeModal);
+    if (document.title === 'Githack Filmoteka Library') {
+      rederAfterModalWat();
+      rederAfterModalQue();
+    }
   }
 }
 function closeModalbyClick(e) {
@@ -235,9 +237,11 @@ function closeModalbyClick(e) {
     ref.modalWrap.innerHTML = '';
     document.body.style.overflow = '';
     backdrop.style.backgroundImage = '';
-    //  onClickWatchedBtn();
-    //  onClickQueueBtn();
     document.removeEventListener('keydown', closeModal);
+    if (document.title === 'Githack Filmoteka Library') {
+      rederAfterModalWat();
+      rederAfterModalQue();
+    }
   }
 }
 // =========НЕ ЗВАЖАЙ УВАГИ========TREILER===========НЕ ЗВАЖАЙ УВАГИ==============НЕ ЗВАЖАЙ УВАГИ===========
