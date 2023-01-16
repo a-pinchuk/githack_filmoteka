@@ -10,8 +10,8 @@ document.querySelector('.checkbox').addEventListener('change', onChange);
 function isSmthInLocalStorage() {
   if (darkmode) {
     ref.checkbox.checked = darkmode;
-    document.querySelector('body').classList.toggle('dark-theme') ||
-      document.querySelector('footer').classList.toggle('dark-theme__footer');
+    document.querySelector('body').classList.toggle('dark-theme');
+    document.querySelector('footer').classList.toggle('dark-theme__footer');
   }
 }
 
