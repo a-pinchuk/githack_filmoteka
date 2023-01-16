@@ -23,6 +23,7 @@
 }
 
 .logo {
+  margin-right: 10px;
   display: flex;
   text-indent: -9999px;
   transition: filter 300ms ease-in-out;
@@ -42,13 +43,23 @@
   align-items: center;
 
   &__buttons {
-    display: flex;
-    gap: 40px;
+    display: flex;    
     align-items: center;
   }
 
   &__item {
     position: relative;
+    margin-right: 30px;
+    &:last-child{
+      margin-right: 0px;
+    }
+      @include media-min(mobile) {
+              &:not(:last-child) {
+                  margin-right: 40px;
+                }
+            
+      }
+         
   }
 }
 
@@ -167,7 +178,7 @@
 
 .mob-navigation__link {
   position: relative;
-
+  white-space: nowrap;
   font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
