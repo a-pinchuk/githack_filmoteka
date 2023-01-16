@@ -18,8 +18,7 @@ if(darkmode) {
   ref.paginationSearchRef.classList.add('pagination-btns-dark-theme')
 }
 
-//пагінація для трендів
-const pagination = new Pagination(container, options = {
+const options = {
   totalItems: 200,
   itemsPerPage: 1,
   visiblePages: 8,
@@ -44,8 +43,9 @@ const pagination = new Pagination(container, options = {
         '<span class="pag-ico-more"> </span>' +
       '</a>'
 
-  }
-})
+  }}
+//пагінація для трендів
+const pagination = new Pagination(container, options)
 
 pagination.on('afterMove', onPaginationMove);
 
@@ -68,33 +68,7 @@ function showPaginationTrended(totalPages) {
 
 //пагінація для пошуку 
 
-const paginationSearch = new Pagination(containerSearch, options = {
-  totalItems: 200,
-  itemsPerPage: 1,
-  visiblePages: 8,
-  page: 1,
-  centerAlign: true,
-  firstItemClassName: 'pagination-first-button',
-  lastItemClassName: 'pagination-last-button',
-
-  template: {
-    page: '<a href="#" class="pagination-page-button">{{page}}</a>',
-    currentPage: '<a class="pagination-active-button">{{page}}</a>',
-    moveButton:
-      '<a href="#" class="pagination-next-button">' +
-        '<span class="pag-ico-{{type}}">{{type}}</span>' +
-      '</a>',
-    disabledMoveButton:
-      '<span class="pagination-disabled-button">' +
-        '<span class="pag-ico-{{type}}">{{type}}</span>' +
-      '</span>',
-      moreButton:
-      '<a href="#" class="pagination-more-button">' +
-        '<span class="pag-ico-more"> </span>' +
-      '</a>'
-
-  }
-})
+const paginationSearch = new Pagination(containerSearch, options)
 
 paginationSearch.on('afterMove', onPaginationSearchMove)
 
