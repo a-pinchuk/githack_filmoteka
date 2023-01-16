@@ -1,7 +1,7 @@
 // Стили
 
 // Скрипты
-import './js/api/api-vars';
+import './js/api/apiVars';
 import './js/api/fetch';
 import './js/references/ref';
 
@@ -13,7 +13,7 @@ import './js/localStorage';
 import './js/requests/searchFilms';
 import './js/render/renderSearchFilms';
 import './js/scroll-to-top';
-import './js/pagination'
+import './js/pagination';
 // Переключатель темы
 
 import './js/switcher';

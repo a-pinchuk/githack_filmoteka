@@ -2,7 +2,7 @@ import { createMarkUp } from '../render/renderSearchFilms';
 import { fetchSearchedFilms } from '../api/fetch';
 import { ref } from '../references/ref';
 import { Notify } from 'notiflix';
-import { PAGE } from '../api/api-vars';
+import { PAGE } from '../api/apiVars';
 import { renderPopularFilms } from '../render/renderPopularFilm';
 import { showPagination } from '../pagination';
 import { loaderHide } from '../loader';

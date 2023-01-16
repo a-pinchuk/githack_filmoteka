@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { log } from 'console';
-import { LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE } from './api/api-vars';
+import { LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE } from './api/apiVars';
 import {
   fetchFilmById,
   fetchTrendedFilms,
