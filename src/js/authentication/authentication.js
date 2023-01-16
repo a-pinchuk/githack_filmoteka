@@ -197,7 +197,7 @@ if (openLibraryPage) {
   onAuthStateChanged(auth, user => {
     if (user) {
       openLibraryPage.addEventListener('click', e => {
-        window.location.href = 'my-library.html';
+        window.location.href = 'myLibrary.html';
       });
       console.log('login');
     } else {
