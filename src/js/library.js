@@ -26,9 +26,7 @@ if (document.title==="Githack Filmoteka Library") {
 	document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
 	ref.libraryWatchedBtn.addEventListener('click', onClickWatchedBtn);
   ref.libraryQueueBtn.addEventListener('click', onClickQueueBtn);
-  ref.libraryWatchedBtn.classList.add("header-library__btn-active");
-//   header-library__btn.is-active
-//   ref.libraryWatchedBtn.style.backgroundColor = '#ff6b01';
+
  }
  console.log(ref.notImg);
 
@@ -41,13 +39,14 @@ function onDOMContentLoaded() {
 	ref.notImg.classList.remove("not-img")
 	  return;
   }
+  ref.notImg.classList.add("not-img")
   // // console.log(arrayWatched);
   // const ars =arrayWatched.map(ar => ar.id);
   fetchAndRenderFilm(arrayWatched);
 }
 function onClickWatchedBtn(e) {
-	ref.libraryWatchedBtn.classList.toggle("header-library__btn-active");
-	ref.libraryQueueBtn.classList.toggle("header-library__btn-active");
+	ref.libraryWatchedBtn.classList.add("header-library__btn-active");
+	ref.libraryQueueBtn.classList.remove("header-library__btn-active");
 //   ref.libraryWatchedBtn.style.backgroundColor = '#ff6b01';
   ref.galleryList.innerHTML = '';
   const arrayWatched = load(LOCALSTORAGE_WATCHED);
@@ -56,13 +55,13 @@ function onClickWatchedBtn(e) {
 	ref.notImg.classList.remove("not-img")
     return;
   }
-  ref.notImg.classList.remove("not-img")
+  ref.notImg.classList.add("not-img")
   // const ars = arrayWatched.map(ar => ar.id);
   fetchAndRenderFilm(arrayWatched);
 }
 function onClickQueueBtn(e) {
-	ref.libraryWatchedBtn.classList.toggle("header-library__btn-active");
-	ref.libraryQueueBtn.classList.toggle("header-library__btn-active");
+	ref.libraryWatchedBtn.classList.remove("header-library__btn-active");
+	ref.libraryQueueBtn.classList.add("header-library__btn-active");
 //   ref.libraryWatchedBtn.style.backgroundColor = '#000000';
   ref.galleryList.innerHTML = '';
   const arrayQueue = load(LOCALSTORAGE_QUEUE);
@@ -71,6 +70,7 @@ function onClickQueueBtn(e) {
 	ref.notImg.classList.remove("not-img")
     return;
   }
+  ref.notImg.classList.add("not-img")
   // const ars = arrayQueue.map(ar => ar.id);
   fetchAndRenderFilm(arrayQueue);
 }
@@ -85,6 +85,7 @@ export function rederAfterModalWat () {
 	} 	
 	if (ref.libraryWatchedBtn.classList.contains("header-library__btn-active")) {
 		fetchAndRenderFilm(arrayWatched);
+		ref.notImg.classList.add("not-img")
 		}	
 	
 	
@@ -99,6 +100,7 @@ export function rederAfterModalQue () {
 	} 
 	if (ref.libraryQueueBtn.classList.contains("header-library__btn-active")) {
 		fetchAndRenderFilm(arrayQueue)
+		ref.notImg.classList.add("not-img")
 		return
 	}	
 	
