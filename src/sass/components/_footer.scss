@@ -1,15 +1,4 @@
 @import '../base/colors';
-
-footer {
-  background-color: getColor(footer-background);
-  padding-top: 29px;
-  padding-bottom: 29px;
-
-  @include media-min(tablet) {
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
-}
 .dark-theme__footer {
   background-color: rgb(37, 26, 26);
   .footer__copyright,
@@ -19,6 +8,16 @@ footer {
   .footer__link:hover,
   .footer__link:focus {
     color: getColor(secondary-text-color);
+  }
+}
+footer {
+  background-color: getColor(footer-background);
+  padding-top: 29px;
+  padding-bottom: 29px;
+
+  @include media-min(tablet) {
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
 }
 
