@@ -3,7 +3,7 @@ import { renderPopularFilms } from './render/renderPopularFilm';
 import { ref } from './references/ref';
 import { loaderHide } from './loader';
 
-fetchAndRenderPopularFilm(2);
+fetchAndRenderPopularFilm();
 
 async function fetchAndRenderPopularFilm(page) {
   try {
