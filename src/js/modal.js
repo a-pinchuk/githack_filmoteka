@@ -92,7 +92,7 @@ function renderMarkupModal(film) {
           <li class="modal-info-item">
             <p class="modal-info-name-value">Vote / Votes</p>
             <p class="modal-info-value"><span class="modal-info-value-vote">${
-              film.vote_average
+              film.vote_average.toFixed(1)
             }</span>/<span
                 class="modal-info-value-votes"
                 >${film.vote_count}</span
@@ -159,7 +159,7 @@ function renderDarkMarkupModal(film) {
           <li class="modal-info-item">
             <p class="modal-info-name-value">Vote / Votes</p>
             <p class="modal-info-value modal-info-value-dark"><span class="modal-info-value-vote">${
-              film.vote_average
+              film.vote_average.toFixed(1)
             }</span>/<span
                 class="modal-info-value-votes"
                 >${film.vote_count}</span
