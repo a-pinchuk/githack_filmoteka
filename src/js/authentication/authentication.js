@@ -150,7 +150,6 @@ function onLoginFormSubmit(event) {
       .then(userCredential => {
         const user = userCredential.user;
         openAuthBox.style.display = 'none';
-        console.log(user);
         set(ref(database, 'users/' + user.uid), {
           email,
           password,
@@ -256,6 +255,8 @@ if (userNameLibrary) {
     }
   });
 }
+
+// Show password
 
 const showLoginPassBtn = document.querySelector('.login-form_pass-icon-hide');
 const loginPassInput = document.querySelector('.login-form_pass-input');

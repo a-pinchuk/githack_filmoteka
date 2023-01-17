@@ -12,28 +12,22 @@
         </li>
 
         <li class="mob-navigation__item">
-          <a
-            href="./index.html"
-            class="mob-navigation__link mob-navigation__link--current"
-            >Home</a
-          >
+          <a href="./index.html" class="mob-navigation__link mob-navigation__link--current">Home</a>
         </li>
         <li class="mob-navigation__item" open-library-page>
-          <a href="./my-library.html" class="mob-navigation__link"
-            >My Library</a
-          >
+          <a href="./my-library.html" class="mob-navigation__link">My Library</a>
         </li>
         <li class="mob-navigation__item">
           <div class="header__user-auth-box">
             <p class="user-name"></p>
             <svg class="logout" style="width: 24px; height: 24px">
-              <use href="./images/sprite.svg#icon-log-out"></use>
+              <use href="./images/sprite.svg#icon-log-out" with="24px" alt="Logout icon"></use>
             </svg>
           </div>
           <div class="open-auth-dropdown">
-            <button class="authentication__button" type="button" open-auth-box>
+            <button class="authentication__button" aria-label="authentication button" type="button" open-auth-box>
               <svg style="width: 24px; height: 24px">
-                <use href="./images/sprite.svg#icon-log-in"></use>
+                <use href="./images/sprite.svg#icon-log-in" width="24px" alt="Log in icon"></use>
               </svg>
             </button>
             <div class="authentication_box is-hidden" data-modal-open-auth-box>
@@ -45,11 +39,7 @@
       </ul>
     </div>
     <form class="search-form" action="">
-      <input
-        class="search-form__input"
-        type="text"
-        placeholder="Movie search"
-      />
+      <input class="search-form__input" type="text" placeholder="Movie search" />
       <!-- Добавил тег для алерта -->
       <p class="search-form__info"></p>
       <button class="search-form__button" type="submit"></button>
