@@ -50,6 +50,7 @@ function onDOMContentLoaded() {
 
   if (arrayWatched === undefined) {
     ref.notImg.classList.remove('not-img');
+    ref.paginnationWatchedRef.style.display = 'none'
     return;
   }
   ref.notImg.classList.add('not-img');
@@ -79,6 +80,7 @@ function onClickWatchedBtn(e) {
 
   if (arrayWatched === undefined) {
     ref.notImg.classList.remove('not-img');
+    ref.paginnationWatchedRef.style.display = 'none'
     return;
   }
   ref.notImg.classList.add('not-img');
@@ -99,6 +101,7 @@ function onClickQueueBtn(e) {
   const arrayQueue = load(LOCALSTORAGE_QUEUE);
   if (arrayQueue === undefined) {
     ref.notImg.classList.remove('not-img');
+    ref.paginationQueuedRef.style.display = 'none'
     return;
   }
   ref.notImg.classList.add('not-img');
@@ -118,6 +121,7 @@ export function rederAfterModalWat() {
   const arrayWatched = load(LOCALSTORAGE_WATCHED);
   if (arrayWatched === undefined) {
     ref.notImg.classList.remove('not-img');
+    ref.paginnationWatchedRef.style.display = 'none'
     return;
   }
   if (ref.libraryWatchedBtn.classList.contains('header-library__btn-active')) {
@@ -132,6 +136,7 @@ export function rederAfterModalQue() {
 
   if (arrayQueue === undefined) {
     ref.notImg.classList.remove('not-img');
+    ref.paginationQueuedRef.style.display = 'none'
     return;
   }
   if (ref.libraryQueueBtn.classList.contains('header-library__btn-active')) {
