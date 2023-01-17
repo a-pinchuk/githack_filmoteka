@@ -62,7 +62,7 @@ function onDOMContentLoaded() {
     let moviesWatched = arrayWatched.slice(start, end)
     showWatchedHideQueuePag()
   
-  fetchAndRenderFilm(moviesWatched);
+    paginationWatched.movePageTo(1)
   }
   
 

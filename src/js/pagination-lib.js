@@ -55,13 +55,14 @@ const options = {
     }}
 
     
+    
 const paginationWatched = new Pagination(containerWatched, options)
 const watchedMovies = load(LOCALSTORAGE_WATCHED);
 const moviesOnPage = 3
 
 if (watchedMovies !== undefined) {
 
-  paginationWatched.setTotalItems(watchedMovies.length / moviesOnPage)
+paginationWatched.setTotalItems(watchedMovies.length / moviesOnPage)
 paginationWatched.on('afterMove', onPagginationWatchedMove)
 
 function onPagginationWatchedMove(page) {
@@ -75,8 +76,6 @@ function onPagginationWatchedMove(page) {
 }
 
 }
-
-
 
 
 const paginationQueued = new Pagination(containerQueued, options)

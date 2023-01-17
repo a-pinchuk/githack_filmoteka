@@ -4,8 +4,9 @@ import { ref } from '../references/ref';
 import { Notify } from 'notiflix';
 import { PAGE } from '../api/apiVars';
 import { renderPopularFilms } from '../render/renderPopularFilm';
-import { showPagination } from '../pagination';
 import { loaderHide } from '../loader';
+import { showPaginationSearched } from '../pagination';
+export {renderSearchFilms}
 
 let searchQuery = '';
 ref.form.addEventListener('submit', onCLickSubmit)
@@ -25,7 +26,7 @@ function onCLickSubmit(e) {
     ref.alertMessage.textContent = '';
     ref.input.value = '';
     renderSearchFilms().then(res => {
-      showPagination(res.data.total_pages);
+      showPaginationSearched(res.data.total_pages);
     });
   } else {
     renderPopularFilms();
@@ -63,4 +64,3 @@ function clearGallery() {
   ref.galleryList.innerHTML = '';
 }
 
-export { renderSearchFilms };

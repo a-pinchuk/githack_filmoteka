@@ -2,6 +2,7 @@ import { fetchTrendedFilms, fetchFilmGenres } from './api/fetch';
 import { renderPopularFilms } from './render/renderPopularFilm';
 import { ref } from './references/ref';
 import { loaderHide } from './loader';
+export {fetchAndRenderPopularFilm}
 
 fetchAndRenderPopularFilm();
 
