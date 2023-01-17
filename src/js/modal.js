@@ -1,11 +1,4 @@
-import axios from 'axios';
-import { log } from 'console';
-import { LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE } from './api/apiVars';
-import {
-  fetchFilmById,
-  fetchTrendedFilms,
-  fetchFilmTrailer,
-} from './api/fetch';
+import { fetchFilmById, fetchFilmTrailer } from './api/fetch';
 import { ref } from './references/ref';
 import { loaderHide } from './loader';
 import { saveLocalStorage } from '../js/localStorage';
@@ -86,7 +79,7 @@ function renderMarkupModal(film) {
   return `<div class="modal-img-wrap">
           <div class="modal-wrap-img-btn"><img src="https://image.tmdb.org/t/p/w500/${
             film.poster_path
-          }" alt="${film.title}" class="modal-image"/>
+          }" alt="${film.title}" class="modal-image" width="500" height="750"/>
             <button type="button" class="modal-btn-trailer"><svg class="btn-trailer-icon"><use href="${sprite}#icon-play"></use></svg>
           </button></div>
       </div>
@@ -149,7 +142,7 @@ function renderDarkMarkupModal(film) {
   return `<div class="modal-img-wrap">
           <div class="modal-wrap-img-btn"><img src="https://image.tmdb.org/t/p/w500/${
             film.poster_path
-          }" alt="${film.title}" class="modal-image"/>
+          }" alt="${film.title}" class="modal-image" width="500" height="750"/>
             <button type="button" class="modal-btn-trailer"><svg class="btn-trailer-icon"><use href="${sprite}#icon-play"></use></svg>
           </button></div>
       </div>
@@ -244,7 +237,7 @@ function closeModalbyClick(e) {
     }
   }
 }
-// =========НЕ ЗВАЖАЙ УВАГИ========TREILER===========НЕ ЗВАЖАЙ УВАГИ==============НЕ ЗВАЖАЙ УВАГИ===========
+
 function renderTrail({ key }) {
   return `<iframe
   width="375"
@@ -258,4 +251,3 @@ function renderTrail({ key }) {
     class='modal-image'
   ></iframe>`;
 }
-// =============НЕ ЗВАЖАЙ УВАГИ======TREILER========НЕ ЗВАЖАЙ УВАГИ=============НЕ ЗВАЖАЙ УВАГИ===============

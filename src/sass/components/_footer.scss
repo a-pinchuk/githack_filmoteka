@@ -10,17 +10,14 @@
     color: getColor(secondary-text-color);
   }
 }
-
 footer {
   background-color: getColor(footer-background);
   padding-top: 29px;
   padding-bottom: 29px;
 
-  width: 100%;
   @include media-min(tablet) {
     padding-top: 30px;
     padding-bottom: 30px;
-    min-height: 78px;
   }
 }
 

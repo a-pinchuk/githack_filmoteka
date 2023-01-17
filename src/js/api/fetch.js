@@ -6,7 +6,6 @@ import {
   ID_URL,
   GENRE_URL,
   UPCOMING,
-  DISCOVER,
 } from './apiVars';
 
 export async function fetchTrendedFilms(page = 1) {
@@ -54,18 +53,4 @@ export async function fetchUncomingFilms() {
     page: page,
   });
   return axios.get(`${UPCOMING}/?${searchParams}`);
-}
-
-export async function fetchFilteredFilms() {
-  const searchParams = new URLSearchParams({
-    api_key: API_KEY,
-    language: 'en',
-    sort_by: 'popularity.desc',
-    page: 1,
-    include_adult: false,
-    with_genres: 16,
-    primary_release_year: 2022,
-    vote_average: 4,
-  });
-  return axios.get(`${DISCOVER}?${searchParams}`);
 }
