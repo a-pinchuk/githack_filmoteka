@@ -102,9 +102,10 @@
   line-height: 1.17;
   text-transform: uppercase;
   margin-left: auto;
+  white-space: nowrap;
 }
 .header-library__link:last-child {
-  margin-left: 40px;
+  margin-left: 5px;
 }
 .header-library__btn-list {
   display: flex;
@@ -161,12 +162,19 @@
 .nav-library {
   display: flex;
   align-items: center;
-  padding: 40px;
+  padding: 40px 20px;
+    @include media-min(mobile) {
+      padding: 40px;
+      }
 }
 .header-library__list {
   display: flex;
   margin-left: auto;
-  gap: 39px;
+  align-items: center;
+  gap: 30px;
+    @include media-min(mobile) {
+        gap: 39px;
+      }
 }
 .nav-library__logo {
   display: flex;
@@ -238,12 +246,15 @@
 }
 .header-library__auth-box {
   position: absolute;
-  top: 23px;
+  top: 27px;
   left: 34%;
   transform: translate(-50%);
   display: flex;
   gap: 5px;
   align-items: center;
+    @include media-min(mobile) {
+        top: 23px;
+      }
 }
 .header-library__user-name {
   font-weight: 500;
