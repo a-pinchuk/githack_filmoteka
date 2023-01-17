@@ -1,0 +1,39 @@
+<div class="backdrop-auth is-hidden" data-modal-open-signup>
+   <div class="sign-up__modal">
+      <button class="close__button" type="button" data-modal-close-signup>
+         <svg style="width: 24px; height: 24px; ">
+            <use href="./images/sprite.svg#icon-close"></use>
+         </svg>
+      </button>
+      <p class="sign-up__logo">
+         <img src="/src/images/film.svg" alt="movie tape" />
+         <span class="sign-up__text-logo">Filmoteka</span>
+      </p>
+      <h2 class="sign-up__title">Sign up</h2>
+
+      <form class="sign-up__form">
+         <div class="sign-up-form_user-box">
+            <svg class="sign-up_user-icon" style="width: 20px; height: 20px; ">
+               <use href="./images/sprite.svg#icon-user"></use>
+            </svg>
+            <input type="text" name="username" placeholder="Name" required maxlength="12">
+         </div>
+         <div class="sign-up-form_gmail-box">
+            <svg class="sign-up_gmail-icon" style="width: 20px; height: 20px; ">
+               <use href="./images/sprite.svg#icon-gmail"></use>
+            </svg>
+            <input type="email" name="email" placeholder="Email" required>
+         </div>
+         <div class="sign-up-form_pass-box">
+            <svg class="sign-up-form_key-icon" style="width: 20px; height: 20px; ">
+               <use href="./images/sprite.svg#icon-key"></use>
+            </svg>
+            <input class="sign-up-form_pass-input" type="password" name="password" placeholder="Password" minlength="6"
+               required>
+            <button class="sign-up-form_pass-icon-hide" type="button"></button>
+         </div>
+         <button type="submit">Sign up</button>
+      </form>
+
+   </div>
+</div>

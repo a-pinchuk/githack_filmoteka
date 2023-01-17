@@ -126,8 +126,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background-color: #ff6b01;
   transition: color 250ms linear;
@@ -151,8 +151,6 @@
     fill: getColor('white');
   }
 }
-
-
 
 .modal-info {
   width: 100%;

@@ -1,26 +1,4 @@
-.backdrop-auth {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100vw;
-   height: 100%;
-   z-index: 10;
-   overflow-y: scroll;
-   background-color: #000000b0;
-   opacity: 1;
-   visibility: visible;
-   transition: opacity 250ms linear, visibility 250ms linear;
-
-   &.is-hidden {
-      opacity: 0;
-      pointer-events: none;
-      visibility: hidden;
-      & .login-modal {
-         transform: translate(-50%, -50%) scale(0);
-      }
-   }
-}
-.login-modal {
+.sign-up__modal {
    padding: 100px;
    position: absolute;
    top: 50%;
@@ -29,12 +7,12 @@
    display: flex;
    flex-direction: column;
    align-items: center;
-   box-shadow: 0 0 20px 0px rgb(237 100 100 / 86%);
    border-radius: 5px;
+   box-shadow: 0 0 20px 0px rgb(237 100 100 / 86%);
    background-color: #000c;
-   transform: translate(-50%, -50%) scale(2);
+
    @include media-max(tablet) {
-      top: 35%;
+      top: 40%;
       padding: 50px;
    }
    @include media-max(mobile) {
@@ -42,7 +20,7 @@
    }
 }
 
-.login__title {
+.sign-up__title {
    color: #fff;
    font-size: 40px;
    margin-bottom: 20px;
@@ -53,26 +31,27 @@
 @keyframes text-pop-up-tl {
    0% {
       // -webkit-transform: translateY(0) translateX(0);
-      transform: translateY(0) translateX(0);
+      // transform: translateY(0) translateX(0);
       -webkit-transform-origin: 50% 50%;
       transform-origin: 50% 50%;
       text-shadow: none;
    }
    100% {
       // -webkit-transform: translateY(-50px) translateX(-50px);
-      transform: translateY(-50px) translateX(-50px);
+      // transform: translateY(-50px) translateX(-50px);
       -webkit-transform-origin: 50% 50%;
       transform-origin: 50% 50%;
       text-shadow: 0 1px 0 #080707, 0 2px 0 #080707, 0 3px 0 #080707, 0 4px 0 #080707, 0 5px 0 #080707, 0 6px 0 #080707,
          0 7px 0 #080707, 0 8px 0 #080707, 0 9px 0 #080707, 0 50px 30px rgba(0, 0, 0, 0.3);
    }
 }
-.login__logo {
+
+.sign-up__logo {
    gap: 10px;
    padding-bottom: 20px;
    display: flex;
 }
-.login__text-logo {
+.sign-up__text-logo {
    font-family: "Roboto";
    font-style: normal;
    font-weight: 500;
@@ -84,7 +63,7 @@
    color: #ffffff;
 }
 
-.close-login {
+.close {
    &__button {
       position: absolute;
       cursor: pointer;
@@ -93,21 +72,20 @@
       right: 10px;
       fill: #fff;
       transition: transform 0.25s linear, visibility 0.25s linear, fill 0.35s linear;
-      &:hover,
-      &:focus {
+      &:hover {
          transform: scale(1.1);
          fill: #ff6b01;
       }
    }
 }
-.login-form {
+.sign-up__form {
    display: flex;
    flex-direction: column;
    align-items: center;
    gap: 20px;
 }
 
-.login-form input {
+.sign-up__form input {
    width: 320px;
    text-indent: 30px;
    height: 40px;
@@ -115,19 +93,44 @@
       max-width: 250px;
       height: 40px;
    }
+   &::placeholder {
+      margin-right: 10px;
+   }
 }
 
-.login-form input::placeholder {
+.sign-up__form input::placeholder {
+   padding-left: 10px;
+
    color: #ff6b01;
 }
 
-.login-form_pass-box,
-.login-form_email-box {
+.sign-up__form > button {
+   cursor: pointer;
+   text-transform: uppercase;
+   border-radius: 5px;
+   width: 152px;
+   height: 44px;
+   background: #ff6b01;
+   color: #fff;
+   transition: transform 0.25s linear, visibility 0.25s linear, fill 0.35s linear;
+   &:hover,
+   &:focus {
+      transform: scale(1.1);
+   }
+   @include media-max(tablet) {
+      max-width: 110px;
+      height: 30px;
+   }
+}
+.sign-up-form_pass-box,
+.sign-up-form_gmail-box,
+.sign-up-form_user-box {
    position: relative;
 }
 
-.login-form_gmail-icon,
-.login-form_key-icon {
+.sign-up_gmail-icon,
+.sign-up-form_key-icon,
+.sign-up_user-icon {
    position: absolute;
    top: 50%;
    translate: 0px -50%;
@@ -135,7 +138,7 @@
    fill: #ff6b01;
 }
 
-.login-form_pass-icon-hide {
+.sign-up-form_pass-icon-hide {
    position: absolute;
    cursor: pointer;
    width: 20px;
@@ -149,25 +152,6 @@
    background-position: center;
    background-repeat: no-repeat;
 }
-
 .show {
    background-image: url("../images/authentication/eye.svg");
-}
-
-.login-form > button {
-   cursor: pointer;
-   text-transform: uppercase;
-   border-radius: 5px;
-   width: 152px;
-   height: 44px;
-   background: #ff6b01;
-   color: #fff;
-   transition: transform 0.25s linear, visibility 0.25s linear, fill 0.35s linear;
-   &:hover {
-      transform: scale(1.1);
-   }
-   @include media-max(tablet) {
-      max-width: 110px;
-      height: 30px;
-   }
 }
