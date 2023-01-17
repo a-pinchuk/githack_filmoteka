@@ -10,7 +10,7 @@ export {showPaginationSearched}
 
 
 
-const container = document.getElementById('pagination');
+const containerPopular = document.getElementById('pagination');
 const containerSearch = document.getElementById('pagination-search')
 
 if(darkmode) {
@@ -21,7 +21,7 @@ if(darkmode) {
 const options = {
   totalItems: 200,
   itemsPerPage: 1,
-  visiblePages: 8,
+  visiblePages: 5,
   page: 1,
   centerAlign: true,
   firstItemClassName: 'pagination-first-button',
@@ -45,7 +45,7 @@ const options = {
 
   }}
 //пагінація для трендів
-const pagination = new Pagination(container, options)
+const pagination = new Pagination(containerPopular, options)
 
 pagination.on('afterMove', onPaginationMove);
 
@@ -86,3 +86,5 @@ function showPaginationSearched(totalPages) {
   ref.paginationRef.style.display = 'none'
   ref.paginationSearchRef.style.display = 'flex'
 }
+
+// пагінація для watched

@@ -11,6 +11,8 @@ import { loaderHide } from './loader';
 import { saveLocalStorage } from '../js/localStorage';
 import { rederAfterModalWat, rederAfterModalQue } from '../js/library';
 import sprite from '../images/sprite.svg';
+import { paginationQueued } from './pagination-lib';
+import { paginationWatched } from './pagination-lib';
 
 ref.galleryList.addEventListener('click', openModal);
 ref.closeModalBtn.addEventListener('click', closeModal);

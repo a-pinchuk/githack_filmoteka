@@ -9,7 +9,26 @@ import { renderFilmsByIdForLibrary } from './render/renderFilmByIdForLibrary';
 import { ref } from './references/ref';
 // import { options, pagination } from './pagination';
 import { LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE } from './api/apiVars';
+import { showQueueHideWatchedPag } from './pagination-lib';
+import { showWatchedHideQueuePag } from './pagination-lib';
+import { paginationWatched } from './pagination-lib';
+import { paginationQueued } from './pagination-lib';
+export {moviesWatched}
+// export {moviesQueued}
 
+const arrayWatched = load(LOCALSTORAGE_WATCHED);
+const arrayQueue = load(LOCALSTORAGE_QUEUE)
+
+const moviesOnPage = 3
+let start = (1-1) * moviesOnPage
+let end = start + moviesOnPage
+
+// let moviesWatched = arrayWatched.slice(start, end)
+// let moviesQueued = arrayQueue.slice(start, end)
+
+
+export {fetchAndRenderFilm}
+export{load}
 // console.log(document.title==="Githack Filmoteka Library");
 function load(key) {
   try {
@@ -29,7 +48,7 @@ if (document.title === 'Githack Filmoteka Library') {
 
 function onDOMContentLoaded() {
   //  /   console.log(load(LOCALSTORAGE_WATCHED));
-  const arrayWatched = load(LOCALSTORAGE_WATCHED);
+  // const arrayWatched = load(LOCALSTORAGE_WATCHED);
   //   console.log(arrayWatched);
 
   if (arrayWatched === undefined) {
@@ -39,14 +58,23 @@ function onDOMContentLoaded() {
   ref.notImg.classList.add('not-img');
   // // console.log(arrayWatched);
   // const ars =arrayWatched.map(ar => ar.id);
-  fetchAndRenderFilm(arrayWatched);
+
+  if (arrayWatched !== undefined) {
+
+    let moviesWatched = arrayWatched.slice(start, end)
+    showWatchedHideQueuePag()
+  
+  fetchAndRenderFilm(moviesWatched);
+  }
+  
+  
 }
 function onClickWatchedBtn(e) {
   ref.libraryWatchedBtn.classList.add('header-library__btn-active');
   ref.libraryQueueBtn.classList.remove('header-library__btn-active');
   //   ref.libraryWatchedBtn.style.backgroundColor = '#ff6b01';
   ref.galleryList.innerHTML = '';
-  const arrayWatched = load(LOCALSTORAGE_WATCHED);
+  // const arrayWatched = load(LOCALSTORAGE_WATCHED);
   // console.log(arrayWatched);
   if (arrayWatched === undefined) {
     ref.notImg.classList.remove('not-img');
@@ -54,7 +82,14 @@ function onClickWatchedBtn(e) {
   }
   ref.notImg.classList.add('not-img');
   // const ars = arrayWatched.map(ar => ar.id);
-  fetchAndRenderFilm(arrayWatched);
+
+  if (arrayWatched !== undefined) {
+    showWatchedHideQueuePag()
+    // fetchAndRenderFilm(moviesWatched);
+    paginationWatched.movePageTo(1)
+  }
+  
+  
 }
 function onClickQueueBtn(e) {
   ref.libraryWatchedBtn.classList.remove('header-library__btn-active');
@@ -69,7 +104,12 @@ function onClickQueueBtn(e) {
   }
   ref.notImg.classList.add('not-img');
   // const ars = arrayQueue.map(ar => ar.id);
-  fetchAndRenderFilm(arrayQueue);
+
+if (arrayQueue !== undefined) {
+  paginationQueued.movePageTo(1)
+  showQueueHideWatchedPag()
+  // fetchAndRenderFilm(moviesQueued);
+}
 }
 
 export function rederAfterModalWat() {
@@ -81,8 +121,9 @@ export function rederAfterModalWat() {
     return;
   }
   if (ref.libraryWatchedBtn.classList.contains('header-library__btn-active')) {
-    fetchAndRenderFilm(arrayWatched);
+    // fetchAndRenderFilm(moviesWatched);
     ref.notImg.classList.add('not-img');
+    paginationWatched.movePageTo(1)
   }
 }
 export function rederAfterModalQue() {
@@ -94,8 +135,9 @@ export function rederAfterModalQue() {
     return;
   }
   if (ref.libraryQueueBtn.classList.contains('header-library__btn-active')) {
-    fetchAndRenderFilm(arrayQueue);
+    // fetchAndRenderFilm(moviesQueued);
     ref.notImg.classList.add('not-img');
+    paginationQueued.movePageTo(1)
     return;
   }
 }

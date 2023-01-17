@@ -9,7 +9,7 @@ import { loaderHide } from '../loader';
 
 
 let searchQuery = '';
-ref.form.addEventListener('submit', onCLickSubmit);
+ref.form.addEventListener('submit', onCLickSubmit)
 
 
 function onCLickSubmit(e) {

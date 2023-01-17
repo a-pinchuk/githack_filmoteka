@@ -48,11 +48,14 @@
 .pagination-btns {
     color: black;
     align-items: center;
+    display: flex;
 }
 
 
 .pagination-btns-dark-theme {
     color: #FFFFFF;
+    align-items: center;
+    display: flex;
 }
 
 .pagination-btns-dark-theme .pagination-page-button{
@@ -211,4 +214,8 @@
     .pagination-btns-dark-theme &{
         filter: invert(100%);
     }
+}
+
+#pagination-lib-queued {
+    display: none;
 }
