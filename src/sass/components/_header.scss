@@ -31,6 +31,7 @@
 .logo {
   display: flex;
   text-indent: -9999px;
+  align-items: center;
   transition: filter 300ms ease-in-out;
   &:hover,
   &:focus {
@@ -54,8 +55,11 @@
 
   &__buttons {
     display: flex;
-    gap: 40px;
+    gap: 26px;
     align-items: center;
+      @include media-min(mobile) {
+          gap: 40;
+        }
   }
 
   &__item {
@@ -170,7 +174,7 @@
   display: flex;
   align-items: center;
   text-align: center;
-
+  margin-right: 10px;
   color: #ffffff;
 
   margin-left: 10px;
@@ -178,7 +182,7 @@
 
 .mob-navigation__link {
   position: relative;
-
+  white-space: nowrap;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
@@ -310,11 +314,14 @@
 .header__user-auth-box {
   position: absolute;
   top: 12px;
-  left: -88px;
+  left: -77px;
   transform: translate(-50%);
   display: flex;
   gap: 5px;
   align-items: center;
+    @include media-min(desktop) {
+        left: -88px;
+      }
 }
 
 .user-name {
