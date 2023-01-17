@@ -74,7 +74,7 @@ function renderMarkupModal(film) {
   return `<div class="modal-img-wrap">
           <div class="modal-wrap-img-btn"><img src="https://image.tmdb.org/t/p/w500/${
             film.poster_path
-          }" alt="${film.title}" class="modal-image"/>
+          }" alt="${film.title}" class="modal-image" width="500" height="750"/>
             <button type="button" class="modal-btn-trailer"><svg class="btn-trailer-icon"><use href="${sprite}#icon-play"></use></svg>
           </button></div>
       </div>
@@ -141,7 +141,7 @@ function renderDarkMarkupModal(film) {
   return `<div class="modal-img-wrap">
           <div class="modal-wrap-img-btn"><img src="https://image.tmdb.org/t/p/w500/${
             film.poster_path
-          }" alt="${film.title}" class="modal-image"/>
+          }" alt="${film.title}" class="modal-image" width="500" height="750"/>
             <button type="button" class="modal-btn-trailer"><svg class="btn-trailer-icon"><use href="${sprite}#icon-play"></use></svg>
           </button></div>
       </div>
