@@ -142,6 +142,10 @@
   transition-property: transform;
   transition-duration: 300ms;
   transition-timing-function: ease-in-out;
+
+  font-weight: 500;
+  font-size: 20px;
+  line-height: calc(24 / 20);
 }
 .movie__genre,
 .movie__year {

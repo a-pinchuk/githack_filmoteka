@@ -8,7 +8,7 @@ export function renderFilmsByIdForLibrary(ref, datas) {
             }" alt="${data.title}" "loading="lazy" class="movie__image"/>
 				<span class="movie__rating">${data.vote_average.toFixed(1)}</span>
           <div class="movie__info">
-            <h2 class="movie__title">${data.title}</h2>
+            <p class="movie__title">${data.title}</p>
             <div class="movie__details">
             <p class="movie__genre">${genres}</p>
             <p class="movie__year">${data.release_date.slice(0, 4)}</p>
