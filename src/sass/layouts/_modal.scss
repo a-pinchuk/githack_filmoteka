@@ -31,7 +31,7 @@
   border-radius: 15px;
 
   width: 280px;
-  min-height: 100%;
+  min-height: 940px;
   @include media-min(tablet) {
     padding-top: 40px;
     padding-left: 36px;
@@ -98,13 +98,19 @@
     margin-bottom: 0;
   }
   @include media-min(desktop) {
-    width: 375px;
-    height: 478px;
+    width: 50%;
+    height: auto;
   }
 }
 .modal-wrap-img-btn {
   position: relative;
 }
+
+.modal-wrap-img-btn img {
+  width: 100%;
+  height: auto;
+}
+
 .modal-image {
   display: block;
   width: 240px;
@@ -233,12 +239,14 @@
   text-transform: uppercase;
 }
 .modal-info-about {
+  padding-right: 20px;
   margin-bottom: 20px;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.67;
   height: 200px;
   overflow-y: scroll;
+
   //   @include media-min(tablet) {
   //     height: 236px;
   //   }
@@ -248,22 +256,21 @@
 }
 .btn-modal-wrap {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   // padding-left: 20px;
   justify-content: center;
   gap: 20px;
 
   @include media-min(desktop) {
-    flex-wrap: nowrap;
+    // flex-wrap: nowrap;
     justify-content: normal;
   }
 }
 .modal-btn-wrap {
-	// display: flex;
-	position: relative;
-	// padding-left: 20px;
-	
- }
+  // display: flex;
+  position: relative;
+  // padding-left: 20px;
+}
 .modal-btn {
   cursor: pointer;
   width: 110px;
@@ -284,8 +291,8 @@
     width: 125px;
   }
   @include media-min(desktop) {
-	width: 136px;
- }
+    width: 136px;
+  }
 
   &:hover,
   &:focus {
@@ -304,17 +311,17 @@
   }
   &-dark {
     border: 1px solid #ff6b01;
-    color: getColor('white');;
+    color: getColor('white');
   }
 }
 .modal-btn-rem {
-position: absolute;
-top: 0;
-left: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .is-hidden {
-	visibility: hidden;
-	opacity: 0;
-	pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
