@@ -7,33 +7,37 @@
   <nav class="navigation">
     <div class="mob-navigation">
       <a href="./index.html" lang="en" class="logo">
-        <img src="/src/images/film.svg" alt="movie tape" />
+        <img src="/src/images/film.svg" alt="movie tape" loading="lazy" />
         <span class="mob-navigation__main">Filmoteka</span>
       </a>
 
       <ul class="mob-navigation__buttons">
-
         <li class="mob-navigation__item">
           <include src="./partials/switcher.html"></include>
         </li>
 
         <li class="mob-navigation__item">
-          <a href="./index.html" class="mob-navigation__link mob-navigation__link--current">Home</a>
+          <a
+            href="./index.html"
+            class="mob-navigation__link mob-navigation__link--current"
+            >Home</a
+          >
         </li>
         <li class="mob-navigation__item" open-library-page>
-          <a href="./my-library.html" class="mob-navigation__link">My Library</a>
+          <a href="./my-library.html" class="mob-navigation__link"
+            >My Library</a
+          >
         </li>
         <li class="mob-navigation__item">
           <div class="header__user-auth-box">
-            <p class="user-name">
-            </p>
-            <svg class="logout" style="width: 24px; height: 24px; ">
+            <p class="user-name"></p>
+            <svg class="logout" style="width: 24px; height: 24px">
               <use href="./images/sprite.svg#icon-log-out"></use>
             </svg>
           </div>
           <div class="open-auth-dropdown">
-            <button class='authentication__button' type="button" open-auth-box>
-              <svg style="width: 24px; height: 24px;">
+            <button class="authentication__button" type="button" open-auth-box>
+              <svg style="width: 24px; height: 24px">
                 <use href="./images/sprite.svg#icon-log-in"></use>
               </svg>
             </button>
@@ -46,11 +50,14 @@
       </ul>
     </div>
     <form class="search-form" action="">
-      <input class="search-form__input" type="text" placeholder="Movie search" />
+      <input
+        class="search-form__input"
+        type="text"
+        placeholder="Movie search"
+      />
       <!-- Добавил тег для алерта -->
       <p class="search-form__info"></p>
       <button class="search-form__button" type="submit"></button>
     </form>
-
   </nav>
 </header>

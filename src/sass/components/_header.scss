@@ -1,6 +1,6 @@
-@import "../base/colors";
+@import '../base/colors';
 .header {
-  background-image: url(/src/images/abstract-background-with-red-lines\ 1.jpg);
+  background-image: url(/src/images/abstract-background.png);
   background-size: 100% 320px;
 
   max-width: 100%;
@@ -33,6 +33,11 @@
     text-indent: 0px;
     align-items: center;
   }
+}
+
+.logo img {
+  width: 24px;
+  height: 24px;
 }
 
 .mob-navigation {
@@ -97,7 +102,7 @@
     width: 100%;
     background-color: transparent;
 
-    font-family: "Roboto";
+    font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -108,7 +113,7 @@
     color: white;
 
     &::placeholder {
-      font-family: "Roboto";
+      font-family: 'Roboto';
       font-style: normal;
       font-weight: 400;
       font-size: 14px;
@@ -150,7 +155,7 @@
 }
 
 .mob-navigation__main {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 30px;
@@ -167,7 +172,7 @@
 .mob-navigation__link {
   position: relative;
 
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -180,7 +185,7 @@
 
   color: #ffffff;
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     display: block;
     bottom: -3px;
@@ -192,7 +197,7 @@
   }
 
   &--current::after {
-    content: "";
+    content: '';
     position: absolute;
     display: block;
     bottom: -3px;
@@ -258,7 +263,8 @@
     cursor: pointer;
     background: none;
     fill: #ff6b01;
-    transition: transform 0.25s linear, visibility 0.25s linear, fill 0.35s linear;
+    transition: transform 0.25s linear, visibility 0.25s linear,
+      fill 0.35s linear;
     &:hover {
       transform: scale(1.1);
       fill: #fff;

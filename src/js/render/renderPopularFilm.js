@@ -10,7 +10,7 @@ export function renderPopularFilms(ref, data, genres) {
             }" alt="" "loading="lazy" class="movie__image"/>
             <span class="movie__rating">${el.vote_average.toFixed(1)}</span>
           <div class="movie__info">
-            <h2 class="film__title">${el.title}</h2>
+            <p class="film__title">${el.title}</p>
             <div class="movie__details">
             <p class="movie__genre">${movieGenres}</p>
             <p class="movie__year">| ${el.release_date.slice(0, 4)}</p>

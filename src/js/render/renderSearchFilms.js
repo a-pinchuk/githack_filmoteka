@@ -16,7 +16,7 @@ export function createMarkUp(ref, data) {
             }" alt="" "loading="lazy" class="movie__image"/>
             <span class="movie__rating">${item.vote_average.toFixed(2)}</span> 
           <div class="movie__info">
-            <h2 class="film__title">${title}</h2>
+            <p class="film__title">${title}</p>
             <div class="movie__details">
             <p class="movie__genre">${filmGenre}</p>
             <p class="movie__year">| ${normalizeDate}</p>
