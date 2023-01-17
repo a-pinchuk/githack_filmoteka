@@ -1,14 +1,31 @@
-<div class="backdrop is-hidden" data-modal-open-login>
+<div class="backdrop-auth is-hidden" data-modal-open-login>
    <div class="login-modal">
       <button class="close-login__button" type="button" data-modal-close-login>
          <svg style="width: 24px; height: 24px; ">
-            <use href="./images/sprite.svg#icon-close"></use>
+            <use href="./images/sprite.svg#icon-close" with="24px" alt="Close icon"></use>
          </svg>
       </button>
+      <p class="login__logo">
+         <img src="/src/images/film.svg" alt="movie tape" width="45px" height="45px" />
+         <span class="login__text-logo">Filmoteka</span>
+      </p>
       <h2 class="login__title">Log in</h2>
+
       <form class="login-form">
-         <input type="text" id="email" placeholder="Email">
-         <input type="password" id="password" placeholder="Password">
+         <div class="login-form_email-box">
+            <svg class="login-form_gmail-icon" style="width: 20px; height: 20px; ">
+               <use href="./images/sprite.svg#icon-gmail" width="20px" alt="Gmail icon"></use>
+            </svg>
+            <input type="text" name="email" placeholder="Email">
+         </div>
+
+         <div class="login-form_pass-box">
+            <svg class="login-form_key-icon" style="width: 20px; height: 20px; ">
+               <use href="./images/sprite.svg#icon-key" width="20px" alt="Key icon"></use>
+            </svg>
+            <input class="login-form_pass-input" type="password" name="password" placeholder="Password">
+            <button class="login-form_pass-icon-hide" type="button"></button>
+         </div>
          <button type="submit">Log in</button>
       </form>
    </div>

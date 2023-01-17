@@ -102,12 +102,10 @@
   line-height: 1.17;
   text-transform: uppercase;
   margin-left: auto;
+  white-space: nowrap;
 }
 .header-library__link:last-child {
-  margin-left: 20px;
-  @include media-min(tablet) {
-    margin-left: 40px;
-  }
+  margin-left: 5px;
 }
 .header-library__btn-list {
   display: flex;
@@ -162,23 +160,21 @@
 }
 
 .nav-library {
-  margin-bottom: 30px;
-  padding: 20px;
   display: flex;
   align-items: center;
-  @include media-min(mobile) {
-    padding: 40px;
-    margin-bottom: 0px;
-  }
+  padding: 40px 20px;
+    @include media-min(mobile) {
+      padding: 40px;
+      }
 }
 .header-library__list {
   display: flex;
   margin-left: auto;
   align-items: center;
-  gap: 20px;
-  @include media-min(mobile) {
-    gap: 30px;
-  }
+  gap: 30px;
+    @include media-min(mobile) {
+        gap: 39px;
+      }
 }
 .nav-library__logo {
   display: flex;
@@ -243,19 +239,22 @@
 }
 .movie__title {
   text-transform: uppercase;
-  color: getColor('white');
+  // color: getColor("white");
+  font-weight: 500;
+  font-size: 20px;
+  line-height: calc(24 / 20);
 }
 .header-library__auth-box {
   position: absolute;
-  top: 30px;
+  top: 27px;
   left: 34%;
   transform: translate(-50%);
   display: flex;
   gap: 5px;
   align-items: center;
-  @include media-min(tablet) {
-    top: 23px;
-  }
+    @include media-min(mobile) {
+        top: 23px;
+      }
 }
 .header-library__user-name {
   font-weight: 500;
@@ -266,7 +265,8 @@
   cursor: pointer;
   fill: #ff6b01;
   transition: transform 0.25s linear, visibility 0.25s linear, fill 0.35s linear;
-  &:hover {
+  &:hover,
+  &:focus {
     transform: scale(1.1);
     fill: #fff;
   }
@@ -278,7 +278,6 @@
   flex-direction: column;
 }
 .not-img {
-  display: none;
   visibility: hidden;
   opacity: 0;
   pointer-events: none;

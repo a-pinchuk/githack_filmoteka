@@ -2,20 +2,11 @@ import { fetchTrendedFilms, fetchFilmGenres } from './api/fetch';
 import { renderPopularFilms } from './render/renderPopularFilm';
 import { ref } from './references/ref';
 import { loaderHide } from './loader';
-import { showPaginationTrended } from './pagination';
 
-export {fetchAndRenderPopularFilm}
-
-
-
-fetchAndRenderPopularFilm(1).then((res) => {
-  showPaginationTrended(res.data.total_pages) }
-)
-
+fetchAndRenderPopularFilm();
 
 async function fetchAndRenderPopularFilm(page) {
   try {
-    ref.galleryList.innerHTML = ''
     ref.loader.style.display = 'flex';
     const image = await fetchTrendedFilms(page);
     const genres = await fetchFilmGenres();
@@ -24,12 +15,7 @@ async function fetchAndRenderPopularFilm(page) {
 
     renderPopularFilms(ref, data, genresID);
     loaderHide();
-
-    return image
-
   } catch (error) {
     console.log(error);
   }
-
-  
 }

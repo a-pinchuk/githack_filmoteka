@@ -1,21 +1,20 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-
 import { renderSearchFilms } from './requests/searchFilms';
 import { ref } from './references/ref';
 import { darkmode } from './switcher';
-import { fetchAndRenderPopularFilm } from './fetchAndRenderPopularFilm';
-export {showPaginationTrended}
-export {showPaginationSearched}
 
+export { showPagination };
 
 
 const containerPopular = document.getElementById('pagination');
 const containerSearch = document.getElementById('pagination-search')
 
-if(darkmode) {
-  ref.paginationRef.classList.add('pagination-btns-dark-theme')
-  ref.paginationSearchRef.classList.add('pagination-btns-dark-theme')
+
+
+
+if (darkmode) {
+  ref.paginationRef.classList.add('pagination-btns-dark-theme');
 }
 
 const options = {
@@ -32,18 +31,20 @@ const options = {
     currentPage: '<a class="pagination-active-button">{{page}}</a>',
     moveButton:
       '<a href="#" class="pagination-next-button">' +
-        '<span class="pag-ico-{{type}}">{{type}}</span>' +
+      '<span class="pag-ico-{{type}}">{{type}}</span>' +
       '</a>',
     disabledMoveButton:
       '<span class="pagination-disabled-button">' +
-        '<span class="pag-ico-{{type}}">{{type}}</span>' +
+      '<span class="pag-ico-{{type}}">{{type}}</span>' +
       '</span>',
-      moreButton:
+    moreButton:
       '<a href="#" class="pagination-more-button">' +
-        '<span class="pag-ico-more"> </span>' +
-      '</a>'
+      '<span class="pag-ico-more"> </span>' +
+      '</a>',
+  },
+};
 
-  }}
+
 //пагінація для трендів
 const pagination = new Pagination(containerPopular, options)
 
@@ -57,6 +58,13 @@ function onPaginationMove({ page }) {
     behavior: 'smooth',
   });
 }
+
+function showPagination(totalPages) {
+  pagination.setTotalItems(totalPages);
+  pagination.movePageTo(options.page);
+  ref.paginationRef.style.display = 'flex';
+}
+
 
 function showPaginationTrended(totalPages) {
   pagination.setTotalItems(totalPages)

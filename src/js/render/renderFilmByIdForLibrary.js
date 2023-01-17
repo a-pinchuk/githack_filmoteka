@@ -1,4 +1,3 @@
-import { ref } from '../references/ref';
 export function renderFilmsByIdForLibrary(ref, datas) {
   const markup = datas
     .map(({ data }) => {
@@ -6,10 +5,12 @@ export function renderFilmsByIdForLibrary(ref, datas) {
       return `<li class="photo__card" data-modal-open id=${data.id}">
             <img src="https://image.tmdb.org/t/p/w500/${
               data.poster_path
-            }" alt="${data.title}" "loading="lazy" class="movie__image"/>
+            }" alt="${
+        data.title
+      }" "loading="lazy" class="movie__image" width="500" height="750"/>
 				<span class="movie__rating">${data.vote_average.toFixed(1)}</span>
           <div class="movie__info">
-            <h2 class="movie__title">${data.title}</h2>
+            <p class="movie__title">${data.title}</p>
             <div class="movie__details">
             <p class="movie__genre">${genres}</p>
             <p class="movie__year">${data.release_date.slice(0, 4)}</p>

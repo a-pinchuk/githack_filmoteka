@@ -1,18 +1,12 @@
 <header class="header">
-  <!-- <img class="header__background"
-        src="./images/abstract-background-with-red-lines 1.jpg"
-        alt="header"
-      /> -->
-
   <nav class="navigation">
     <div class="mob-navigation">
       <a href="./index.html" lang="en" class="logo">
-        <img src="/src/images/film.svg" alt="movie tape" />
+        <img src="/src/images/film.svg" alt="movie tape" loading="lazy" />
         <span class="mob-navigation__main">Filmoteka</span>
       </a>
 
       <ul class="mob-navigation__buttons">
-
         <li class="mob-navigation__item">
           <include src="./partials/switcher.html"></include>
         </li>
@@ -21,20 +15,19 @@
           <a href="./index.html" class="mob-navigation__link mob-navigation__link--current">Home</a>
         </li>
         <li class="mob-navigation__item" open-library-page>
-          <a href="./myLibrary.html" class="mob-navigation__link">My Library</a>
+          <a href="./my-library.html" class="mob-navigation__link">My Library</a>
         </li>
         <li class="mob-navigation__item">
           <div class="header__user-auth-box">
-            <p class="user-name">
-            </p>
-            <svg class="logout" style="width: 24px; height: 24px; ">
-              <use href="./images/sprite.svg#icon-log-out"></use>
+            <p class="user-name"></p>
+            <svg class="logout" style="width: 24px; height: 24px">
+              <use href="./images/sprite.svg#icon-log-out" with="24px" alt="Logout icon"></use>
             </svg>
           </div>
           <div class="open-auth-dropdown">
-            <button class='authentication__button' type="button" open-auth-box>
-              <svg style="width: 24px; height: 24px;">
-                <use href="./images/sprite.svg#icon-log-in"></use>
+            <button class="authentication__button" aria-label="authentication button" type="button" open-auth-box>
+              <svg style="width: 24px; height: 24px">
+                <use href="./images/sprite.svg#icon-log-in" width="24px" alt="Log in icon"></use>
               </svg>
             </button>
             <div class="authentication_box is-hidden" data-modal-open-auth-box>
@@ -51,6 +44,5 @@
       <p class="search-form__info"></p>
       <button class="search-form__button" type="submit"></button>
     </form>
-
   </nav>
 </header>

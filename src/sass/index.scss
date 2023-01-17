@@ -1,29 +1,23 @@
 // NORMALIZE
-@import '~node_modules/modern-normalize/modern-normalize.css';
-
+@import "~node_modules/modern-normalize/modern-normalize.css";
 // UTILS
-@import './utils/mixin';
-@import './utils/loader';
-@import './utils/variables';
-@import './utils/backdrop';
-@import './utils/visually-hidden';
-
+@import "./utils/mixin";
+@import "./utils/loader";
+@import "./utils/variables";
+@import "./utils/visually-hidden";
 // BASE
-@import './base/colors';
-@import './base/container';
-@import './base/globalStyles';
-
+@import "./base/colors";
+@import "./base/container";
+@import "./base/globalStyles";
 // COMPONENTS
-@import './components/header';
-@import './components/theme-switcher';
-@import './components/modal-students';
-@import './components/modal-login';
-@import './components/modal-singup';
-@import './components/scroll-to-top';
-@import './components/pagination';
-
+@import "./components/header";
+@import "./components/theme-switcher";
+@import "./components/modal-students";
+@import "./components/modal-login";
+@import "./components/modal-sign-up";
+@import "./components/scroll-to-top";
+@import "./components/pagination";
 //LAYOUT
-@import './components/galery';
-@import './components/footer';
-
-@import './layouts/modal';
+@import "./components/galery";
+@import "./components/footer";
+@import "./layouts/modal";
