@@ -33,7 +33,6 @@ const closeLoginModalBtn = document.querySelector('[data-modal-close-login]');
 
 openLoginModalBtn.addEventListener('click', e => {
   if (e.target == e.currentTarget) {
-    console.log('click');
     openLoginModalBtn.classList.toggle('is-hidden');
   }
 });
@@ -41,7 +40,6 @@ openLoginModalBtn.addEventListener('click', e => {
 closeLoginModalBtn.addEventListener('click', e => {
   openLoginModalBtn.classList.toggle('is-hidden');
   if (e.target == e.currentTarget) {
-    console.log('click');
     openSignUpModalBtn.classList.toggle('is-hidden');
   }
 });
@@ -51,7 +49,6 @@ const openSignUpModalBtn = document.querySelector('[data-modal-open-signup]');
 const closeSignUpModalBtn = document.querySelector('[data-modal-close-signup]');
 openSignUpModalBtn.addEventListener('click', e => {
   if (e.target == e.currentTarget) {
-    console.log('click');
     openSignUpModalBtn.classList.toggle('is-hidden');
   }
 });
@@ -199,7 +196,6 @@ if (openLibraryPage) {
       openLibraryPage.addEventListener('click', e => {
         window.location.href = 'my-library.html';
       });
-      console.log('login');
     } else {
       openLibraryPage.addEventListener('click', e => {
         e.preventDefault();
@@ -241,8 +237,6 @@ if (openLibraryPage) {
       logoutBtn.style.display = 'block';
       userName.style.display = 'block';
       userName.textContent = user.displayName;
-
-      console.log('on');
     } else {
       openAuthBox.style.display = 'flex';
       userName.style.display = 'none';
@@ -258,7 +252,6 @@ if (userNameLibrary) {
     if (user) {
       userNameLibrary.style.display = 'block';
       userNameLibrary.textContent = user.displayName;
-      console.log('on');
     } else {
     }
   });
@@ -270,7 +263,6 @@ showLoginPassBtn.addEventListener('click', e => {
   showLoginPassBtn.classList.toggle('show');
   if (showLoginPassBtn.classList.contains('show')) {
     loginPassInput.type = 'text';
-    console.log('xxx');
   } else {
     loginPassInput.type = 'password';
   }
@@ -284,7 +276,6 @@ showSignUpPassBtn.addEventListener('click', e => {
   showSignUpPassBtn.classList.toggle('show');
   if (showSignUpPassBtn.classList.contains('show')) {
     signUpPassInput.type = 'text';
-    console.log('xxx');
   } else {
     signUpPassInput.type = 'password';
   }
