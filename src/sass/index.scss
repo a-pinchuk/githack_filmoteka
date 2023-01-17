@@ -1,17 +1,14 @@
 // NORMALIZE
 @import "~node_modules/modern-normalize/modern-normalize.css";
-
 // UTILS
 @import "./utils/mixin";
 @import "./utils/loader";
 @import "./utils/variables";
 @import "./utils/visually-hidden";
-
 // BASE
 @import "./base/colors";
 @import "./base/container";
 @import "./base/globalStyles";
-
 // COMPONENTS
 @import "./components/header";
 @import "./components/theme-switcher";
@@ -20,9 +17,7 @@
 @import "./components/modal-sign-up";
 @import "./components/scroll-to-top";
 @import "./components/pagination";
-
 //LAYOUT
 @import "./components/galery";
 @import "./components/footer";
-
 @import "./layouts/modal";

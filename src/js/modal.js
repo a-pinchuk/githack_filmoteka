@@ -1,11 +1,4 @@
-import axios from 'axios';
-import { log } from 'console';
-import { LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE } from './api/apiVars';
-import {
-  fetchFilmById,
-  fetchTrendedFilms,
-  fetchFilmTrailer,
-} from './api/fetch';
+import { fetchFilmById, fetchFilmTrailer } from './api/fetch';
 import { ref } from './references/ref';
 import { loaderHide } from './loader';
 import { saveLocalStorage } from '../js/localStorage';
@@ -244,7 +237,7 @@ function closeModalbyClick(e) {
     }
   }
 }
-// =========НЕ ЗВАЖАЙ УВАГИ========TREILER===========НЕ ЗВАЖАЙ УВАГИ==============НЕ ЗВАЖАЙ УВАГИ===========
+
 function renderTrail({ key }) {
   return `<iframe
   width="375"
@@ -258,4 +251,3 @@ function renderTrail({ key }) {
     class='modal-image'
   ></iframe>`;
 }
-// =============НЕ ЗВАЖАЙ УВАГИ======TREILER========НЕ ЗВАЖАЙ УВАГИ=============НЕ ЗВАЖАЙ УВАГИ===============

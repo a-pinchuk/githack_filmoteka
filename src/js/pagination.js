@@ -1,19 +1,16 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-
 import { renderSearchFilms } from './requests/searchFilms';
 import { ref } from './references/ref';
-
 import { darkmode } from './switcher';
 
-export {showPagination}
+export { showPagination };
 
 const container = document.getElementById('pagination');
 
-if(darkmode) {
-  ref.paginationRef.classList.add('pagination-btns-dark-theme')
+if (darkmode) {
+  ref.paginationRef.classList.add('pagination-btns-dark-theme');
 }
-
 
 const options = {
   totalItems: 200,
@@ -29,32 +26,30 @@ const options = {
     currentPage: '<a class="pagination-active-button">{{page}}</a>',
     moveButton:
       '<a href="#" class="pagination-next-button">' +
-        '<span class="pag-ico-{{type}}">{{type}}</span>' +
+      '<span class="pag-ico-{{type}}">{{type}}</span>' +
       '</a>',
     disabledMoveButton:
       '<span class="pagination-disabled-button">' +
-        '<span class="pag-ico-{{type}}">{{type}}</span>' +
+      '<span class="pag-ico-{{type}}">{{type}}</span>' +
       '</span>',
-      moreButton:
+    moreButton:
       '<a href="#" class="pagination-more-button">' +
-        '<span class="pag-ico-more"> </span>' +
-      '</a>'
-
-  }
+      '<span class="pag-ico-more"> </span>' +
+      '</a>',
+  },
 };
 
 const pagination = new Pagination(container, options);
-pagination.on('afterMove', ({ page }) =>{
-   renderSearchFilms(page) 
-   window.scrollTo({
+pagination.on('afterMove', ({ page }) => {
+  renderSearchFilms(page);
+  window.scrollTo({
     top: 0,
     behavior: 'smooth',
   });
-} 
-);
+});
 
 function showPagination(totalPages) {
-  pagination.setTotalItems(totalPages)
-  pagination.movePageTo(options.page)
-  ref.paginationRef.style.display = 'flex'
+  pagination.setTotalItems(totalPages);
+  pagination.movePageTo(options.page);
+  ref.paginationRef.style.display = 'flex';
 }

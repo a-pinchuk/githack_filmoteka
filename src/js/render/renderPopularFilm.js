@@ -25,13 +25,11 @@ export function renderPopularFilms(ref, data, genres) {
 
 function compareGenresId(allGenres, filmGenre) {
   let arrayOfGenres = [];
-
   allGenres.forEach(el => {
     if (filmGenre.includes(el.id)) {
       arrayOfGenres.push(el.name);
     }
   });
-
   if (arrayOfGenres.length > 3) {
     arrayOfGenres = arrayOfGenres.splice(0, 2).join(', ') + ', Other';
     return arrayOfGenres;

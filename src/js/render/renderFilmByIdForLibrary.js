@@ -1,4 +1,3 @@
-import { ref } from '../references/ref';
 export function renderFilmsByIdForLibrary(ref, datas) {
   const markup = datas
     .map(({ data }) => {

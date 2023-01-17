@@ -1,10 +1,8 @@
-
 const ref = {
   paginationRef: document.querySelector('.pagination-btns'),
   bodyRef: document.querySelector('body'),
   form: document.querySelector('.search-form'),
   input: document.querySelector('.search-form__input'),
-  // Добавил ссылку для алерта
   alertMessage: document.querySelector('.search-form__info'),
   photoCard: document.querySelector('.photo-card'),
   galleryList: document.querySelector('.gallery__list'),
@@ -22,11 +20,11 @@ const ref = {
   modal: document.querySelector('[data-modal]'),
   modalWrap: document.querySelector('.modal-wrap'),
   modalWindow: document.querySelector('.modal-window'),
-  closeIcon: document.querySelector(".icon-close"),
+  closeIcon: document.querySelector('.icon-close'),
   checkbox: document.querySelector('.checkbox'),
   loader: document.querySelector('.cssload-loader'),
   div: document.querySelector('.modal-wrap-img-btn'),
   notImg: document.querySelector('.not-img'),
 };
 
-export {ref}
+export { ref };
