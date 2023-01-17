@@ -152,15 +152,15 @@
   }
 }
 
-
-
 .modal-info {
   width: 100%;
+  height: 100%;
+  overflow: hidden;
   @include media-min(tablet) {
-    width: 264px;
+    max-width: 264px;
   }
   @include media-min(desktop) {
-    width: 391px;
+    max-width: 391px;
   }
 }
 .modal-info-name {
@@ -239,11 +239,16 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.67;
-  height: 200px;
+  height: 100%;
   overflow-y: scroll;
+  width: 100%;
   //   @include media-min(tablet) {
   //     height: 236px;
   //   }
+  overflow-y: scroll;
+  padding-right: 20px; /* Increase/decrease this value for cross-browser compatibility */
+  box-sizing: content-box;
+
   @include media-min(tablet) {
     height: 160px;
   }
@@ -261,11 +266,10 @@
   }
 }
 .modal-btn-wrap {
-	// display: flex;
-	position: relative;
-	// padding-left: 20px;
-	
- }
+  // display: flex;
+  position: relative;
+  // padding-left: 20px;
+}
 .modal-btn {
   cursor: pointer;
   width: 110px;
@@ -286,8 +290,8 @@
     width: 125px;
   }
   @include media-min(desktop) {
-	width: 136px;
- }
+    width: 136px;
+  }
 
   &:hover,
   &:focus {
@@ -306,25 +310,25 @@
   }
   &-dark {
     border: 1px solid #ff6b01;
-    color: getColor('white');;
+    color: getColor('white');
   }
 }
 .modal-btn-rem {
-position: absolute;
-top: 0;
-left: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .is-hidden {
-	visibility: hidden;
-	opacity: 0;
-	pointer-events: none;
-//   background-color: #ff6b01;
-//   border: 1px solid #ff6b01;
-//   color: #ffffff;
-//   &:hover {
-//     background-color: #e5b99a;
-//     border: 1px solid #ff6b01;
-//     color: #ffffff;
-//   }
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  //   background-color: #ff6b01;
+  //   border: 1px solid #ff6b01;
+  //   color: #ffffff;
+  //   &:hover {
+  //     background-color: #e5b99a;
+  //     border: 1px solid #ff6b01;
+  //     color: #ffffff;
+  //   }
 }
