@@ -87,17 +87,17 @@ const signUpBtn = document.querySelector('.sign-up__button');
 
 if (signUpBtn) {
   signUpBtn.addEventListener('click', () => {
-    singUpForm.style.display = 'flex';
+    signUpForm.style.display = 'flex';
     openSignUpModalBtn.classList.toggle('is-hidden');
   });
 }
 
 // Registration
 
-const singUpForm = document.querySelector('.sing-up__form');
-singUpForm.addEventListener('submit', onSingUpFormSubmit);
+const signUpForm = document.querySelector('.sign-up__form');
+signUpForm.addEventListener('submit', onSignUpFormSubmit);
 
-function onSingUpFormSubmit(event) {
+function onSignUpFormSubmit(event) {
   event.preventDefault();
   const formElements = event.currentTarget.elements;
   const username = formElements.username.value.trim();
@@ -132,7 +132,7 @@ function onSingUpFormSubmit(event) {
         Notify.failure(errorMessage);
       });
   }
-  singUpForm.reset();
+  signUpForm.reset();
 }
 
 // Login
@@ -210,7 +210,6 @@ if (openLibraryPage) {
 }
 
 // Library page
-
 const logoutLibraryBtn = document.querySelector('.header-library__logout-btn');
 const userNameLibrary = document.querySelector('.header-library__user-name');
 
@@ -236,7 +235,7 @@ if (openLibraryPage) {
       openSignUpModalBtn.classList.add('is-hidden');
       openAuthBox.style.display = 'none';
       loginForm.style.display = 'none';
-      singUpForm.style.display = 'none';
+      signUpForm.style.display = 'none';
       signUpBtn.style.display = 'none';
       loginBtn.style.display = 'none';
       logoutBtn.style.display = 'block';
@@ -264,3 +263,29 @@ if (userNameLibrary) {
     }
   });
 }
+
+const showLoginPassBtn = document.querySelector('.login-form_pass-icon-hide');
+const loginPassInput = document.querySelector('.login-form_pass-input');
+showLoginPassBtn.addEventListener('click', e => {
+  showLoginPassBtn.classList.toggle('show');
+  if (showLoginPassBtn.classList.contains('show')) {
+    loginPassInput.type = 'text';
+    console.log('xxx');
+  } else {
+    loginPassInput.type = 'password';
+  }
+});
+
+const showSignUpPassBtn = document.querySelector(
+  '.sign-up-form_pass-icon-hide'
+);
+const signUpPassInput = document.querySelector('.sign-up-form_pass-input');
+showSignUpPassBtn.addEventListener('click', e => {
+  showSignUpPassBtn.classList.toggle('show');
+  if (showSignUpPassBtn.classList.contains('show')) {
+    signUpPassInput.type = 'text';
+    console.log('xxx');
+  } else {
+    signUpPassInput.type = 'password';
+  }
+});
