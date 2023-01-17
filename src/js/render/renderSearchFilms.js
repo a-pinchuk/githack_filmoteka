@@ -13,7 +13,7 @@ export function createMarkUp(ref, data) {
       <li class="photo__card" data-modal-open id="${id}">
             <img src="${
               baseImafge !== link ? baseImafge : defaultPicture
-            }" alt="" "loading="lazy" class="movie__image"/>
+            }" alt="${title}" "loading="lazy" class="movie__image" width="500" height="750"/>
             <span class="movie__rating">${item.vote_average.toFixed(2)}</span> 
           <div class="movie__info">
             <p class="film__title">${title}</p>

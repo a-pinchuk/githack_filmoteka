@@ -5,7 +5,9 @@ export function renderFilmsByIdForLibrary(ref, datas) {
       return `<li class="photo__card" data-modal-open id=${data.id}">
             <img src="https://image.tmdb.org/t/p/w500/${
               data.poster_path
-            }" alt="${data.title}" "loading="lazy" class="movie__image"/>
+            }" alt="${
+        data.title
+      }" "loading="lazy" class="movie__image" width="500" height="750"/>
 				<span class="movie__rating">${data.vote_average.toFixed(1)}</span>
           <div class="movie__info">
             <p class="movie__title">${data.title}</p>

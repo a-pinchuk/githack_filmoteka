@@ -5,9 +5,9 @@ export function renderPopularFilms(ref, data, genres) {
       const movieGenres = compareGenresId(genres, genreId);
       return `
       <li class="photo__card" data-modal-open id="${el.id}">
-            <img src="https://image.tmdb.org/t/p/w500/${
-              el.poster_path
-            }" alt="" "loading="lazy" class="movie__image"/>
+            <img src="https://image.tmdb.org/t/p/w500/${el.poster_path}" alt="${
+        el.title
+      }" "loading="lazy" class="movie__image" width="500" height="750"/>
             <span class="movie__rating">${el.vote_average.toFixed(1)}</span>
           <div class="movie__info">
             <p class="film__title">${el.title}</p>
