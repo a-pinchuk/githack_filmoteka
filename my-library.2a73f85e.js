@@ -1,2 +1,2 @@
 !function(){var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{},n={},o={},r=e.parcelRequire294f;null==r&&((r=function(e){if(e in n)return n[e].exports;if(e in o){var r=o[e];delete o[e];var i={id:e,exports:{}};return n[e]=i,r.call(i.exports,i,i.exports),i.exports}var f=new Error("Cannot find module '"+e+"'");throw f.code="MODULE_NOT_FOUND",f}).register=function(e,n){o[e]=n},e.parcelRequire294f=r),r("6C5lZ"),r("5YnpJ"),r("9oodp"),r("2fp79"),r("gEbo1"),r("cHsZg"),r("dRVRr"),r("5xtVg"),r("UL92Z"),r("eOhzM"),r("78qpV"),r("dRVRr")}();
-//# sourceMappingURL=myLibrary.5cdbe42a.js.map
+//# sourceMappingURL=my-library.2a73f85e.js.map
