@@ -15,6 +15,7 @@ import './js/authentication/authentication';
 import './js/modal';
 import './js/localStorage';
 import './js/render/renderSearchFilms';
+import './js/scrollToTop';
 
 // Переключатель темы
 import './js/switcher';
