@@ -12,7 +12,7 @@
   margin-right: auto;
 
   body.dark-theme & {
-    // background-image: url(../images/header-dark-theme.jpg);
+    background-image: url(../images/header-dark-theme.jpg);
     transition: background-image 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
