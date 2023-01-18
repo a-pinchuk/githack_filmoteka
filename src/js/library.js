@@ -87,9 +87,11 @@ function onClickWatchedBtn(e) {
   // const ars = arrayWatched.map(ar => ar.id);
 
   if (arrayWatched !== undefined) {
+let moviesWatched = arrayWatched.slice(start, end)
+
     showWatchedHideQueuePag()
-    // fetchAndRenderFilm(moviesWatched);
-    paginationWatched.movePageTo(1)
+    fetchAndRenderFilm(moviesWatched);
+    // paginationWatched.movePageTo(1)
   }
   
   
@@ -98,7 +100,9 @@ function onClickQueueBtn(e) {
   ref.libraryWatchedBtn.classList.remove('header-library__btn-active');
   ref.libraryQueueBtn.classList.add('header-library__btn-active');
   ref.galleryList.innerHTML = '';
+
   const arrayQueue = load(LOCALSTORAGE_QUEUE);
+
   if (arrayQueue === undefined) {
     ref.notImg.classList.remove('not-img');
     ref.paginationQueuedRef.style.display = 'none'
@@ -109,9 +113,10 @@ function onClickQueueBtn(e) {
   // const ars = arrayQueue.map(ar => ar.id);
 
 if (arrayQueue !== undefined) {
-  paginationQueued.movePageTo(1)
+  let moviesQueued = arrayQueue.slice(start, end)
+  // paginationQueued.movePageTo(1)
   showQueueHideWatchedPag()
-  // fetchAndRenderFilm(moviesQueued);
+  fetchAndRenderFilm(moviesQueued);
 }
 
 }
@@ -124,10 +129,11 @@ export function rederAfterModalWat() {
     ref.paginnationWatchedRef.style.display = 'none'
     return;
   }
-  if (ref.libraryWatchedBtn.classList.contains('header-library__btn-active')) {
-    // fetchAndRenderFilm(moviesWatched);
+  if (ref.libraryWatchedBtn.classList.contains('header-library__btn-active') && arrayWatched !== undefined ) {
+    let moviesWatched = arrayWatched.slice(start, end)
+    fetchAndRenderFilm(moviesWatched);
     ref.notImg.classList.add('not-img');
-    paginationWatched.movePageTo(1)
+    // paginationWatched.movePageTo(1)
   }
 }
 export function rederAfterModalQue() {
@@ -139,10 +145,11 @@ export function rederAfterModalQue() {
     ref.paginationQueuedRef.style.display = 'none'
     return;
   }
-  if (ref.libraryQueueBtn.classList.contains('header-library__btn-active')) {
-    // fetchAndRenderFilm(moviesQueued);
+  if (ref.libraryQueueBtn.classList.contains('header-library__btn-active') && arrayQueue !== undefined) {
+    let moviesQueued = arrayQueue.slice(start, end)
+    fetchAndRenderFilm(moviesQueued);
     ref.notImg.classList.add('not-img');
-    paginationQueued.movePageTo(1)
+    // paginationQueued.movePageTo(1)
     return;
   }
 }
