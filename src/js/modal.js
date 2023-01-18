@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { all } from 'axios';
 import { log } from 'console';
 import { LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE } from './api/apiVars';
 import {
@@ -11,6 +11,9 @@ import { loaderHide } from './loader';
 import { saveLocalStorage } from '../js/localStorage';
 import { rederAfterModalWat, rederAfterModalQue } from '../js/library';
 import sprite from '../images/sprite.svg';
+import Swiper, { Navigation } from 'swiper';
+ import {fetchUncomingFilms} from './api/fetch'
+ import 'swiper/swiper.scss'
 
 ref.galleryList.addEventListener('click', openModal);
 ref.closeModalBtn.addEventListener('click', closeModal);
@@ -82,7 +85,7 @@ function renderBackdrop(film) {
   backdrop.style.backgroundPosition = 'center';
 }
 
-function renderMarkupModal(film) {
+ function renderMarkupModal(film) {
   return `<div class="modal-img-wrap">
           <div class="modal-wrap-img-btn"><img src="https://image.tmdb.org/t/p/w500/${
             film.poster_path
@@ -259,3 +262,72 @@ function renderTrail({ key }) {
   ></iframe>`;
 }
 // =============НЕ ЗВАЖАЙ УВАГИ======TREILER========НЕ ЗВАЖАЙ УВАГИ=============НЕ ЗВАЖАЙ УВАГИ===============
+
+// ===========================SLIDER==============================================
+
+
+  const listFilm = document.querySelector('.swiper-wrapper')
+  listFilm.addEventListener('click', openModal)
+
+  fetchUncomingFilms(1).then(res => {
+    renderAnonce(res.data.results)
+    const swiper = new Swiper('.card_slider', {
+        modules: [Navigation],
+        slidesPerView: 8,
+        speed: 700,
+        spaceBetween: 30,
+        breakpoints: {
+            // when window width is >= 320px
+            320: {
+              slidesPerView: 2,
+              spaceBetween: 20
+            },
+            // when window width is >= 480px
+            480: {
+              slidesPerView: 3,
+              spaceBetween: 30
+            },
+            // when window width is >= 640px
+            640: {
+              slidesPerView: 4,
+              spaceBetween: 40
+            },
+            1280: {
+              slidesPerView: 7,
+              spaceBetween: 40
+            },
+            1300: {
+              slidesPerView: 8,
+              spaceBetween: 40
+            }},   
+        // Optional parameters
+        // direction: 'vertical',
+        hoverpause: true,
+  bound: true,
+        loop: true,
+  autoplay: {
+    delay: 1000,
+    disableOnInteraction: false,       
+  },
+        // spaceBetween: 100,
+        // If we need pagination
+        pagination: {
+          el: '.swiper-pagination',
+        },
+        // Navigation arrows
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+  })
+  
+
+
+function renderAnonce (data){
+    const filmItem = data.map(({poster_path, id})=>{ 
+        return `<li class="swiper-slide"><img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="Poster Film" class="img-slider photo__card" id="${id}"></li>`
+    }).join('')
+
+    listFilm.insertAdjacentHTML('beforeend', filmItem)
+}
