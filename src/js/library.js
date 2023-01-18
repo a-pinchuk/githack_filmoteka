@@ -9,9 +9,6 @@ import { paginationQueued } from './pagination-lib';
 export {moviesWatched}
 // export {moviesQueued}
 
-const arrayWatched = load(LOCALSTORAGE_WATCHED);
-const arrayQueue = load(LOCALSTORAGE_QUEUE)
-
 const moviesOnPage = 3
 let start = (1-1) * moviesOnPage
 let end = start + moviesOnPage
@@ -62,8 +59,8 @@ function onDOMContentLoaded() {
 
     let moviesWatched = arrayWatched.slice(start, end)
     showWatchedHideQueuePag()
-  
-    paginationWatched.movePageTo(1)
+    fetchAndRenderFilm(moviesWatched)
+    // paginationWatched.movePageTo(1)
   }
   
 
