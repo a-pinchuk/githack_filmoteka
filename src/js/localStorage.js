@@ -1,5 +1,9 @@
 import { LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE } from './api/apiVars';
 
+import { getAuth } from "firebase/auth";
+import { Notify } from 'notiflix';
+
+
 export function saveLocalStorage() {
   const modalWatchedBtn = document.querySelector('button[data-watched]');
   const modalWatchedRevBtn = document.querySelector('button[data-watched-rem]');
@@ -29,8 +33,15 @@ export function saveLocalStorage() {
   modalWatchedRevBtn.addEventListener('click', remFilmLocal);
 
   function addFilmLocal() {
-    changClass(modalWatchedBtn, modalWatchedRevBtn);
-    addFilm(arrayLocalStorage, LOCALSTORAGE_WATCHED, arrayWatched, currentId);
+
+    if (getAuth().currentUser === null) {
+      modalWatchedBtn.disabled = true;  
+    return Notify.failure("Sign first, motherfucker!");
+    }
+      changClass(modalWatchedBtn, modalWatchedRevBtn);
+      addFilm(arrayLocalStorage, LOCALSTORAGE_WATCHED, arrayWatched, currentId);
+    
+
   }
   function remFilmLocal() {
     changClass(modalWatchedBtn, modalWatchedRevBtn);
@@ -40,6 +51,11 @@ export function saveLocalStorage() {
   modalQueuedRevBtn.addEventListener('click', remFilmLocalQueued);
 
   function addFilmLocalQueued() {
+
+    if (getAuth().currentUser === null) {
+      modalQueuedBtn.disabled = true;  
+    return Notify.failure("Sign first, motherfucker!");
+    } 
     changClass(modalQueuedBtn, modalQueuedRevBtn);
     addFilm(
       arrayLocalQueuedStorage,
