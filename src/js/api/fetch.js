@@ -6,6 +6,7 @@ import {
   ID_URL,
   GENRE_URL,
   UPCOMING,
+  DISCOVER,
 } from './apiVars';
 
 export async function fetchTrendedFilms(page = 1) {
