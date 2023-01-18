@@ -30,7 +30,7 @@ if(darkmode) {
 
 const options = {
     itemsPerPage: 1,
-    visiblePages: 1,
+    visiblePages: 5,
     page: 1,
     centerAlign: true,
     firstItemClassName: 'pagination-first-button',
@@ -58,7 +58,9 @@ const options = {
     
 const paginationWatched = new Pagination(containerWatched, options)
 const watchedMovies = load(LOCALSTORAGE_WATCHED);
-const moviesOnPage = 3
+const moviesOnPage = 20
+
+
 
 if (watchedMovies !== undefined) {
 
@@ -84,6 +86,7 @@ const queuedMovies = load(LOCALSTORAGE_QUEUE)
 
 if(queuedMovies !== undefined) {
   paginationQueued.setTotalItems(queuedMovies.length / moviesOnPage)
+
   paginationQueued.on('afterMove', onPaginationQueuedMove)
   
   function onPaginationQueuedMove (page) {

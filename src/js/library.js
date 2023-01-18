@@ -9,7 +9,7 @@ import { paginationQueued } from './paginationLib';
 export { moviesWatched };
 // export {moviesQueued}
 
-const moviesOnPage = 3;
+const moviesOnPage = 20;
 let start = (1 - 1) * moviesOnPage;
 let end = start + moviesOnPage;
 
@@ -39,7 +39,7 @@ function onDOMContentLoaded() {
   //  /   console.log(load(LOCALSTORAGE_WATCHED));
   // const arrayWatched = load(LOCALSTORAGE_WATCHED);
   //   console.log(arrayWatched);
-
+ 
   const arrayWatched = load(LOCALSTORAGE_WATCHED);
 
   if (arrayWatched === undefined) {
@@ -55,8 +55,11 @@ function onDOMContentLoaded() {
   if (arrayWatched !== undefined) {
     ref.notImg.classList.add('not-img');
     let moviesWatched = arrayWatched.slice(start, end);
+    // paginationWatched.setTotalItems(arrayWatched.length / moviesOnPage)
+
     showWatchedHideQueuePag();
     fetchAndRenderFilm(moviesWatched);
+    // console.log(ref.galleryList)
     // paginationWatched.movePageTo(1)
   }
 }
