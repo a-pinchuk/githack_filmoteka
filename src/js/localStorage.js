@@ -34,7 +34,7 @@ export function saveLocalStorage() {
   function addFilmLocal() {
     if (getAuth().currentUser === null) {
       // modalWatchedBtn.disabled = true;
-      return Notify.failure('Sign first, motherfucker!');
+      return Notify.failure('You need to sign up first!');
     }
     changClass(modalWatchedBtn, modalWatchedRevBtn);
     addFilm(arrayLocalStorage, LOCALSTORAGE_WATCHED, arrayWatched, currentId);
@@ -49,7 +49,7 @@ export function saveLocalStorage() {
   function addFilmLocalQueued() {
     if (getAuth().currentUser === null) {
       // modalQueuedBtn.disabled = true;
-      return Notify.failure('Sign first, motherfucker!');
+      return Notify.failure('You need to sign up first!');
     }
     changClass(modalQueuedBtn, modalQueuedRevBtn);
     addFilm(
