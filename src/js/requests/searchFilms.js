@@ -18,8 +18,8 @@ function onCLickSubmit(e) {
   if (searchQuery === '') {
     loaderHide();
     ref.alertMessage.textContent =
-      'Searching starts after providing data to search';
-    Notify.warning('Searching starts after providing data to search.');
+      'Searching starts after providing data to search!';
+    Notify.warning('Searching starts after providing data to search!');
     return;
   }
   if (searchQuery.length > 0) {
@@ -43,9 +43,9 @@ async function renderSearchFilms(page) {
     if (data.length === 0) {
       loaderHide();
       ref.alertMessage.textContent =
-        'Search result not successful. Enter the correct movie name and ';
+        'Search result not successful. Enter the correct movie name!';
       return Notify.warning(
-        'Search result not successful. Enter the correct movie name and '
+        'Search result not successful. Enter the correct movie name!'
       );
     }
     ref.alertMessage.textContent = '';
