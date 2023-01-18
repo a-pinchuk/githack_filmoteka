@@ -55,3 +55,14 @@ export async function fetchUncomingFilms() {
   });
   return axios.get(`${UPCOMING}/?${searchParams}`);
 }
+export async function fetchFilteredFilms(property, value) {
+	const searchParams = new URLSearchParams({
+	  api_key: API_KEY,
+	//   language: language,
+	//   sort_by: sort,
+	  page: 1,
+	  [property]: value,
+	//   primary_release_year: year,
+	});
+	return axios.get(`${DISCOVER}?${searchParams}`);
+ }
