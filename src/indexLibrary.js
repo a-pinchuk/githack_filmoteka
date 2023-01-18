@@ -6,10 +6,10 @@ import './js/api/fetch';
 import './js/references/ref';
 
 // import './js/fetchAndRenderPopularFilm';
-import './js/pagination-lib';
+import './js/paginationLib';
 
 import './js/render/renderFilmByIdForLibrary';
-import './js/render/modal-students';
+import './js/render/modalStudents';
 import './js/library';
 import './js/authentication/authentication';
 import './js/modal';

@@ -2,10 +2,10 @@ import { fetchFilmById } from './api/fetch';
 import { renderFilmsByIdForLibrary } from './render/renderFilmByIdForLibrary';
 import { ref } from './references/ref';
 import { LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE } from './api/apiVars';
-import { showQueueHideWatchedPag } from './pagination-lib';
-import { showWatchedHideQueuePag } from './pagination-lib';
-import { paginationWatched } from './pagination-lib';
-import { paginationQueued } from './pagination-lib';
+import { showQueueHideWatchedPag } from './paginationLib';
+import { showWatchedHideQueuePag } from './paginationLib';
+import { paginationWatched } from './paginationLib';
+import { paginationQueued } from './paginationLib';
 export { moviesWatched };
 // export {moviesQueued}
 
@@ -64,7 +64,7 @@ function onClickWatchedBtn(e) {
   ref.libraryWatchedBtn.classList.add('header-library__btn-active');
   ref.libraryQueueBtn.classList.remove('header-library__btn-active');
   ref.galleryList.innerHTML = '';
-
+  showWatchedHideQueuePag();
   // const arrayWatched = load(LOCALSTORAGE_WATCHED);
   // console.log(arrayWatched);
 
@@ -80,8 +80,7 @@ function onClickWatchedBtn(e) {
 
   if (arrayWatched !== undefined) {
     let moviesWatched = arrayWatched.slice(start, end);
-
-    showWatchedHideQueuePag();
+    
     fetchAndRenderFilm(moviesWatched);
     // paginationWatched.movePageTo(1)
   }
@@ -90,6 +89,7 @@ function onClickQueueBtn(e) {
   ref.libraryWatchedBtn.classList.remove('header-library__btn-active');
   ref.libraryQueueBtn.classList.add('header-library__btn-active');
   ref.galleryList.innerHTML = '';
+  showQueueHideWatchedPag();
 
   const arrayQueue = load(LOCALSTORAGE_QUEUE);
 
@@ -105,7 +105,7 @@ function onClickQueueBtn(e) {
   if (arrayQueue !== undefined) {
     let moviesQueued = arrayQueue.slice(start, end);
     // paginationQueued.movePageTo(1)
-    showQueueHideWatchedPag();
+    
     fetchAndRenderFilm(moviesQueued);
   }
 }
