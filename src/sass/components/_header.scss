@@ -235,15 +235,15 @@
 
 .open-auth-dropdown {
   position: absolute;
-  top: 12px;
-  right: 68px;
+  top: 30px;
+  right: 40px;
   display: flex;
   flex-direction: column;
   gap: 5px;
   align-items: baseline;
   @include media-max(mobile) {
-    top: 16px;
-    right: 58px;
+    top: 30px;
+    right: 30px;
   }
 }
 
