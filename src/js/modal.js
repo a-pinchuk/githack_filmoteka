@@ -220,8 +220,15 @@ function closeModal(e) {
     backdrop.style.backgroundImage = '';
     document.removeEventListener('keydown', closeModal);
     if (document.title === 'Githack Filmoteka Library') {
-      rederAfterModalWat();
-      rederAfterModalQue();
+      if(ref.libraryWatchedBtn.classList.contains('header-library__btn-active')) {
+        rederAfterModalWat();
+        return
+      }
+      
+      if(ref.libraryQueueBtn.classList.contains('header-library__btn-active')) {
+        rederAfterModalQue();
+        return
+      }
     }
   }
 }
@@ -234,8 +241,15 @@ function closeModalbyClick(e) {
     backdrop.style.backgroundImage = '';
     document.removeEventListener('keydown', closeModal);
     if (document.title === 'Githack Filmoteka Library') {
-      rederAfterModalWat();
-      rederAfterModalQue();
+      if(ref.libraryWatchedBtn.classList.contains('header-library__btn-active')) {
+        rederAfterModalWat();
+        return
+      }
+      
+      if(ref.libraryQueueBtn.classList.contains('header-library__btn-active')) {
+        rederAfterModalQue();
+        return
+      }
     }
   }
 }

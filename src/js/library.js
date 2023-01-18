@@ -122,8 +122,8 @@ export function rederAfterModalWat() {
     ref.libraryWatchedBtn.classList.contains('header-library__btn-active') &&
     arrayWatched !== undefined
   ) {
-    // let moviesWatched = arrayWatched.slice(start, end)
-    fetchAndRenderFilm(arrayWatched);
+    let moviesWatched = arrayWatched.slice(start, end)
+    fetchAndRenderFilm(moviesWatched);
     ref.notImg.classList.add('not-img');
     // paginationWatched.movePageTo(1)
   }
@@ -140,8 +140,8 @@ export function rederAfterModalQue() {
     ref.libraryQueueBtn.classList.contains('header-library__btn-active') &&
     arrayQueue !== undefined
   ) {
-    // let moviesQueued = arrayQueue.slice(start, end)
-    fetchAndRenderFilm(arrayQueue);
+    let moviesQueued = arrayQueue.slice(start, end)
+    fetchAndRenderFilm(moviesQueued);
     ref.notImg.classList.add('not-img');
     // paginationQueued.movePageTo(1)
     return;
