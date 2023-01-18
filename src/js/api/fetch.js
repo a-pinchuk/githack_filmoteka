@@ -48,7 +48,7 @@ export async function fetchFilmTrailer(id) {
   return axios.get(`${ID_URL}/${id}/videos?${searchParams}`);
 }
 
-export async function fetchUncomingFilms() {
+export async function fetchUncomingFilms(page) {
   const searchParams = new URLSearchParams({
     api_key: API_KEY,
     page: page,

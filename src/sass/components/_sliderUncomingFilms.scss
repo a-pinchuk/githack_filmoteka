@@ -1,0 +1,78 @@
+.swiper {
+    width: auto;
+    height: 200px;
+    z-index: 0;
+  }
+  
+  .slider-container{
+    position: relative;
+  }
+  .swiper-button-prev {
+    background-color: transparent;
+    border: 0;
+    z-index: 0;
+  }
+  
+  .swiper-button-next {
+    background-color: transparent;
+    border: 0;
+    z-index: 0;
+  }
+  
+  
+  .btn-swiper-prev {
+  display: none;
+  }
+  .btn-swiper-next {
+  display: none;
+  }
+  
+  
+  .swiper-slide {
+    display: flex;
+  }
+  
+  .img-slider{
+    width: 150px;
+    height: 200px;
+  }
+  
+  .swiper-slide .photo__card{
+    width: 150px;
+  }
+  
+  
+  @media screen and (min-width: 768px) {
+    .btn-swiper-prev {
+      display: block;
+      left: -1px;
+      top: 200px;
+    }
+    .btn-swiper-next {
+      right: -1px;
+      display: block;
+      top: 200px;
+    }
+  }
+  
+  @media screen and (min-width: 1280px) {
+  .btn-swiper-prev {
+    left: 50px;
+    display: block;
+    top: 200px;
+  }
+  .btn-swiper-next {
+    right: 50px;
+    display: block;
+    top: 200px;
+  }
+  }
+  .slider-container {
+  padding-top: 50px;
+  }
+  .slider-title {
+  display: flex;
+  justify-content: center;
+  color: #ff6b01;
+  margin-bottom: 40px;
+  }
