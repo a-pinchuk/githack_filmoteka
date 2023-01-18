@@ -45,25 +45,24 @@
 	cursor: pointer;
 	
 	width: 20px;
-   height: 20px;
-   padding: 6px;
+	height: 20px;
+	padding: 6px;
 	position: absolute;
 	top: -5%;
 	right: -20%;
 	// fill-opacity: 0.7;
-	 color: getColor('white');
-  border: none;
-  background-image: url(../images/filter.svg);
-  background-repeat: no-repeat;
- background-size: contain;
- background-color: transparent;
+	color: getColor('white');
+	border: none;
+	background-image: url(../images/filter.svg);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-color: transparent;
 //   border-radius: 20px;
 //  fill: getColor('white');
-  &:hover,
-  &:focus {
- 	 box-shadow: 0 41.8px 33.4px orange;
-
-  }
+//   &:hover,
+//   &:focus {
+//  	 stroke: red;
+//   }
 
 }
 
@@ -96,8 +95,12 @@
 // }
 .filter-select {
 	width: 150px;
-	background-color: getColor('secondary-text-color');
-	color: getColor('white');
+	background-color: transparent;
+	color: getColor('secondary-text-color');
+}
+
+.filter-select option{
+	background-color: black;
 }
 #filter-group-sort {
 	width: 180px;
