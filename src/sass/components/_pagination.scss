@@ -50,6 +50,8 @@
     color: black;
     align-items: center;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .pagination-btns-dark-theme {

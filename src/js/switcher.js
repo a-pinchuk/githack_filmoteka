@@ -20,11 +20,16 @@ function onChange(e) {
     ? document.querySelector('body').classList.add('dark-theme') ||
       document.querySelector('footer').classList.add('dark-theme__footer') ||
       ref.paginationRef.classList.add('pagination-btns-dark-theme') ||
-      ref.paginationSearchRef.classList.add('pagination-btns-dark-theme')
+      ref.paginationSearchRef.classList.add('pagination-btns-dark-theme') ||
+      ref.paginnationWatchedRef.classList.add('pagination-btns-dark-theme') ||
+      ref.paginationQueuedRef.classList.add('pagination-btns-dark-theme')
     : document.querySelector('body').classList.remove('dark-theme') ||
       document.querySelector('footer').classList.remove('dark-theme__footer') ||
       ref.paginationRef.classList.remove('pagination-btns-dark-theme') ||
-      ref.paginationSearchRef.classList.remove('pagination-btns-dark-theme');
+      ref.paginationSearchRef.classList.remove('pagination-btns-dark-theme') ||
+      ref.paginnationWatchedRef.classList.remove('pagination-btns-dark-theme') ||
+      ref.paginationQueuedRef.classList.remove('pagination-btns-dark-theme')
+      ;
 
   localStorage.setItem('darkmode', JSON.stringify(e.target.checked));
 }

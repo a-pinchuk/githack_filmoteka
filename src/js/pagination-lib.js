@@ -66,15 +66,16 @@ paginationWatched.setTotalItems(watchedMovies.length / moviesOnPage)
 paginationWatched.on('afterMove', onPagginationWatchedMove)
 
 function onPagginationWatchedMove(page) {
+        const watchedMovies = load(LOCALSTORAGE_WATCHED);
+        paginationWatched.setTotalItems(watchedMovies.length / moviesOnPage)
         ref.galleryList.innerHTML = ''
         let start = (Object.values(page)[0] - 1) * moviesOnPage
         let end = start + moviesOnPage
         let moviesWatched = watchedMovies.slice(start, end)
 
         fetchAndRenderFilm(moviesWatched)
-        return moviesWatched
+        // return moviesWatched
 }
-
 }
 
 
@@ -82,19 +83,20 @@ const paginationQueued = new Pagination(containerQueued, options)
 const queuedMovies = load(LOCALSTORAGE_QUEUE)
 
 if(queuedMovies !== undefined) {
-  
-
   paginationQueued.setTotalItems(queuedMovies.length / moviesOnPage)
   paginationQueued.on('afterMove', onPaginationQueuedMove)
   
   function onPaginationQueuedMove (page) {
+    const queuedMovies = load(LOCALSTORAGE_QUEUE)
+  paginationQueued.setTotalItems(queuedMovies.length / moviesOnPage)
+
     ref.galleryList.innerHTML = ''
     let start = (Object.values(page)[0] - 1) * moviesOnPage
     let end = start + moviesOnPage
     let moviesQueued = queuedMovies.slice(start, end)
   
     fetchAndRenderFilm(moviesQueued)
-    return moviesQueued
+    // return moviesQueued
   }
 }
 
