@@ -88,7 +88,7 @@ if(queuedMovies !== undefined) {
   
   function onPaginationQueuedMove (page) {
     const queuedMovies = load(LOCALSTORAGE_QUEUE)
-  paginationQueued.setTotalItems(queuedMovies.length / moviesOnPage)
+    paginationQueued.setTotalItems(queuedMovies.length / moviesOnPage)
 
     ref.galleryList.innerHTML = ''
     let start = (Object.values(page)[0] - 1) * moviesOnPage

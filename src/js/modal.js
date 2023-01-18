@@ -4,8 +4,8 @@ import { loaderHide } from './loader';
 import { saveLocalStorage } from '../js/localStorage';
 import { rederAfterModalWat, rederAfterModalQue } from '../js/library';
 import sprite from '../images/sprite.svg';
-import { paginationQueued } from './pagination-lib';
-import { paginationWatched } from './pagination-lib';
+import { paginationQueued } from './paginationLib';
+import { paginationWatched } from './paginationLib';
 
 ref.galleryList.addEventListener('click', openModal);
 ref.closeModalBtn.addEventListener('click', closeModal);
@@ -220,8 +220,15 @@ function closeModal(e) {
     backdrop.style.backgroundImage = '';
     document.removeEventListener('keydown', closeModal);
     if (document.title === 'Githack Filmoteka Library') {
-      rederAfterModalWat();
-      rederAfterModalQue();
+      if(ref.libraryWatchedBtn.classList.contains('header-library__btn-active')) {
+        rederAfterModalWat();
+        return
+      }
+      
+      if(ref.libraryQueueBtn.classList.contains('header-library__btn-active')) {
+        rederAfterModalQue();
+        return
+      }
     }
   }
 }
@@ -234,8 +241,15 @@ function closeModalbyClick(e) {
     backdrop.style.backgroundImage = '';
     document.removeEventListener('keydown', closeModal);
     if (document.title === 'Githack Filmoteka Library') {
-      rederAfterModalWat();
-      rederAfterModalQue();
+      if(ref.libraryWatchedBtn.classList.contains('header-library__btn-active')) {
+        rederAfterModalWat();
+        return
+      }
+      
+      if(ref.libraryQueueBtn.classList.contains('header-library__btn-active')) {
+        rederAfterModalQue();
+        return
+      }
     }
   }
 }
