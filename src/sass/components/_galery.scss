@@ -138,6 +138,10 @@
   }
 }
 .film__title {
+  @include media-min(tablet) {
+    display: block;
+    height: 48px;
+  }
   text-transform: uppercase;
   transition-property: transform;
   transition-duration: 300ms;
