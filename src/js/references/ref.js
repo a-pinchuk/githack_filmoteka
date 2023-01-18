@@ -28,6 +28,8 @@ const ref = {
   loader: document.querySelector('.cssload-loader'),
   div: document.querySelector('.modal-wrap-img-btn'),
   notImg: document.querySelector('.not-img'),
+  filterBtn: document.querySelector('.filter-form-btn'),
+  filter: document.querySelector('.filter-form'),
 };
 
 export { ref };

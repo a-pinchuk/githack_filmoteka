@@ -5,6 +5,7 @@ import './js/api/apiVars';
 import './js/api/fetch';
 import './js/references/ref';
 import './js/fetchAndRenderPopularFilm';
+import './js/filterHeader';
 import './js/render/modalStudents';
 import './js/modal';
 import './js/localStorage';
