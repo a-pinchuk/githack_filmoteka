@@ -23,48 +23,49 @@ containerWatched.style.display = 'none'
 const containerQueued = document.getElementById('pagination-lib-queued')
 containerQueued.style.display = 'none'
 
+const watchedMovies = load(LOCALSTORAGE_WATCHED);
+const queuedMovies = load(LOCALSTORAGE_QUEUE)
+
+const moviesOnPage = 20
+
 if(darkmode) {
     ref.paginnationWatchedRef.classList.add('pagination-btns-dark-theme')
     containerQueued.classList.add('pagination-btns-dark-theme')
 }
 
-const options = {
-    itemsPerPage: 1,
-    visiblePages: 5,
-    page: 1,
-    centerAlign: true,
-    firstItemClassName: 'pagination-first-button',
-    lastItemClassName: 'pagination-last-button',
-  
-    template: {
-      page: '<a href="#" class="pagination-page-button">{{page}}</a>',
-      currentPage: '<a class="pagination-active-button">{{page}}</a>',
-      moveButton:
-        '<a href="#" class="pagination-next-button">' +
-          '<span class="pag-ico-{{type}}">{{type}}</span>' +
-        '</a>',
-      disabledMoveButton:
-        '<span class="pagination-disabled-button">' +
-          '<span class="pag-ico-{{type}}">{{type}}</span>' +
-        '</span>',
-        moreButton:
-        '<a href="#" class="pagination-more-button">' +
-          '<span class="pag-ico-more"> </span>' +
-        '</a>'
-  
-    }}
-
-    
-    
-const paginationWatched = new Pagination(containerWatched, options)
-const watchedMovies = load(LOCALSTORAGE_WATCHED);
-const moviesOnPage = 20
-
-
 
 if (watchedMovies !== undefined) {
+  const totalItemsWatched = watchedMovies.length / moviesOnPage
+  const optionsWatched = {
+    totalItems: totalItemsWatched,
+      itemsPerPage: 1,
+      visiblePages: 5,
+      page: 1,
+      centerAlign: true,
+      firstItemClassName: 'pagination-first-button',
+      lastItemClassName: 'pagination-last-button',
+    
+      template: {
+        page: '<a href="#" class="pagination-page-button">{{page}}</a>',
+        currentPage: '<a class="pagination-active-button">{{page}}</a>',
+        moveButton:
+          '<a href="#" class="pagination-next-button">' +
+            '<span class="pag-ico-{{type}}">{{type}}</span>' +
+          '</a>',
+        disabledMoveButton:
+          '<span class="pagination-disabled-button">' +
+            '<span class="pag-ico-{{type}}">{{type}}</span>' +
+          '</span>',
+          moreButton:
+          '<a href="#" class="pagination-more-button">' +
+            '<span class="pag-ico-more"> </span>' +
+          '</a>'
+    
+      }}
 
-paginationWatched.setTotalItems(watchedMovies.length / moviesOnPage)
+
+      const paginationWatched = new Pagination(containerWatched, optionsWatched)
+// paginationWatched.setTotalItems(totalItemsWatched)
 paginationWatched.on('afterMove', onPagginationWatchedMove)
 
 function onPagginationWatchedMove(page) {
@@ -74,32 +75,54 @@ function onPagginationWatchedMove(page) {
         let start = (Object.values(page)[0] - 1) * moviesOnPage
         let end = start + moviesOnPage
         let moviesWatched = watchedMovies.slice(start, end)
-
         fetchAndRenderFilm(moviesWatched)
-        // return moviesWatched
 }
 }
 
-
-const paginationQueued = new Pagination(containerQueued, options)
-const queuedMovies = load(LOCALSTORAGE_QUEUE)
 
 if(queuedMovies !== undefined) {
-  paginationQueued.setTotalItems(queuedMovies.length / moviesOnPage)
+  const totalItemsQueued = queuedMovies.length / moviesOnPage
 
+  const optionsQueued = {
+    totalItems: totalItemsQueued,
+      itemsPerPage: 1,
+      visiblePages: 5,
+      page: 1,
+      centerAlign: true,
+      firstItemClassName: 'pagination-first-button',
+      lastItemClassName: 'pagination-last-button',
+    
+      template: {
+        page: '<a href="#" class="pagination-page-button">{{page}}</a>',
+        currentPage: '<a class="pagination-active-button">{{page}}</a>',
+        moveButton:
+          '<a href="#" class="pagination-next-button">' +
+            '<span class="pag-ico-{{type}}">{{type}}</span>' +
+          '</a>',
+        disabledMoveButton:
+          '<span class="pagination-disabled-button">' +
+            '<span class="pag-ico-{{type}}">{{type}}</span>' +
+          '</span>',
+          moreButton:
+          '<a href="#" class="pagination-more-button">' +
+            '<span class="pag-ico-more"> </span>' +
+          '</a>'
+    
+      }}
+
+      const paginationQueued = new Pagination(containerQueued, optionsQueued)
+
+  // paginationQueued.setTotalItems(totalItemsQueued)
   paginationQueued.on('afterMove', onPaginationQueuedMove)
   
   function onPaginationQueuedMove (page) {
     const queuedMovies = load(LOCALSTORAGE_QUEUE)
     paginationQueued.setTotalItems(queuedMovies.length / moviesOnPage)
-
     ref.galleryList.innerHTML = ''
     let start = (Object.values(page)[0] - 1) * moviesOnPage
     let end = start + moviesOnPage
     let moviesQueued = queuedMovies.slice(start, end)
-  
     fetchAndRenderFilm(moviesQueued)
-    // return moviesQueued
   }
 }
 

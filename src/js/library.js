@@ -56,11 +56,11 @@ function onDOMContentLoaded() {
     ref.notImg.classList.add('not-img');
     let moviesWatched = arrayWatched.slice(start, end);
     // paginationWatched.setTotalItems(arrayWatched.length / moviesOnPage)
-
+    // paginationWatched.movePageTo(1)
     showWatchedHideQueuePag();
     fetchAndRenderFilm(moviesWatched);
     // console.log(ref.galleryList)
-    // paginationWatched.movePageTo(1)
+    
   }
 }
 function onClickWatchedBtn(e) {
