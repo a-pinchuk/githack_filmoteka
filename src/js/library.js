@@ -6,19 +6,18 @@ import { showQueueHideWatchedPag } from './pagination-lib';
 import { showWatchedHideQueuePag } from './pagination-lib';
 import { paginationWatched } from './pagination-lib';
 import { paginationQueued } from './pagination-lib';
-export {moviesWatched}
+export { moviesWatched };
 // export {moviesQueued}
 
-const moviesOnPage = 3
-let start = (1-1) * moviesOnPage
-let end = start + moviesOnPage
+const moviesOnPage = 3;
+let start = (1 - 1) * moviesOnPage;
+let end = start + moviesOnPage;
 
 // let moviesWatched = arrayWatched.slice(start, end)
 // let moviesQueued = arrayQueue.slice(start, end)
 
-
-export {fetchAndRenderFilm}
-export{load}
+export { fetchAndRenderFilm };
+export { load };
 // console.log(document.title==="Githack Filmoteka Library");
 
 function load(key) {
@@ -37,17 +36,15 @@ if (document.title === 'Githack Filmoteka Library') {
 }
 
 function onDOMContentLoaded() {
-
   //  /   console.log(load(LOCALSTORAGE_WATCHED));
   // const arrayWatched = load(LOCALSTORAGE_WATCHED);
   //   console.log(arrayWatched);
 
   const arrayWatched = load(LOCALSTORAGE_WATCHED);
 
-
   if (arrayWatched === undefined) {
     ref.notImg.classList.remove('not-img');
-    ref.paginnationWatchedRef.style.display = 'none'
+    ref.paginnationWatchedRef.style.display = 'none';
     return;
   }
   ref.notImg.classList.add('not-img');
@@ -57,12 +54,11 @@ function onDOMContentLoaded() {
 
   if (arrayWatched !== undefined) {
     ref.notImg.classList.add('not-img');
-    let moviesWatched = arrayWatched.slice(start, end)
-    showWatchedHideQueuePag()
-    fetchAndRenderFilm(moviesWatched)
+    let moviesWatched = arrayWatched.slice(start, end);
+    showWatchedHideQueuePag();
+    fetchAndRenderFilm(moviesWatched);
     // paginationWatched.movePageTo(1)
   }
-
 }
 function onClickWatchedBtn(e) {
   ref.libraryWatchedBtn.classList.add('header-library__btn-active');
@@ -76,21 +72,19 @@ function onClickWatchedBtn(e) {
 
   if (arrayWatched === undefined) {
     ref.notImg.classList.remove('not-img');
-    ref.paginnationWatchedRef.style.display = 'none'
+    ref.paginnationWatchedRef.style.display = 'none';
     return;
   }
   ref.notImg.classList.add('not-img');
   // const ars = arrayWatched.map(ar => ar.id);
 
   if (arrayWatched !== undefined) {
-let moviesWatched = arrayWatched.slice(start, end)
+    let moviesWatched = arrayWatched.slice(start, end);
 
-    showWatchedHideQueuePag()
+    showWatchedHideQueuePag();
     fetchAndRenderFilm(moviesWatched);
     // paginationWatched.movePageTo(1)
   }
-  
-  
 }
 function onClickQueueBtn(e) {
   ref.libraryWatchedBtn.classList.remove('header-library__btn-active');
@@ -101,20 +95,19 @@ function onClickQueueBtn(e) {
 
   if (arrayQueue === undefined) {
     ref.notImg.classList.remove('not-img');
-    ref.paginationQueuedRef.style.display = 'none'
+    ref.paginationQueuedRef.style.display = 'none';
     return;
   }
   ref.notImg.classList.add('not-img');
 
   // const ars = arrayQueue.map(ar => ar.id);
 
-if (arrayQueue !== undefined) {
-  let moviesQueued = arrayQueue.slice(start, end)
-  // paginationQueued.movePageTo(1)
-  showQueueHideWatchedPag()
-  fetchAndRenderFilm(moviesQueued);
-}
-
+  if (arrayQueue !== undefined) {
+    let moviesQueued = arrayQueue.slice(start, end);
+    // paginationQueued.movePageTo(1)
+    showQueueHideWatchedPag();
+    fetchAndRenderFilm(moviesQueued);
+  }
 }
 
 export function rederAfterModalWat() {
@@ -122,12 +115,15 @@ export function rederAfterModalWat() {
   const arrayWatched = load(LOCALSTORAGE_WATCHED);
   if (arrayWatched === undefined) {
     ref.notImg.classList.remove('not-img');
-    ref.paginnationWatchedRef.style.display = 'none'
+    ref.paginnationWatchedRef.style.display = 'none';
     return;
   }
-  if (ref.libraryWatchedBtn.classList.contains('header-library__btn-active') && arrayWatched !== undefined ) {
-    let moviesWatched = arrayWatched.slice(start, end)
-    fetchAndRenderFilm(moviesWatched);
+  if (
+    ref.libraryWatchedBtn.classList.contains('header-library__btn-active') &&
+    arrayWatched !== undefined
+  ) {
+    // let moviesWatched = arrayWatched.slice(start, end)
+    fetchAndRenderFilm(arrayWatched);
     ref.notImg.classList.add('not-img');
     // paginationWatched.movePageTo(1)
   }
@@ -135,15 +131,17 @@ export function rederAfterModalWat() {
 export function rederAfterModalQue() {
   ref.galleryList.innerHTML = '';
   const arrayQueue = load(LOCALSTORAGE_QUEUE);
-
   if (arrayQueue === undefined) {
     ref.notImg.classList.remove('not-img');
-    ref.paginationQueuedRef.style.display = 'none'
+    ref.paginationQueuedRef.style.display = 'none';
     return;
   }
-  if (ref.libraryQueueBtn.classList.contains('header-library__btn-active') && arrayQueue !== undefined) {
-    let moviesQueued = arrayQueue.slice(start, end)
-    fetchAndRenderFilm(moviesQueued);
+  if (
+    ref.libraryQueueBtn.classList.contains('header-library__btn-active') &&
+    arrayQueue !== undefined
+  ) {
+    // let moviesQueued = arrayQueue.slice(start, end)
+    fetchAndRenderFilm(arrayQueue);
     ref.notImg.classList.add('not-img');
     // paginationQueued.movePageTo(1)
     return;
