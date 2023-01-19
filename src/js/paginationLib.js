@@ -47,7 +47,7 @@ if (watchedMovies !== undefined) {
     
       template: {
         page: '<a href="#" class="pagination-page-button">{{page}}</a>',
-        currentPage: '<a class="pagination-active-button">{{page}}</a>',
+        currentPage: '<a class="pagination-active-button active-pag-btn-watched">{{page}}</a>',
         moveButton:
           '<a href="#" class="pagination-next-button">' +
             '<span class="pag-ico-{{type}}">{{type}}</span>' +
@@ -66,7 +66,7 @@ if (watchedMovies !== undefined) {
 
       const paginationWatched = new Pagination(containerWatched, optionsWatched)
 // paginationWatched.setTotalItems(totalItemsWatched)
-paginationWatched.on('afterMove', onPagginationWatchedMove)
+      paginationWatched.on('afterMove', onPagginationWatchedMove)
 
 function onPagginationWatchedMove(page) {
         const watchedMovies = load(LOCALSTORAGE_WATCHED);
@@ -94,7 +94,7 @@ if(queuedMovies !== undefined) {
     
       template: {
         page: '<a href="#" class="pagination-page-button">{{page}}</a>',
-        currentPage: '<a class="pagination-active-button">{{page}}</a>',
+        currentPage: '<a class="pagination-active-button active-pag-btn-queue">{{page}}</a>',
         moveButton:
           '<a href="#" class="pagination-next-button">' +
             '<span class="pag-ico-{{type}}">{{type}}</span>' +
