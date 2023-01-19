@@ -7,8 +7,8 @@ import sprite from '../images/sprite.svg';
 import { paginationQueued } from './paginationLib';
 import { paginationWatched } from './paginationLib';
 import {fetchUncomingFilms} from './api/fetch'
-import Swiper, { Navigation } from 'swiper';
-import 'swiper/swiper.scss'
+import Swiper, { Navigation, Autoplay } from 'swiper';
+import 'swiper/modules/pagination/pagination.scss';
 
 ref.galleryList.addEventListener('click', openModal);
 ref.closeModalBtn.addEventListener('click', closeModal);
@@ -278,9 +278,9 @@ listFilm.addEventListener('click', openModal)
 fetchUncomingFilms(1).then(res => {
   renderAnonce(res.data.results)
   const swiper = new Swiper('.card_slider', {
-      modules: [Navigation],
+      modules: [Navigation, Autoplay],
       slidesPerView: 8,
-      speed: 700,
+      speed: 1000,
       spaceBetween: 30,
       breakpoints: {
           // when window width is >= 320px
@@ -291,30 +291,34 @@ fetchUncomingFilms(1).then(res => {
           // when window width is >= 480px
           480: {
             slidesPerView: 3,
-            spaceBetween: 30
+            spaceBetween: 25,
+      centeredSlides: false,
           },
           // when window width is >= 640px
           640: {
             slidesPerView: 4,
-            spaceBetween: 40
+            spaceBetween: 40,
+            centeredSlides: false
           },
           1280: {
             slidesPerView: 7,
-            spaceBetween: 40
+            spaceBetween: 40,
+            centeredSlides: true
           },
           1300: {
             slidesPerView: 8,
-            spaceBetween: 40
+            spaceBetween: 40,
+            centeredSlides: true,
           }},   
       // Optional parameters
       // direction: 'vertical',
-      hoverpause: true,
-bound: true,
+      grabCursor: true,
       loop: true,
 autoplay: {
-  delay: 1000,
-  disableOnInteraction: false,       
-},
+    delay: 1000,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
+  },
       // spaceBetween: 100,
       // If we need pagination
       pagination: {
@@ -332,7 +336,7 @@ autoplay: {
 
 function renderAnonce (data){
   const filmItem = data.map(({poster_path, id})=>{ 
-      return `<li class="swiper-slide"><img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="Poster Film" class="img-slider photo__card" id="${id}"></li>`
+      return `<li class="swiper-slide"><img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="Poster Film" loading="lazy" class="img-slider photo__card" id="${id}"></li>`
   }).join('')
 
   listFilm.insertAdjacentHTML('beforeend', filmItem)
