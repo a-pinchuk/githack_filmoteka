@@ -6,10 +6,10 @@ import { PAGE } from '../api/apiVars';
 import { renderPopularFilms } from '../render/renderPopularFilm';
 import { loaderHide } from '../loader';
 import { showPaginationSearched } from '../pagination';
-export {renderSearchFilms}
+export { renderSearchFilms };
 
 let searchQuery = '';
-ref.form.addEventListener('submit', onCLickSubmit)
+ref.form.addEventListener('submit', onCLickSubmit);
 
 function onCLickSubmit(e) {
   e.preventDefault();
@@ -63,4 +63,3 @@ async function renderSearchFilms(page) {
 function clearGallery() {
   ref.galleryList.innerHTML = '';
 }
-
