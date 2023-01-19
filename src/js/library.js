@@ -7,6 +7,8 @@ import { showWatchedHideQueuePag } from './paginationLib';
 import { paginationWatched } from './paginationLib';
 import { paginationQueued } from './paginationLib';
 export { moviesWatched };
+export {arrayWatched}
+export {arrayQueue}
 // export {moviesQueued}
 
 const moviesOnPage = 20;

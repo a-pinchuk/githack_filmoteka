@@ -33,6 +33,48 @@ if(darkmode) {
     containerQueued.classList.add('pagination-btns-dark-theme')
 }
 
+// const totalItemsWatched = watchedMovies.length / moviesOnPage
+  const optionsWatched = {
+    totalItems: 1,
+      itemsPerPage: 1,
+      visiblePages: 5,
+      page: 1,
+      centerAlign: true,
+      firstItemClassName: 'pagination-first-button',
+      lastItemClassName: 'pagination-last-button',
+    
+      template: {
+        page: '<a href="#" class="pagination-page-button">{{page}}</a>',
+        currentPage: '<a class="pagination-active-button active-pag-btn-watched">{{page}}</a>',
+        moveButton:
+          '<a href="#" class="pagination-next-button">' +
+            '<span class="pag-ico-{{type}}">{{type}}</span>' +
+          '</a>',
+        disabledMoveButton:
+          '<span class="pagination-disabled-button">' +
+            '<span class="pag-ico-{{type}}">{{type}}</span>' +
+          '</span>',
+          moreButton:
+          '<a href="#" class="pagination-more-button">' +
+            '<span class="pag-ico-more"> </span>' +
+          '</a>'
+    
+      }}
+
+
+      const paginationWatched = new Pagination(containerWatched, optionsWatched)
+// paginationWatched.setTotalItems(totalItemsWatched)
+      paginationWatched.on('afterMove', onPagginationWatchedMove)
+
+function onPagginationWatchedMove(page) {
+        const watchedMovies = load(LOCALSTORAGE_WATCHED);
+        paginationWatched.setTotalItems(watchedMovies.length / moviesOnPage)
+        ref.galleryList.innerHTML = ''
+        let start = (Object.values(page)[0] - 1) * moviesOnPage
+        let end = start + moviesOnPage
+        let moviesWatched = watchedMovies.slice(start, end)
+        fetchAndRenderFilm(moviesWatched)
+}
 
 if (watchedMovies !== undefined) {
   const totalItemsWatched = watchedMovies.length / moviesOnPage
@@ -79,6 +121,49 @@ function onPagginationWatchedMove(page) {
 }
 }
 
+// const totalItemsQueued = queuedMovies.length / moviesOnPage
+
+  const optionsQueued = {
+    totalItems: 1,
+      itemsPerPage: 1,
+      visiblePages: 5,
+      page: 1,
+      centerAlign: true,
+      firstItemClassName: 'pagination-first-button',
+      lastItemClassName: 'pagination-last-button',
+    
+      template: {
+        page: '<a href="#" class="pagination-page-button">{{page}}</a>',
+        currentPage: '<a class="pagination-active-button active-pag-btn-queue">{{page}}</a>',
+        moveButton:
+          '<a href="#" class="pagination-next-button">' +
+            '<span class="pag-ico-{{type}}">{{type}}</span>' +
+          '</a>',
+        disabledMoveButton:
+          '<span class="pagination-disabled-button">' +
+            '<span class="pag-ico-{{type}}">{{type}}</span>' +
+          '</span>',
+          moreButton:
+          '<a href="#" class="pagination-more-button">' +
+            '<span class="pag-ico-more"> </span>' +
+          '</a>'
+    
+      }}
+
+      const paginationQueued = new Pagination(containerQueued, optionsQueued)
+
+  // paginationQueued.setTotalItems(totalItemsQueued)
+  paginationQueued.on('afterMove', onPaginationQueuedMove)
+  
+  function onPaginationQueuedMove (page) {
+    const queuedMovies = load(LOCALSTORAGE_QUEUE)
+    paginationQueued.setTotalItems(queuedMovies.length / moviesOnPage)
+    ref.galleryList.innerHTML = ''
+    let start = (Object.values(page)[0] - 1) * moviesOnPage
+    let end = start + moviesOnPage
+    let moviesQueued = queuedMovies.slice(start, end)
+    fetchAndRenderFilm(moviesQueued)
+  }
 
 if(queuedMovies !== undefined) {
   const totalItemsQueued = queuedMovies.length / moviesOnPage
