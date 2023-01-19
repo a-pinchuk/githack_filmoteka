@@ -26,7 +26,10 @@ function onCLickSubmit(e) {
     ref.alertMessage.textContent = '';
     ref.input.value = '';
     renderSearchFilms().then(res => {
-      showPaginationSearched(res.data.total_pages);
+      if(res !== undefined) {
+        showPaginationSearched(res.data.total_pages);
+      }
+      
     });
   } else {
     renderPopularFilms();
