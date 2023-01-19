@@ -19,8 +19,8 @@ export function renderPopularFilms(ref, data, genres) {
       </li>`;
     })
     .join('');
-
-  ref.galleryList.insertAdjacentHTML('beforeend', markup);
+  // ref.galleryList.insertAdjacentHTML('beforeend', markup);
+  ref.galleryList.innerHTML = markup;
 }
 
 function compareGenresId(allGenres, filmGenre) {
